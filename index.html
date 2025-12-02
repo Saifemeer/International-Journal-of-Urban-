@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Journal of Urban Sustainable Development</title>
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+   
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+  
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+/>
+</head>
+ <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-blue': '#0A0C4C',
+                        'brand-blue': '#10147E',
+                        'light-blue': '#B3E5FF',
+                        'link-blue': '#8FDBFF',
+                        'border-dark': '#23255E',
+                    },
+                    fontFamily: {
+                        'serif': ['PT Serif', 'Georgia', 'Times New Roman', 'serif'],
+                        'sans': ['Open Sans', 'Arial', 'sans-serif'],
+                        'open-sans': ['Open Sans', 'sans-serif'],
+                        'pt-serif': ['PT Serif', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .dropdown-animate {
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .chevron-rotate {
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown-active .chevron-rotate {
+            transform: rotate(180deg);
+        }
+        
+        /* Vertical divider for dropdown columns */
+        .dropdown-columns::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 30%;
+            width: 2px;
+            background-color: #ddd;
+        }
+        
+        @media (max-width: 1024px) {
+            .dropdown-columns::before {
+                display: none;
+            }
+        }
+        
+        body.no-scroll {
+            overflow: hidden;
+        }
+        
+        .search-dropdown-menu {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        /* Mobile menu transition */
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.closed {
+            transform: translateX(-100%);
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+</style>
+
+<body>
+
+     <!-- HEADER -->
+    <header class="bg-white border-b-0 py-5">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <div class="flex flex-col items-start ml-2 lg:ml-5">
+                <img 
+                    src="https://www.tandfonline.com/pb-assets/Global/TFO-logo-new-1716484961953.svg" 
+                    alt="Taylor & Francis Online Logo" 
+                    class="h-8 lg:h-10 w-auto mb-px"
+                >
+            </div>
+            
+            <!-- Mobile Hamburger Button -->
+            <button 
+                id="mobile-menu-btn" 
+                class="lg:hidden text-brand-blue text-2xl p-2 focus:outline-none"
+                aria-label="Open Menu"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:block flex-grow-0 ml-7 text-left relative z-[1000]">
+                <ul class="flex gap-10 list-none m-0 p-0">
+                    
+                    <!-- Journals Dropdown -->
+                    <li class="dropdown relative" id="journals-dropdown">
+                        <a 
+                            href="#" 
+                            id="journal-btn"
+                            class="text-brand-blue text-base py-2.5 block font-normal no-underline"
+                        >
+                            Journals <i class="fas fa-chevron-down ml-1 text-[15px] align-middle chevron-rotate"></i>
+                        </a>
+                        
+                        <!-- Fullscreen Dropdown Menu -->
+                        <div 
+                            id="journal-menu"
+                            class="hidden fixed top-[81px] left-0 w-full h-[calc(100vh-60px)] bg-white border-t border-gray-200 overflow-y-auto p-8 lg:p-[60px] z-[999] dropdown-animate"
+                        >
+                            <!-- Close Button -->
+                            <button 
+                                class="close-dropdown-btn absolute top-4 right-6 bg-transparent border-none text-[32px] font-bold text-brand-blue cursor-pointer hover:scale-110 hover:text-black transition-transform"
+                            >
+                                &times;
+                            </button>
+                            
+                            <!-- Columns -->
+                            <div class="dropdown-columns flex flex-col lg:flex-row justify-between gap-6 lg:gap-10 flex-wrap mt-1 relative">
+                                
+                                <!-- Column 1 -->
+                                <div class="flex-1 min-w-[250px]">
+                                    <h4 class="text-base text-gray-800 mb-2.5 font-bold">Browse all journals</h4>
+                                    <a href="https://www.tandfonline.com/action/showPublications?pubType=journal&ejf=on" class="block text-brand-blue text-sm no-underline my-1.5 font-normal hover:underline">Browse all journals A–Z</a>
+                                    <a href="https://www.tandfonline.com/openaccess/openjournals" class="block text-brand-blue text-sm no-underline my-1.5 font-normal hover:underline">Open access journals</a>
+                                    <a href="https://www.tandfonline.com/openaccess/openselect" class="ttt block text-brand-blue text-sm no-underline my-1.5 font-normal hover:underline mb-4 lg:mb-[15%]">Open Select (hybrid) journals</a>
+                                    <h4 class="text-base text-gray-800 mb-2.5 font-bold">Browse all books</h4>
+                                    <a href="https://www.taylorfrancis.com/?_gl=1*1ivaoqx*_gcl_au*Nzg3MDUyMDY0LjE3NjM4MDk4MjAuMTQwNDc1OTk3Mi4xNzYzOTkzNjExLjE3NjM5OTM2MTE.*_ga*MzAzMjUyMTU0LjE3NjM4MDk4NTc.*_ga_0HYE8YG0M6*czE3NjQ0OTE4ODYkbzgkZzEkdDE3NjQ0OTYzMDgkajMwJGwwJGgw" class="block text-brand-blue text-sm no-underline my-1.5 font-normal hover:underline">
+                                        Explore Taylor & Francis eBooks
+                                        <i class="fa fa-external-link text-xs ml-1.5 text-brand-blue" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                
+                                <!-- Column 2 -->
+                                <div class="flex-1 min-w-[250px]">
+                                    <h4 class="text-base text-gray-800 mb-2.5 font-bold">Browse by subject</h4>
+                                    <a href="https://www.tandfonline.com/subjects/area-studies" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Area Studies</a>
+                                    <a href="https://www.tandfonline.com/subjects/arts" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Arts</a>
+                                    <a href="https://www.tandfonline.com/subjects/behavioral-sciences" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Behavioral Sciences</a>
+                                    <a href="https://www.tandfonline.com/subjects/bioscience" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Bioscience</a>
+                                    <a href="https://www.tandfonline.com/subjects/built-environment" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Built Environment</a>
+                                    <a href="https://www.tandfonline.com/subjects/communication-studies" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Communication Studies</a>
+                                    <a href="https://www.tandfonline.com/subjects/computer-science" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Computer Science</a>
+                                    <a href="https://www.tandfonline.com/subjects/earth-sciences" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Earth Sciences</a>
+                                    <a href="https://www.tandfonline.com/subjects/economics-finance-business-industry" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Economics,Finance,Business & Industry</a>
+                                    <a href="https://www.tandfonline.com/subjects/education" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Education</a>
+                                    <a href="https://www.tandfonline.com/subjects/engineering-and-technology" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Engineering & Technology</a>
+                                    <a href="https://www.tandfonline.com/subjects/environment-and-agriculture" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Environment & Agriculture</a>
+                                    <a href="https://www.tandfonline.com/subjects/environment-and-sustainability" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Environment and Sustainability</a>
+                                    <a href="https://www.tandfonline.com/subjects/food-science-and-technology" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Food Science & Technology</a>
+                                    <a href="https://www.tandfonline.com/subjects/geography" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Geography</a>
+                                </div>
+                                
+                                <!-- Column 3 -->
+                                <div class="flex-1 min-w-[250px] mt-0 lg:mt-[26px]">
+                                    <a href="https://www.tandfonline.com/subjects/global-development" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Global Development</a>
+                                    <a href="https://www.tandfonline.com/subjects/health-and-social-care" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Health and Social Care</a>
+                                    <a href="https://www.tandfonline.com/subjects/humanities" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Humanities</a>
+                                    <a href="https://www.tandfonline.com/subjects/information-science" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Information Science</a>
+                                    <a href="https://www.tandfonline.com/subjects/language-and-literature" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Language & Literature</a>
+                                    <a href="https://www.tandfonline.com/subjects/law" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Law</a>
+                                    <a href="https://www.tandfonline.com/subjects/mathematics-and-statistics" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Mathematics & Statistics</a>
+                                    <a href="https://www.tandfonline.com/subjects/medicine-dentistry-nursing-and-allied-health" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Medicine, Dentistry, Nursing & Allied Health</a>
+                                    <a href="https://www.tandfonline.com/subjects/museum-and-heritage-studies" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Museum and Heritage Studies</a>
+                                    <a href="https://www.tandfonline.com/subjects/physical-sciences" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Physical Sciences</a>
+                                    <a href="https://www.tandfonline.com/subjects/politics-and-international-relations" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Politics & International Relations</a>
+                                    <a href="https://www.tandfonline.com/subjects/social-sciences" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Social Sciences</a>
+                                    <a href="https://www.tandfonline.com/subjects/sports-and-leisure" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Sports and Leisure</a>
+                                    <a href="https://www.tandfonline.com/subjects/tourism-hospitality-and-events" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Tourism, Hospitality and Events</a>
+                                    <a href="https://www.tandfonline.com/subjects/urban-studies" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Urban Studies</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Search Dropdown -->
+                    <li class="nav-item has-dropdown relative" id="search-dropdown">
+                        <a 
+                            href="#" 
+                            id="search-btn"
+                            class="nav-link text-brand-blue text-base py-2.5 block font-normal no-underline"
+                        >
+                            Search <i class="fas fa-chevron-down ml-1 text-[15px] align-middle chevron-rotate"></i>
+                        </a>
+                        
+                        <!-- Search Overlay -->
+                        <div id="search-overlay" class="search-overlay hidden fixed top-0 left-0 w-screen h-screen bg-black/60 z-[900]"></div>
+                        
+                        <!-- Search Dropdown Menu -->
+                        <div 
+                            id="search-menu"
+                            class="search-dropdown-menu hidden fixed top-[80px] left-1/2 -translate-x-1/2 w-screen bg-white border-t border-gray-300 shadow-lg rounded p-6 z-[1000] opacity-0 -translate-y-2.5"
+                        >
+                            <!-- Search Box -->
+                            <div class="search-box-container flex items-center rounded overflow-hidden">
+                                <input 
+                                    type="text" 
+                                    placeholder="Search Taylor & Francis for journals, articles, and special issues, by keywords, authors,DOI, etc."
+                                    class="search-input flex-[0.7] border border-gray-300 py-3.5 px-3.5 outline-none text-sm font-normal rounded ml-[15%] focus:border-brand-blue focus:shadow-[0_0_4px_rgba(16,20,126,0.4)] transition-colors"
+                                >
+                                <button type="submit" class="search-button bg-brand-blue text-white border-none py-[15px] px-[15px] cursor-pointer text-xl rounded-[8%] ml-1">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Close Button -->
+                            <div class="search-dropdown-foote absolute top-[27px] right-[5%] z-[1001] flex items-center justify-center w-[45px] h-[45px]">
+                                <a 
+                                    href="#" 
+                                    id="close-search-btn"
+                                    class="close-butto no-underline text-brand-blue text-[29px] font-bold leading-none opacity-85 cursor-pointer"
+                                >
+                                    x
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Publish Dropdown -->
+                    <li class="dropdown relative" id="publish-dropdown">
+                        <a 
+                            href="#" 
+                            id="publish-btn"
+                            class="text-brand-blue text-base py-2.5 block font-normal no-underline"
+                        >
+                            Publish <i class="fas fa-chevron-down ml-1 text-[15px] align-middle chevron-rotate"></i>
+                        </a>
+                        
+                        <!-- Publish Dropdown Menu -->
+                        <div 
+                            id="publish-menu"
+                            class="publish-dropdown hidden absolute top-[60px] left-0 ml-0 lg:ml-[220px] bg-white border-t border-gray-200 shadow-md w-[300px] py-4 px-5 z-[1000]"
+                        >
+                            <a href="#" class="block text-brand-blue no-underline py-1.5 text-sm font-normal hover:underline">Why publish with us?</a>
+                            <a href="#" class="block text-brand-blue no-underline py-1.5 text-sm font-normal hover:underline">Find a journal</a>
+                            <a href="#" class="block text-brand-blue no-underline py-1.5 text-sm font-normal hover:underline">Search calls for papers</a>
+                            <a href="#" class="block text-brand-blue no-underline py-1.5 text-sm font-normal hover:underline">Journal Suggester</a>
+                            <a href="#" class="block text-brand-blue no-underline py-1.5 text-sm font-normal hover:underline">Step-by-step guide</a>
+                            <a href="#" class="block text-brand-blue no-underline py-1.5 text-sm font-normal hover:underline">Open access publishing</a>
+                            
+                            <!-- Help Box -->
+                            <div class="help-box bg-[#fdeeee] p-3 mt-3 rounded">
+                                <h4 class="text-gray-800 text-sm mb-1.5 font-normal">We're here to help</h4>
+                                <a href="#" class="text-gray-800 text-sm no-underline font-normal">
+                                    Find guidance on <span class="highlight-text text-brand-blue font-normal">Author Services</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- User Actions (Desktop) -->
+            <div class="user-actions hidden lg:flex text-base font-normal items-center flex-grow justify-end gap-0 text-brand-blue">
+                <a href="#" class="text-brand-blue text-base font-normal px-1.5">
+                    <i class="far fa-user text-[22px] mr-2.5"></i> Login
+                </a>
+                <span class="text-brand-blue">|</span>
+                <a href="#" class="text-brand-blue text-base font-normal pl-1.5 mr-4">Register</a>
+                <a href="#" class="cart-icon text-brand-blue text-2xl">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div 
+        id="mobile-overlay" 
+        class="lg:hidden fixed inset-0 bg-black/50 z-[998] hidden"
+    ></div>
+
+    <!-- MOBILE SIDEBAR MENU -->
+    <div 
+        id="mobile-menu" 
+        class="mobile-menu closed lg:hidden fixed top-0 left-0 w-[85%] max-w-[320px] h-full bg-white z-[999] overflow-y-auto shadow-xl"
+    >
+        <!-- Mobile Menu Header -->
+        <div class="flex justify-between items-center p-4 border-b border-gray-200 bg-brand-blue">
+            <span class="text-white font-semibold text-lg">Menu</span>
+            <button id="close-mobile-menu" class="text-white text-3xl font-bold">&times;</button>
+        </div>
+        
+        <!-- Mobile Menu Content -->
+        <div class="p-4">
+            
+            <!-- User Actions Mobile -->
+            <div class="flex items-center gap-4 pb-4 border-b border-gray-200 mb-4">
+                <a href="#" class="text-brand-blue text-sm font-semibold flex items-center">
+                    <i class="far fa-user mr-2"></i> Login
+                </a>
+                <span class="text-gray-400">|</span>
+                <a href="#" class="text-brand-blue text-sm font-semibold">Register</a>
+                <a href="#" class="text-brand-blue text-xl ml-auto">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+            
+            <!-- Journals Accordion -->
+            <div class="border-b border-gray-200">
+                <button 
+                    class="mobile-accordion-btn w-full flex justify-between items-center py-3 text-brand-blue font-semibold text-base"
+                    data-target="mobile-journals"
+                >
+                    Journals
+                    <i class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+                </button>
+               <div id="mobile-journals" class="hidden pb-4">
+    <h5 class="text-gray-700 font-bold text-sm mt-2 mb-2">Browse all journals</h5>
+    <a href="https://www.tandfonline.com/action/showPublications?pubType=journal&ejf=on" class="block text-brand-blue text-sm py-1.5 hover:underline">Browse all journals A–Z</a>
+    <a href="https://www.tandfonline.com/openaccess/openjournals" class="block text-brand-blue text-sm py-1.5 hover:underline">Open access journals</a>
+    <a href="https://www.tandfonline.com/openaccess/openselect" class="block text-brand-blue text-sm py-1.5 hover:underline">Open Select (hybrid) journals</a>
+    
+    <h5 class="text-gray-700 font-bold text-sm mt-4 mb-2">Browse all books</h5>
+    <a href="https://www.taylorfrancis.com/?_gl=1*1ivaoqx*_gcl_au*Nzg3MDUyMDY0LjE3NjM4MDk4MjAuMTQwNDc1OTk3Mi4xNzYzOTkzNjExLjE3NjM5OTM2MTE.*_ga*MzAzMjUyMTU0LjE3NjM4MDk4NTc.*_ga_0HYE8YG0M6*czE3NjQ0OTE4ODYkbzgkZzEkdDE3NjQ0OTYzMDgkajMwJGwwJGgw" class="block text-brand-blue text-sm py-1.5 hover:underline">
+        Explore Taylor & Francis eBooks <i class="fa fa-external-link text-xs ml-1"></i>
+    </a>
+    
+    <h5 class="text-gray-700 font-bold text-sm mt-4 mb-2">Browse by subject</h5>
+    <a href="https://www.tandfonline.com/subjects/area-studies" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Area Studies</a>
+    <a href="https://www.tandfonline.com/subjects/arts" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Arts</a>
+    <a href="https://www.tandfonline.com/subjects/behavioral-sciences" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Behavioral Sciences</a>
+    <a href="https://www.tandfonline.com/subjects/bioscience" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Bioscience</a>
+    <a href="https://www.tandfonline.com/subjects/built-environment" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Built Environment</a>
+    <a href="https://www.tandfonline.com/subjects/communication-studies" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Communication Studies</a>
+    <a href="https://www.tandfonline.com/subjects/computer-science" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Computer Science</a>
+    <a href="https://www.tandfonline.com/subjects/earth-sciences" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Earth Sciences</a>
+    <a href="https://www.tandfonline.com/subjects/economics-finance-business-industry" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Economics,Finance,Business & Industry</a>
+    <a href="https://www.tandfonline.com/subjects/education" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Education</a>
+    <a href="https://www.tandfonline.com/subjects/engineering-and-technology" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Engineering & Technology</a>
+    <a href="https://www.tandfonline.com/subjects/environment-and-agriculture" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Environment & Agriculture</a>
+    <a href="https://www.tandfonline.com/subjects/environment-and-sustainability" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Environment and Sustainability</a>
+    <a href="https://www.tandfonline.com/subjects/food-science-and-technology" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Food Science & Technology</a>
+    <a href="https://www.tandfonline.com/subjects/geography" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Geography</a>
+    <a href="https://www.tandfonline.com/subjects/global-development" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Global Development</a>
+    <a href="https://www.tandfonline.com/subjects/health-and-social-care" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Health and Social Care</a>
+    <a href="https://www.tandfonline.com/subjects/humanities" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Humanities</a>
+    <a href="https://www.tandfonline.com/subjects/information-science" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Information Science</a>
+    <a href="https://www.tandfonline.com/subjects/language-and-literature" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Language & Literature</a>
+    <a href="https://www.tandfonline.com/subjects/law" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Law</a>
+    <a href="https://www.tandfonline.com/subjects/mathematics-and-statistics" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Mathematics & Statistics</a>
+    <a href="https://www.tandfonline.com/subjects/medicine-dentistry-nursing-and-allied-health" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Medicine, Dentistry, Nursing & Allied Health</a>
+    <a href="https://www.tandfonline.com/subjects/museum-and-heritage-studies" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Museum and Heritage Studies</a>
+    <a href="https://www.tandfonline.com/subjects/physical-sciences" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Physical Sciences</a>
+    <a href="https://www.tandfonline.com/subjects/politics-and-international-relations" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Politics & International Relations</a>
+    <a href="https://www.tandfonline.com/subjects/social-sciences" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Social Sciences</a>
+    <a href="https://www.tandfonline.com/subjects/sports-and-leisure" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Sports and Leisure</a>
+    <a href="https://www.tandfonline.com/subjects/tourism-hospitality-and-events" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Tourism, Hospitality and Events</a>
+    <a href="https://www.tandfonline.com/subjects/urban-studies" class="block text-brand-blue text-sm py-1.5 hover:underline">Urban Studies</a>
+</div> 
+            </div>
+            
+            <!-- Search Section -->
+            <div class="border-b border-gray-200 py-3">
+                <button 
+                    id="mobile-search-btn"
+                    class="w-full flex justify-between items-center text-brand-blue font-semibold text-base"
+                >
+                    Search
+                    <i class="fas fa-search text-sm"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Search Box (Hidden by default) -->
+            <div id="mobile-search-box" class="hidden border-b border-gray-200 py-3">
+                <div class="flex items-center">
+                    <input 
+                        type="text" 
+                        placeholder="Search..."
+                        class="flex-1 border border-gray-300 py-2 px-3 text-sm rounded-l focus:outline-none focus:border-brand-blue"
+                    >
+                    <button class="bg-brand-blue text-white py-2 px-3 rounded-r">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Publish Accordion -->
+            <div class="border-b border-gray-200">
+                <button 
+                    class="mobile-accordion-btn w-full flex justify-between items-center py-3 text-brand-blue font-semibold text-base"
+                    data-target="mobile-publish"
+                >
+                    Publish
+                    <i class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+                </button>
+                <div id="mobile-publish" class="hidden pb-4">
+                    <a href="#" class="block text-brand-blue text-sm py-1.5 hover:underline">Why publish with us?</a>
+                    <a href="#" class="block text-brand-blue text-sm py-1.5 hover:underline">Find a journal</a>
+                    <a href="#" class="block text-brand-blue text-sm py-1.5 hover:underline">Search calls for papers</a>
+                    <a href="#" class="block text-brand-blue text-sm py-1.5 hover:underline">Journal Suggester</a>
+                    <a href="#" class="block text-brand-blue text-sm py-1.5 hover:underline">Step-by-step guide</a>
+                    <a href="#" class="block text-brand-blue text-sm py-1.5 hover:underline">Open access publishing</a>
+                    
+                    <!-- Help Box -->
+                    <div class="bg-[#fdeeee] p-3 mt-3 rounded">
+                        <h5 class="text-gray-800 text-sm mb-1 font-normal">We're here to help</h5>
+                        <a href="#" class="text-gray-800 text-sm">
+                            Find guidance on <span class="text-brand-blue font-semibold">Author Services</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Sub Navigation Bar (Breadcrumbs) -->
+<nav class="bg-[#00008b] text-white py-1 text-[13px] mt-12 lg:mt-0">
+    <div class="max-w-[1200px] mx-auto px-2.5 lg:px-[15px] flex items-center overflow-x-auto whitespace-nowrap">
+        <a href="#" class="font-semibold text-[#7CC3F7] text-xs lg:text-sm hover:underline">Home</a> 
+        <i class="fas fa-caret-right text-[#B3E5FF] text-lg mx-1 lg:mx-2"></i> 
+        <a href="#" class="font-semibold text-[#7CC3F7] text-xs lg:text-sm hover:underline">All Journals</a> 
+        <i class="fas fa-caret-right text-[#B3E5FF] text-lg mx-1 lg:mx-2"></i> 
+        <a href="#" class="font-semibold text-[#7CC3F7] text-xs lg:text-sm hover:underline">Global Development</a> 
+        <i class="fas fa-caret-right text-[#B3E5FF] text-lg mx-1 lg:mx-2"></i> 
+        <span class="font-semibold text-[13px] text-white truncate max-w-[150px] lg:max-w-none">International Journal of Urban Sustainable Development</span>
+    </div>
+</nav>
+
+<!-- Main Hero Section -->
+<main class="py-5 lg:py-[30px] bg-gradient-to-b from-white via-[#F8F8F8] to-[#EBEBEB]">
+    <div class="max-w-[1200px] mx-auto px-2.5 lg:px-[15px] flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-[30px] text-center lg:text-left">
+        
+        <!-- Journal Cover -->
+        <div class="journal-cover flex-shrink-0">
+            <img src="/img/tjue20.v017.i01.cover.jpg" alt="Cover image for International Journal of Urban Sustainable Development" 
+                 class="border border-[#ccc] shadow-md h-[180px] lg:h-[205px] w-auto"> 
+        </div>
+        
+        <!-- Journal Details -->
+        <div class="flex-grow w-full">
+            <h1 class="text-2xl lg:text-[28px] mb-2.5 text-[#333] font-bold font-['PT_Serif',Georgia,'Times_New_Roman',Times,serif]">
+                International Journal of Urban Sustainable Development
+            </h1>
+            <p class="text-[#002C8B] font-normal mb-[15px] text-base flex items-center justify-center lg:justify-start font-['Open_Sans',Arial,sans-serif]">
+                <i class="fas fa-lock mr-[5px] text-lg text-[#FFA500]"></i> Access Restricted
+            </p>
+            <p class="text-base font-normal leading-[1.5] mb-6 font-['Open_Sans',Arial,sans-serif]">
+                Publishing papers on the complex inter-related environmental, social, economic, political, spatial, institutional and physical challenges facing urban areas.
+            </p>
+
+            <!-- Search Form -->
+            <div class="flex flex-col lg:flex-row gap-2 max-w-[650px] mb-2.5 mx-auto lg:mx-0 border border-[#ccc] lg:border-none p-2.5 lg:p-0 rounded">
+                <input type="text" placeholder="Enter keywords, authors, DOI, etc" 
+                       class="flex-grow lg:flex-1 py-2.5 px-[15px] text-base font-normal border border-[#ccc] rounded outline-none focus:border-[#10147E] focus:shadow-[0_0_4px_rgba(16,20,126,0.4)] font-['Open_Sans',Arial,sans-serif] w-full">
+                <select class="py-2.5 px-[15px] pr-[25px] text-[#333333] bg-white text-base cursor-pointer border border-[#ccc] rounded outline-none appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2300008b%22%20d%3D%22M287%2069c-4-4-10-6-16-6H21c-6%200-12%202-16%206-4%204-6%2010-6%2016s2%2012%206%2016l125%20125c4%204%2010%206%2016%206s12-2%2016-6l125-125c4-4%206-10%206-16s-2-12-6-16z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[right_8px_center] bg-[length:10px] flex-shrink-0 font-['Open_Sans',Arial,sans-serif] w-full lg:w-auto">
+                    <option>This journal</option>
+                    <option>Anywhere</option>
+                </select>
+                <button class="bg-[#006DB4] text-white border-none p-2.5 lg:py-2.5 lg:px-3 cursor-pointer text-base rounded h-10 w-full lg:w-10 flex justify-center items-center">
+                    <i class="fas fa-search text-lg"></i>
+                </button>
+            </div>
+            <div class="text-xs text-[#666] lg:ml-[400px] text-center lg:text-left">
+                <a href="#" class="text-[#002C8B] text-xs font-normal font-['Open_Sans',Arial,sans-serif] hover:underline">Advanced search</a>  
+                <a href="#" class="text-[#002C8B] text-xs font-normal font-['Open_Sans',Arial,sans-serif] ml-2 hover:underline">Citation search</a>
+            </div>
+        </div>
+        
+        <!-- Share Button -->
+        <div class="flex-shrink-0 mt-[15px] lg:mt-[5px]">
+            <button class="bg-[#0099cc] text-white border-none py-2 px-[15px] rounded cursor-pointer text-sm font-medium flex items-center gap-2">
+                <i class="fas fa-share-alt"></i> Share
+            </button>
+        </div>
+    </div>
+</main>
+
+<!-- Action Bar -->
+<nav class="bg-[#10147E] text-white py-2.5 text-base cursor-pointer font-['Open_Sans',Arial,sans-serif]"> 
+    <div class="max-w-[1200px] mx-auto px-2.5 lg:px-[15px] flex flex-col lg:flex-row lg:justify-around">
+        
+        <!-- Submit an article -->
+        <div class="action-item has-dropdown relative w-full lg:w-auto border-b border-[#eee] lg:border-none">
+            <h4 class="dropdown-trigger text-white text-sm lg:text-base font-semibold py-[15px] lg:py-2.5 px-0 lg:px-2.5 m-0 cursor-pointer flex justify-between items-center">
+                Submit an article <i class="fas fa-chevron-down text-[10px] ml-[5px]"></i>
+            </h4>
+            <div class="action-dropdown-content hidden lg:absolute top-full left-0 z-[1000] bg-white border border-[#ccc] shadow-lg w-full lg:w-[270px] p-[15px]">
+                <p class="font-semibold text-[#333] mt-0 mb-[5px] text-base">Ready to submit?</p>
+                <p class="text-sm text-[#555] mt-0 mb-[15px] font-normal">Start a new submission or continue a submission in progress</p>
+                <a href="https://accounts.taylorfrancis.com/identity/#/login?authorize=true&client_id=59f21242bb410562f60413514f5108d80ede3086581e834d9027687f7a875502&response_type=code&scope=mail&redirect_uri=http:%2F%2Fnew-api.taylorfrancis.com%2Fuser-auth%2Fcallback%2F100.65.128.150&state=&flow=new&journal=International%20Journal%20of%20Urban%20Sustainable%20Development&brand=rptnf" class="block text-center bg-[#6CD775] text-[#10147E] p-2.5 mb-[15px] rounded no-underline font-semibold text-base hover:bg-[#006DB4] hover:text-white">Go to submission site <i class="fas fa-external-link-alt"></i></a>
+                <a href="https://www.tandfonline.com/action/authorSubmission?show=instructions&journalCode=tjue20" class="block text-[#10147E] py-2.5 no-underline border-t border-[#eee] text-base font-normal hover:bg-[#f5f5f5]">Instructions for authors</a>
+                <a href="https://authorservices.taylorandfrancis.com/editorial-policies/?_ga=2.162930427.671680994.1760991318-2061751092.1760206029" class="block text-[#10147E] py-2.5 no-underline border-t border-[#eee] text-base font-normal hover:bg-[#f5f5f5]">Editorial policies <i class="fas fa-external-link-alt"></i></a>
+                <a href="https://www.tandfeditingservices.com/pagetype=variant?utm_source=TFO&utm_medium=cms&utm_campaign=JQF21509&_gl=1*145u7xf*_gcl_au*MTM5ODYxMDQyNC4xNzYwMjA2MDI2*_ga*MjA2MTc1MTA5Mi4xNzYwMjA2MDI5*_ga_0HYE8YG0M6*czE3NjEwMjYyOTYkbzExJGcxJHQxNzYxMDQwMzA1JGozOSRsMCRoMA.." class="block text-[#10147E] py-2.5 no-underline border-t border-[#eee] text-base font-normal hover:bg-[#f5f5f5]">Editing services site <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </div>
+        
+        <!-- About this journal -->
+        <div class="action-item w-full lg:w-auto border-b border-[#eee] lg:border-none">
+            <a href="https://www.tandfonline.com/journals/tjue20/about-this-journal" class="text-white text-sm lg:text-base font-semibold block py-[15px] lg:py-2.5 px-0 lg:px-2.5">About this journal</a>
+        </div>
+        
+        <!-- Browse all articles & issues -->
+        <div class="action-item has-dropdown relative w-full lg:w-auto border-b border-[#eee] lg:border-none">
+            <h4 class="dropdown-trigger text-white text-sm lg:text-base font-semibold py-[15px] lg:py-2.5 px-0 lg:px-2.5 m-0 cursor-pointer flex justify-between items-center">
+                Browse all articles & issues <i class="fas fa-chevron-down text-[10px] ml-[5px]"></i>
+            </h4>
+            <div class="action-dropdown-content hidden lg:absolute top-full left-0 z-[1000] bg-white border border-[#ccc] shadow-lg w-full lg:w-[270px] p-0">
+                <a href="https://www.tandfonline.com/toc/tjue20/current" class="block text-[#10147E] py-2.5 px-[15px] no-underline text-base font-normal hover:bg-[#f5f5f5]">Current issue</a>
+                <a href="https://www.tandfonline.com/loi/tjue20" class="block text-[#10147E] py-2.5 px-[15px] no-underline border-t border-[#eee] text-base font-normal hover:bg-[#f5f5f5]">All volumes & issues</a>
+                <a href="https://www.tandfonline.com/journals/tjue20/special-issues" class="block text-[#10147E] py-2.5 px-[15px] no-underline border-t border-[#eee] text-base font-normal hover:bg-[#f5f5f5]">Special issues</a>
+                <a href="https://www.tandfonline.com/action/showMostReadArticles?journalCode=tjue20" class="block text-[#10147E] py-2.5 px-[15px] no-underline border-t border-[#eee] text-base font-normal hover:bg-[#f5f5f5]">Most read articles</a>
+                <a href="https://www.tandfonline.com/action/showMostCitedArticles?journalCode=tjue20" class="block text-[#10147E] py-2.5 px-[15px] no-underline border-t border-[#eee] text-base font-normal hover:bg-[#f5f5f5]">Most cited articles</a>
+            </div>
+        </div>
+        
+        <!-- Follow this journal -->
+        <div class="action-item has-dropdown relative w-full lg:w-auto">
+            <h4 class="dropdown-trigger text-white text-sm lg:text-base font-semibold py-[15px] lg:py-2.5 px-0 lg:px-2.5 m-0 cursor-pointer flex justify-between items-center">
+                Follow this journal <i class="fas fa-chevron-down text-[10px] ml-[5px]"></i>
+            </h4>
+            <div class="action-dropdown-content hidden lg:absolute top-full left-0 z-[1000] bg-white border border-[#ccc] shadow-lg w-full lg:w-[270px] p-0">
+                <ul class="list-none m-0 p-0">
+                    <li class="flex items-center py-2.5 px-[15px] hover:bg-[#f5f5f5] cursor-pointer">
+                        <i class="fas fa-envelope text-[#10147E] mr-2.5 text-[1.1em] w-5 text-center"></i>
+                        <a href="#" class="text-[#333] no-underline">New content alerts</a>
+                    </li>
+                    <li class="flex items-center py-2.5 px-[15px] border-t border-[#eee] hover:bg-[#f5f5f5] cursor-pointer">
+                        <i class="fas fa-rss text-[#10147E] mr-2.5 text-[1.1em] w-5 text-center"></i>
+                        <a href="#" class="text-[#333] no-underline">RSS feed</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content Wrapper -->
+<div class="py-[30px] lg:py-[50px]">
+    <div class="max-w-[1200px] mx-auto px-2.5 lg:px-[15px] flex flex-col lg:flex-row items-start gap-[30px]">
+        
+        <!-- Main Content Column -->
+        <div class="w-full lg:basis-[70%] lg:pr-[30px]">
+            
+            <!-- Submission Alert -->
+            <div class="flex flex-col lg:flex-row justify-between items-center lg:items-center gap-[15px] p-[15px] bg-[#f8f8f8] border border-[#ccc] mb-[30px]">
+                <p class="font-normal text-[#333] text-sm m-0 text-center lg:text-left">
+                    <strong class="font-bold text-[#333] mr-[5px]">Ready to submit?</strong> Start a new submission or continue a submission in progress
+                </p>
+                <a href="https://accounts.taylorfrancis.com/identity/#/login?authorize=true&client_id=59f21242bb410562f60413514f5108d80ede3086581e834d9027687f7a875502&response_type=code&scope=mail&redirect_uri=http:%2F%2Fnew-api.taylorfrancis.com%2Fuser-auth%2Fcallback%2F100.65.128.150&state=&flow=new&journal=International%20Journal%20of%20Urban%20Sustainable%20Development&brand=rptnf" class="submission-btn bg-[#6CD775] text-[#161b9e] py-2 px-3 rounded text-base font-semibold flex items-center gap-[5px] whitespace-nowrap font-['Open_Sans',Arial,sans-serif] transition-all duration-300 hover:bg-[#006DB4] hover:text-white w-full lg:w-auto justify-center text-center">
+                    Go to submission site <i class="fas fa-external-link-alt text-sm"></i>
+                </a>
+            </div>
+
+            <!-- Journal Overview Section -->
+            <section class="journal-overview">
+                <h2 class="text-xl lg:text-[22px] font-bold font-['PT_Serif',Georgia,'Times_New_Roman',Times,serif] mb-5 text-[#333] mt-5 lg:mt-0">Journal overview</h2>
+
+                <!-- Tab Navigation -->
+                <div class="tab-navigation flex flex-col lg:flex-row gap-0 lg:gap-2 border-b border-[#ccc] lg:border-none mb-0 relative w-full">
+                    <button class="tab-btn active flex-grow bg-[#10147E] text-white lg:bg-[#10147E] lg:text-white py-3 lg:py-2.5 px-2.5 lg:px-[15px] font-['Open_Sans',Arial,sans-serif] text-sm lg:text-base font-semibold cursor-pointer transition-all duration-200 flex items-center justify-start lg:justify-center gap-[5px] whitespace-nowrap border-t border-[#eee] lg:border-none text-left lg:text-center pl-2.5 lg:pl-[15px] relative z-[3]">
+                        Aims and scope
+                    </button>
+                    <a href="https://www.tandfonline.com/journals/tjue20/about-this-journal#journal-metrics" class="tab-btn flex-grow bg-[#EEEEEE] text-[#10147E] py-3 lg:py-2.5 px-2.5 lg:px-[15px] font-['Open_Sans',Arial,sans-serif] text-sm lg:text-base font-semibold cursor-pointer transition-all duration-200 flex items-center justify-start lg:justify-center gap-[5px] whitespace-nowrap border-t border-[#eee] lg:border-none no-underline hover:bg-[#046CB5] hover:text-white">
+                        Journal metrics <span class="fa fa-angle-right text-[10px] ml-[5px]"></span>
+                    </a>
+                    <a href="https://www.tandfonline.com/journals/tjue20/about-this-journal#editorial-board" class="tab-btn flex-grow bg-[#EEEEEE] text-[#10147E] py-3 lg:py-2.5 px-2.5 lg:px-[15px] font-['Open_Sans',Arial,sans-serif] text-sm lg:text-base font-semibold cursor-pointer transition-all duration-200 flex items-center justify-start lg:justify-center gap-[5px] whitespace-nowrap border-t border-[#eee] lg:border-none no-underline hover:bg-[#046CB5] hover:text-white">
+                        Editorial board <span class="fa fa-angle-right text-[10px] ml-[5px]"></span>
+                    </a>
+                    <a href="https://www.tandfonline.com/action/authorSubmission?show=instructions&journalCode=tjue20" class="tab-btn flex-grow bg-[#EEEEEE] text-[#10147E] py-3 lg:py-2.5 px-2.5 lg:px-[15px] font-['Open_Sans',Arial,sans-serif] text-sm lg:text-base font-semibold cursor-pointer transition-all duration-200 flex items-center justify-start lg:justify-center gap-[5px] whitespace-nowrap no-underline hover:bg-[#046CB5] hover:text-white">
+                        Instructions for authors <span class="fa fa-angle-right text-[10px] ml-[5px]"></span>
+                    </a>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content border border-[#ccc] rounded-bl rounded-br lg:rounded-tr p-[15px] lg:p-5 bg-white leading-[1.6] mt-0 relative z-[1]">
+                    <p class="print-note text-[13px] lg:text-[15px] font-normal font-['Open_Sans',Arial,sans-serif] mb-5">
+                        Please note, from 2022 the Print ISSN is not in active use as this journal is no longer published in print.
+                    </p>
+                    <p class="mb-[15px] text-[#333] text-base font-normal leading-[1.6]">
+                        <strong><em>International Journal of Urban Sustainable Development</em></strong> aims to provide a forum for cutting-edge research and rigorous debate for an in-depth and holistic understanding of the complex inter-related environmental, social, economic, political, spatial, institutional and physical challenges facing urban areas. Its premise is that multi-disciplinary approaches provide the space for the range of disciplines and perspectives related to the full breadth of issues that affect urban sustainable development.
+                    </p>
+                    <p class="truncated-text text-[#bbb] text-sm mb-5">
+                        The journal also aims to enhance knowledge and understanding of the two-way interactions between urbanization...
+                    </p>
+                    
+                    <div class="read-more-link text-center mt-[25px]">
+                        <a href="https://www.tandfonline.com/journals/tjue20/about-this-journal#aims-and-scope" class="text-[#00008b] font-bold no-underline font-['Open_Sans',Arial,sans-serif] text-base font-semibold hover:underline">Read full aims and scope</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Explore Articles Section -->
+            <section class="explore-articles mt-10">
+                <h2 class="text-xl lg:text-[22px] font-bold font-['PT_Serif',Georgia,'Times_New_Roman',Times,serif] mt-5">Explore articles</h2>
+
+                <div class="article-tabs mt-[30px] border border-[#ccc]">
+                    <!-- Article Tabs -->
+                    <div class="tab-list flex flex-wrap gap-[5px] lg:gap-0 p-2.5 lg:p-0 border-b border-[#ccc]">
+                        <button class="article-tab active flex-1 basis-[45%] lg:basis-auto bg-[#10147E] text-white lg:bg-[#10147E] lg:text-white border border-[#ccc] lg:border-b-0 py-2.5 lg:py-3 px-[5px] lg:px-[15px] cursor-pointer relative transition-all duration-200 text-center rounded-tl rounded-tr lg:rounded-none text-[13px] lg:text-base font-semibold -mr-px lg:mr-0 z-[3]">
+                            Latest
+                        </button>
+                        <button class="article-tab flex-1 basis-[45%] lg:basis-auto bg-[#EEEEEE] text-[#10147E] border border-[#ccc] lg:border-b-0 py-2.5 lg:py-3 px-[5px] lg:px-[15px] cursor-pointer relative transition-all duration-200 text-center rounded-tl rounded-tr lg:rounded-none text-[13px] lg:text-base font-semibold -mr-px lg:mr-0 z-[1] hover:bg-[#e8e8e8]">
+                            Most read
+                        </button>
+                        <button class="article-tab flex-1 basis-[45%] lg:basis-auto bg-[#EEEEEE] text-[#10147E] border border-[#ccc] lg:border-b-0 py-2.5 lg:py-3 px-[5px] lg:px-[15px] cursor-pointer relative transition-all duration-200 text-center rounded-tl rounded-tr lg:rounded-none text-[13px] lg:text-base font-semibold -mr-px lg:mr-0 z-[1] hover:bg-[#e8e8e8]">
+                            Most cited
+                        </button>
+                        <button class="article-tab flex-1 basis-[45%] lg:basis-auto bg-[#EEEEEE] text-[#10147E] border border-[#ccc] lg:border-b-0 py-2.5 lg:py-3 px-[5px] lg:px-[15px] cursor-pointer relative transition-all duration-200 text-center rounded-tl rounded-tr lg:rounded-none text-[13px] lg:text-base font-semibold z-[1] hover:bg-[#e8e8e8]">
+                            Trending
+                        </button>
+                    </div>
+                    
+                    <!-- Tab Content Header -->
+                    <div class="tab-content-header bg-[#E0E0E0] py-2.5 lg:py-4 px-2.5 lg:px-4 text-[13px] lg:text-sm mb-2.5 lg:mb-5 border border-[#ccc] border-t-0 rounded-b text-center font-normal">
+                        Explore the most recently published articles
+                    </div>
+
+                    <!-- Article List -->
+                    <div class="article-list px-[15px] pb-[15px]">
+                        <!-- Article Item 1 -->
+                        <div class="article-item py-[15px] lg:py-5 border-b border-dashed border-[#ccc] relative pr-[30px] lg:pr-10">
+                            <a href="documentation-page.html" class="article-title block text-[#00008b] text-sm lg:text-base font-medium mb-[5px]">
+                                The Health Benefits of Daily Movement: A Comprehensive Review
+                                <i class="fas fa-chevron-right text-[10px] ml-[5px]"></i>
+                            </a>
+                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Aisha Khan & David Lee</p>
+                            <p class="article-meta text-[#999] text-xs">Review Article | Published online: 05 Nov. 2025</p>
+                            <span class="open-access-corner absolute bottom-0 right-0 w-0 h-0 border-t-[25px] lg:border-t-[35px] border-t-transparent border-r-[25px] lg:border-r-[35px] border-r-[#f7941d] z-[5]">
+                                <i class="fas fa-lock-open absolute bottom-[3px] lg:bottom-[5px] -right-[24px] lg:-right-[30px] text-[#333333] text-[10px] lg:text-[13px] z-10"></i>
+                            </span>
+                        </div>
+
+                        <!-- Article Item 2 -->
+                        <div class="article-item py-[15px] lg:py-5 border-b border-dashed border-[#ccc] relative pr-[30px] lg:pr-10">
+                            <a href="#" class="article-title block text-[#00008b] text-sm lg:text-base font-medium mb-[5px]">
+                                Walking and cycling as recreational activities and their associated factors 
+                                <i class="fas fa-chevron-right text-[10px] ml-[5px]"></i>
+                            </a>
+                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Mohammad Paydar et al.</p>
+                            <p class="article-meta text-[#999] text-xs">Article | Published online: 14 Oct. 2025</p>
+                            <span class="open-access-corner absolute bottom-0 right-0 w-0 h-0 border-t-[25px] lg:border-t-[35px] border-t-transparent border-r-[25px] lg:border-r-[35px] border-r-[#f7941d] z-[5]">
+                                <i class="fas fa-lock absolute bottom-[3px] lg:bottom-[5px] -right-[24px] lg:-right-[30px] text-[#333333] text-[10px] lg:text-[13px] z-10"></i>
+                            </span>
+                        </div>
+
+                        <!-- Article Item 3 -->
+                        <div class="article-item py-[15px] lg:py-5 border-b border-dashed border-[#ccc] relative pr-[30px] lg:pr-10">
+                            <a href="#" class="article-title block text-[#00008b] text-sm lg:text-base font-medium mb-[5px]">
+                                Walking and cycling as recreational activities and their associated factors 
+                                <i class="fas fa-chevron-right text-[10px] ml-[5px]"></i>
+                            </a>
+                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Mohammad Paydar et al.</p>
+                            <p class="article-meta text-[#999] text-xs">Article | Published online: 14 Oct. 2025</p>
+                            <span class="open-access-corner absolute bottom-0 right-0 w-0 h-0 border-t-[25px] lg:border-t-[35px] border-t-transparent border-r-[25px] lg:border-r-[35px] border-r-[#f7941d] z-[5]">
+                                <i class="fas fa-lock absolute bottom-[3px] lg:bottom-[5px] -right-[24px] lg:-right-[30px] text-[#333333] text-[10px] lg:text-[13px] z-10"></i>
+                            </span>
+                        </div>
+
+                        <!-- Article Item 4 -->
+                        <div class="article-item py-[15px] lg:py-5 border-b border-dashed border-[#ccc] relative pr-[30px] lg:pr-10">
+                            <a href="#" class="article-title block text-[#00008b] text-sm lg:text-base font-medium mb-[5px]">
+                                Walking and cycling as recreational activities and their associated factors 
+                                <i class="fas fa-chevron-right text-[10px] ml-[5px]"></i>
+                            </a>
+                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Mohammad Paydar et al.</p>
+                            <p class="article-meta text-[#999] text-xs">Article | Published online: 14 Oct. 2025</p>
+                            <span class="open-access-corner absolute bottom-0 right-0 w-0 h-0 border-t-[25px] lg:border-t-[35px] border-t-transparent border-r-[25px] lg:border-r-[35px] border-r-[#f7941d] z-[5]">
+                                <i class="fas fa-lock absolute bottom-[3px] lg:bottom-[5px] -right-[24px] lg:-right-[30px] text-[#333333] text-[10px] lg:text-[13px] z-10"></i>
+                            </span>
+                        </div>
+
+                        <!-- Article Item 5 -->
+                        <div class="article-item py-[15px] lg:py-5 border-b border-dashed border-[#ccc] relative pr-[30px] lg:pr-10">
+                            <a href="#" class="article-title block text-[#00008b] text-sm lg:text-base font-medium mb-[5px]">
+                                Walking and cycling as recreational activities and their associated factors 
+                                <i class="fas fa-chevron-right text-[10px] ml-[5px]"></i>
+                            </a>
+                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Mohammad Paydar et al.</p>
+                            <p class="article-meta text-[#999] text-xs">Article | Published online: 14 Oct. 2025</p>
+                            <span class="open-access-corner absolute bottom-0 right-0 w-0 h-0 border-t-[25px] lg:border-t-[35px] border-t-transparent border-r-[25px] lg:border-r-[35px] border-r-[#f7941d] z-[5]">
+                                <i class="fas fa-lock absolute bottom-[3px] lg:bottom-[5px] -right-[24px] lg:-right-[30px] text-[#333333] text-[10px] lg:text-[13px] z-10"></i>
+                            </span>
+                        </div>
+
+                        <!-- Article Item 6 -->
+                        <div class="article-item py-[15px] lg:py-5 relative pr-[30px] lg:pr-10">
+                            <a href="#" class="article-title block text-[#00008b] text-sm lg:text-base font-medium mb-[5px]">
+                                Co-agency in urban densification: understanding hybrid agents and their consequences for sustainability 
+                                <i class="fas fa-chevron-right text-[10px] ml-[5px]"></i>
+                            </a>
+                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Sebastian Bornschlegl et al.</p>
+                            <p class="article-meta text-[#999] text-xs">Article | Published online: 13 Oct 2025</p>
+                            <span class="open-access-corner absolute bottom-0 right-0 w-0 h-0 border-t-[25px] lg:border-t-[35px] border-t-transparent border-r-[25px] lg:border-r-[35px] border-r-[#f7941d] z-[5]">
+                                <i class="fas fa-lock absolute bottom-[3px] lg:bottom-[5px] -right-[24px] lg:-right-[30px] text-[#333333] text-[10px] lg:text-[13px] z-10"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Access Modal -->
+                <div id="access-modal" class="modal-overlay hidden fixed z-[10000] left-0 top-0 w-full h-full overflow-auto bg-black/70">
+                    <div class="modal-content bg-white my-[10%] mx-auto p-[30px] rounded-lg w-[80%] max-w-[400px] text-center relative shadow-lg">
+                        <span class="modal-close-btn text-[#aaa] float-right text-[28px] font-bold absolute top-2.5 right-5 cursor-pointer hover:text-[#333]">&times;</span>
+                        
+                        <i class="fas fa-lock modal-icon text-5xl text-[#cc0000] mb-[15px]"></i>
+                        <h3 class="modal-title text-[#333] text-2xl mt-0">Access Restricted</h3>
+                        <p class="modal-message text-[#555] leading-[1.5] mb-[25px]">
+                            We're sorry, this article is currently **not available for open access**.
+                            <br>
+                            Please **login** or check your institutional subscription to view the full content.
+                        </p>
+                        <button class="modal-button bg-[#10147E] text-white py-3 px-[25px] border-none rounded cursor-pointer text-base transition-colors duration-300 hover:bg-[#004d99]">Log In / Subscribe</button>
+                        <p class="modal-small-text text-[0.8em] text-[#888] mt-[15px]">See our Editorial Policies for more details.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="sidebar-column w-full lg:basis-[30%] lg:flex-shrink-0 lg:mt-[45px] pl-0">
+            
+            <!-- Updates Header -->
+            <h4 class="updates-header text-xl lg:text-[22px] font-bold text-[#333] mb-[15px] font-['PT_Serif',Georgia,'Times_New_Roman',Times,serif] bg-transparent mt-0">Updates</h4>
+            
+            <!-- Calls for Papers Box -->
+            <section class="updates-box mb-5 border border-[#ccc] shadow-sm rounded overflow-hidden bg-white w-full">
+                <div class="updates-content">
+                    <h4 class="calls-header bg-[#10147E] text-white text-base font-semibold mb-0 py-2.5 px-[15px] rounded-t">Calls for papers</h4>
+                    
+                    <ul class="calls-list list-none m-0 p-0 px-[15px] border-b border-[#eee]">
+                        <li class="mb-2"><a href="#" class="block py-2.5 px-0 text-[#10147E] text-sm hover:bg-[#f0f4ff] hover:no-underline">AI for Smarter and Sustainable Cities</a></li>
+                        <li class="mb-2"><a href="#" class="block py-2.5 px-0 text-[#10147E] text-sm border-t border-[#eee] hover:bg-[#f0f4ff] hover:no-underline">Carbon Emission Reduction in the Built Environment</a></li>
+                    </ul>
+                    <div class="show-more py-2 px-[15px] border-t border-[#eee] mt-2.5">
+                        <a href="#" class="block py-2 text-left text-[#10147E] text-sm bg-[#f8f8f8] hover:no-underline">Show more calls for papers <i class="fas fa-caret-down text-xs ml-[5px]"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Follow Box -->
+            <section class="follow-box border border-[#ccc] rounded-t-lg w-full max-w-[500px] overflow-hidden mt-5 mb-[25px] bg-white">
+                <h3 class="follow-header bg-[#10147E] text-white py-2.5 px-[15px] text-base font-semibold rounded-t-lg m-0">Follow this journal</h3>
+                <div class="follow-content p-0">
+                    <ul class="follow-list list-none m-0 p-0">
+                        <li class="flex items-center gap-2 py-2.5 px-[15px] text-[#10147E] text-base font-normal">
+                            <i class="fas fa-envelope text-[#10147E] text-[22px]"></i>
+                            <a href="#" class="text-[#10147E] no-underline text-base font-normal hover:underline">New content alerts</a>
+                        </li>
+                        <li class="flex items-center gap-2 py-2.5 px-[15px] text-[#10147E] text-base font-normal border-t border-[#ccc]">
+                            <i class="fas fa-rss text-[#10147E] text-[22px]"></i>
+                            <a href="#" class="text-[#10147E] no-underline text-base font-normal hover:underline">RSS feed</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Advertise Box -->
+            <section class="advertise-box border border-[#ccc] rounded-t-lg w-[95%] max-w-[500px] overflow-hidden mt-5 mb-[25px] bg-white">
+                <h3 class="advertise-header bg-[#10147E] text-white py-2.5 px-[15px] text-base font-semibold rounded-t-lg m-0">Advertise in this journal</h3>
+                <div class="advertise-content p-[15px] text-[#10147E] text-base leading-[1.5] font-normal">
+                    <p>
+                        Reach an engaged target audience and position your brand alongside authoritative peer-reviewed research by advertising in International Journal of Urban Sustainable Development.
+                    </p>
+                    <div class="advertising-link-container border-t border-[#ccc] mt-[15px] bg-[#EEEEEE] text-center py-3 -mx-[15px] -mb-[15px] px-[15px]">
+                        <a href="https://taylorandfrancis.com/partnership/commercial/advertising-solutions/" class="text-[#10147E] text-base font-semibold no-underline hover:underline">Explore advertising options <i class="fas fa-external-link-alt text-sm ml-1.5"></i></a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Ad Banner -->
+            <section class="ad-banner p-2.5 lg:p-5 text-center bg-transparent">
+                <div class="ad-content">
+                    <a href="https://www.tandfonline.com/action/activateToken?tokenName=ATR_SS_BuiltEnvironmentBU_KT&domain=SubjectSample&onSuccess=/topic/allsubjects/bu?target=topic&ConceptID=4254">
+                        <img src="img/Subject-Sample-2021-Geography.webp" alt="Urban Studies Journals Banner" class="w-full max-w-[900px] h-auto">
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Latest Issues Section -->
+<section class="latest-issues w-[95%] lg:w-[65%] mt-10 mx-2.5 lg:ml-[5%] pb-[30px] font-['Arial',sans-serif]">
+    <h2 class="text-xl lg:text-[22px] font-bold text-[#333] mb-[15px] font-['PT_Serif',Georgia,'Times_New_Roman',Times,serif]">Latest issues</h2>
+
+    <!-- Issue Tabs -->
+    <div class="issue-tab-navigation flex flex-wrap gap-2 mb-0">
+        <button class="issue-tab active flex-1 basis-[48%] lg:basis-auto text-center bg-[#00008b] text-white border-none py-2.5 lg:py-3 text-sm lg:text-base font-semibold cursor-pointer transition-all duration-300 rounded-none lg:rounded-tl-lg relative">
+            Recent issues
+        </button>
+        <a href="https://www.tandfonline.com/loi/tjue20" class="issue-tab flex-1 basis-[48%] lg:basis-auto text-center bg-[#EEEEEE] text-[#00008b] border-none py-2.5 lg:py-3 text-sm lg:text-base font-semibold cursor-pointer transition-all duration-300 rounded-none no-underline hover:bg-[#046CB5] hover:text-white">
+            List of issues <i class="fa fa-angle-right text-[10px] ml-[5px]"></i>
+        </a>
+        <a href="https://www.tandfonline.com/journals/tjue20/special-issues" class="issue-tab flex-1 basis-[48%] lg:basis-auto text-center bg-[#EEEEEE] text-[#00008b] border-none py-2.5 lg:py-3 text-sm lg:text-base font-semibold cursor-pointer transition-all duration-300 rounded-none lg:rounded-tr-lg no-underline hover:bg-[#046CB5] hover:text-white">
+            Special issues <i class="fa fa-angle-right text-[10px] ml-[5px]"></i>
+        </a>
+    </div>
+
+    <!-- Issues Content -->
+    <div class="issue-content-wrapper flex flex-col lg:flex-row gap-5 lg:gap-10 bg-white p-[15px] lg:p-5 border border-[#ccc] border-t-0">
+        <!-- Current Issue -->
+        <div class="issue-column flex-1">
+            <h4 class="text-lg lg:text-xl text-[#333] mb-2.5 font-['PT_Serif',Georgia,'Times_New_Roman',Times,serif]">Current issue</h4>
+            <a href="https://www.tandfonline.com/toc/tjue20/17/1" class="issue-details-link block no-underline">
+                <div class="issue-details flex flex-row items-center lg:items-start gap-[15px] lg:gap-5">
+                    <img src="img/tjue20.v017.i01.cover.jpg" alt="Current issue cover" class="w-20 lg:w-[146px] h-auto lg:h-[220px] object-cover border border-[#ccc]">
+                    <div class="issue-text flex-1">
+                        <p class="issue-volume text-sm lg:text-base font-bold text-[#00008b] m-0 flex items-start font-normal">
+                            Volume 17, Issue 1, 2025 <i class="fa fa-angle-right text-xs mt-[5px] ml-1.5 text-[#00008b]"></i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Previous Issue -->
+        <div class="issue-column flex-1">
+            <h4 class="text-lg lg:text-xl text-[#333] mb-2.5 font-['PT_Serif',Georgia,'Times_New_Roman',Times,serif]">Previous issue</h4>
+            <a href="https://www.tandfonline.com/toc/tjue20/16/1" class="issue-details-link block no-underline">
+                <div class="issue-details flex flex-row items-center lg:items-start gap-[15px] lg:gap-5">
+                    <img src="img/tjue20.v017.i01.cover.jpg" alt="Previous issue cover" class="w-20 lg:w-[146px] h-auto lg:h-[220px] object-cover border border-[#ccc]">
+                    <div class="issue-text flex-1">
+                        <p class="issue-volume text-sm lg:text-base font-bold text-[#00008b] m-0 flex items-start font-normal">
+                            Volume 16, Issue 1, 2024 <i class="fa fa-angle-right text-xs mt-[5px] ml-1.5 text-[#00008b]"></i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Subject Browser Section -->
+<section class="bg-dark-blue text-white py-8 pb-12 font-sans">
+    <div class="max-w-[1200px] mx-auto px-4">
+        <!-- Header -->
+        <div class="flex justify-between items-center flex-wrap mb-8 pt-4">
+            <h2 class="text-xl font-serif font-normal m-0">Browse journals by subject</h2>
+            <a href="#" class="text-sm text-white no-underline flex items-center hover:text-light-blue transition-colors" onclick="event.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'});">
+                Back to top <i class="fas fa-angle-up ml-2"></i>
+            </a> 
+        </div>
+        
+        <!-- Subject Columns -->
+       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Column 1 -->
+            <ul class="list-none p-0 m-0">
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/area-studies" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Area Studies</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/arts" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Arts</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/behavioral-sciences" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Behavioral Sciences</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/bioscience" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Bioscience</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/built-environment" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Built Environment</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/communication-studies" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Communication Studies</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/computer-science" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Computer Science</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/earth-sciences" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Earth Sciences</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/economics-finance-business-industry" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Economics, Finance, Business &amp; Industry</a>
+                </li>
+            </ul>
+
+            <!-- Column 2 -->
+            <ul class="list-none p-0 m-0">
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/education" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Education</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/engineering-and-technology" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Engineering &amp; Technology</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/environment-and-agriculture" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Environment &amp; Agriculture</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/environment-and-sustainability" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Environment and Sustainability</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/food-science-and-technology" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Food Science &amp; Technology</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/geography" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Geography</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/global-development" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Global Development</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/health-and-social-care" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Health and Social Care</a>
+                </li>
+            </ul>
+            
+            <!-- Column 3 -->
+            <ul class="list-none p-0 m-0">
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/humanities" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Humanities</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/information-science" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Information Science</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/language-and-literature" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Language &amp; Literature</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/law" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Law</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/mathematics-and-statistics" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Mathematics, Statistics &amp; Data Science</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/medicine-dentistry-nursing-and-allied-health" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Medicine, Dentistry, Nursing &amp; Allied Health</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/museum-and-heritage-studies" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Museum and Heritage Studies</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/physical-sciences" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Physical Sciences</a>
+                </li>
+            </ul>
+            
+            <!-- Column 4 -->
+            <ul class="list-none p-0 m-0">
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/politics-and-international-relations" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Politics &amp; International Relations</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/social-sciences" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Social Sciences</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/sports-and-leisure" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Sports and Leisure</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/tourism-hospitality-and-events" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Tourism, Hospitality and Events</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/urban-studies" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Urban Studies</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Main Footer -->
+<footer class="bg-brand-blue text-white font-sans pt-10 pb-5 px-4 lg:px-10">
+    <!-- Footer Links Grid -->
+    <div class="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        <!-- Column 1 -->
+        <div>
+            <h4 class="text-base font-normal mb-3">Information for</h4>
+            <ul class="list-none p-0 m-0">
+                <li class="mb-2">
+                    <a href="https://authorservices.taylorandfrancis.com/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Authors</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://taylorandfrancis.com/who-we-serve/industry-government/business/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">R&amp;D professionals</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://editorresources.taylorandfrancis.com/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Editors</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/page/librarians" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Librarians</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/societies" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Societies</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Column 2 -->
+        <div>
+            <h4 class="text-base font-normal mb-3">Open access</h4>
+            <ul class="list-none p-0 m-0">
+                <li class="mb-2">
+                    <a href="/openaccess" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Overview</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/openaccess/openjournals" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Open journals</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/openaccess/openselect" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Open Select</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/openaccess/dove" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Dove Medical Press</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/openaccess/f1000" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">F1000Research</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div>
+            <h4 class="text-base font-normal mb-3">Opportunities</h4>
+            <ul class="list-none p-0 m-0">
+                <li class="mb-2">
+                    <a href="https://taylorandfrancis.com/who-we-serve/industry-government/marketing/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Reprints and e-prints</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://taylorandfrancis.com/partnership/commercial/advertising-solutions/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Advertising solutions</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://taylorandfrancis.com/partnership/commercial/accelerated-publication/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Accelerated publication</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://taylorandfrancis.com/who-we-serve/industry-government/business/purchasing-options/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Corporate access solutions</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div>
+            <h4 class="text-base font-normal mb-3">Help and information</h4>
+            <ul class="list-none p-0 m-0">
+                <li class="mb-2">
+                    <a href="https://help.tandfonline.com" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Help and contact</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://newsroom.taylorandfrancisgroup.com/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Newsroom</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/journals?&amp;pageSize=3000" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">All journals</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://www.routledge.com/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Books</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer Bottom Section -->
+    <div class="max-w-[1200px] mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-end pt-10 border-t border-border-dark">
+        <!-- Left Side -->
+        <div class="w-full lg:w-auto mb-8 lg:mb-0 text-center lg:text-left">
+            <h4 class="text-base font-normal mb-2">Keep up to date</h4>
+            <p class="text-xs text-gray-300 mb-4 max-w-[270px] mx-auto lg:mx-0">
+                Register to receive personalised research and resources by email
+            </p>
+
+            <!-- Sign Up Button -->
+            <a href="https://taylorandfrancis.formstack.com/forms/tfoguest_signup" class="inline-flex items-center text-dark-blue text-sm font-semibold no-underline mb-6 hover:opacity-80 transition-opacity">
+                <span class="bg-light-blue p-2 rounded mr-2">
+                    <i class="fas fa-envelope text-dark-blue text-lg"></i>
+                </span>
+                <span class="text-light-blue">Sign me up</span>
+            </a>
+
+            <!-- Social Icons -->
+            <div class="grid grid-cols-3 gap-2 justify-center lg:justify-start mb-10 max-w-[120px] mx-auto lg:mx-0">
+                <a href="http://facebook.com/TaylorandFrancisGroup" target="_blank" class="flex items-center justify-center bg-light-blue w-8 h-8 rounded text-dark-blue text-lg hover:bg-white transition-colors">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+          <a href="https://twitter.com/tandfonline" target="_blank" class="flex items-center justify-center bg-light-blue w-8 h-8 rounded text-dark-blue text-lg hover:bg-white transition-colors">
+    <i class="fa-brands fa-x-twitter"></i>
+</a>
+                <a href="http://linkedin.com/company/taylor-&-francis-group" target="_blank" class="flex items-center justify-center bg-light-blue w-8 h-8 rounded text-dark-blue text-lg hover:bg-white transition-colors">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.youtube.com/user/TaylorandFrancis" target="_blank" class="flex items-center justify-center bg-light-blue w-8 h-8 rounded text-dark-blue text-lg hover:bg-white transition-colors">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="http://www.weibo.com/tandfchina" target="_blank" class="flex items-center justify-center bg-light-blue w-8 h-8 rounded text-dark-blue text-lg hover:bg-white transition-colors">
+                    <i class="fab fa-weibo"></i>
+                </a>
+                <a href="https://bsky.app/profile/tandfresearch.bsky.social" target="_blank" class="flex items-center justify-center bg-light-blue w-8 h-8 rounded text-dark-blue text-lg hover:bg-white transition-colors">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Bluesky_Logo.svg" alt="Bluesky" class="w-5 h-5">
+                </a>
+            </div>
+
+            <!-- Copyright -->
+            <p class="text-gray-400 text-xs mb-2">
+                Copyright © 2025
+                <a href="https://www.informa.com/" class="text-light-blue no-underline hover:underline ml-2">Informa UK Limited</a>
+                <a href="https://informa.com/privacy-policy/" class="text-light-blue no-underline hover:underline ml-2">Privacy policy</a>
+                <a href="https://privacy.informa.com/trackers/en/" class="text-light-blue no-underline hover:underline ml-2">Cookies</a>
+                <a href="/terms-and-conditions" class="text-light-blue no-underline hover:underline ml-2">Terms &amp; conditions</a>
+                <a href="/accessibility" class="text-light-blue no-underline hover:underline ml-2">Accessibility</a>
+            </p>
+
+            <p class="text-gray-400 text-xs mt-6">
+                Registered in England & Wales No. 01072954<br>
+                5 Howick Place | London | SW1P 1WG
+            </p>
+        </div>
+
+        <!-- Right Side - Logo -->
+        <div class="w-full lg:w-auto flex justify-center lg:justify-end">
+            <a href="http://taylorandfrancis.com/" title="Taylor and Francis Group">
+                <img src="img/Group-logo-white-on-transparent.webp" alt="Taylor & Francis Group Logo" class="w-[200px] lg:w-[280px] h-auto">
+            </a>
+        </div>
+    </div>
+</footer>
+
+
+
+<script src="script.js"></script>
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+            
+            // ========== DESKTOP DROPDOWNS ==========
+            
+            // Journals Dropdown
+            const journalBtn = document.getElementById('journal-btn');
+            const journalMenu = document.getElementById('journal-menu');
+            const journalsDropdown = document.getElementById('journals-dropdown');
+            
+            if (journalBtn && journalMenu) {
+                journalBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    journalMenu.classList.toggle('hidden');
+                    journalsDropdown.classList.toggle('dropdown-active');
+                    document.body.classList.toggle('no-scroll');
+                });
+                
+                // Close Journal dropdown
+                const closeJournalBtns = journalMenu.querySelectorAll('.close-dropdown-btn');
+                closeJournalBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        journalMenu.classList.add('hidden');
+                        journalsDropdown.classList.remove('dropdown-active');
+                        document.body.classList.remove('no-scroll');
+                    });
+                });
+            }
+            
+            // Search Dropdown
+            const searchBtn = document.getElementById('search-btn');
+            const searchMenu = document.getElementById('search-menu');
+            const searchOverlay = document.getElementById('search-overlay');
+            const searchDropdown = document.getElementById('search-dropdown');
+            const closeSearchBtn = document.getElementById('close-search-btn');
+            
+            if (searchBtn && searchMenu) {
+                searchBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    searchMenu.classList.toggle('hidden');
+                    searchOverlay.classList.toggle('hidden');
+                    searchDropdown.classList.toggle('dropdown-active');
+                    
+                    if (!searchMenu.classList.contains('hidden')) {
+                        searchMenu.classList.remove('opacity-0', '-translate-y-2.5');
+                        searchMenu.classList.add('opacity-100', 'translate-y-0');
+                    }
+                    document.body.classList.toggle('no-scroll');
+                });
+                
+                if (closeSearchBtn) {
+                    closeSearchBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        searchMenu.classList.add('hidden', 'opacity-0', '-translate-y-2.5');
+                        searchMenu.classList.remove('opacity-100', 'translate-y-0');
+                        searchOverlay.classList.add('hidden');
+                        searchDropdown.classList.remove('dropdown-active');
+                        document.body.classList.remove('no-scroll');
+                    });
+                }
+                
+                if (searchOverlay) {
+                    searchOverlay.addEventListener('click', function() {
+                        searchMenu.classList.add('hidden', 'opacity-0', '-translate-y-2.5');
+                        searchOverlay.classList.add('hidden');
+                        searchDropdown.classList.remove('dropdown-active');
+                        document.body.classList.remove('no-scroll');
+                    });
+                }
+            }
+            
+            // Publish Dropdown
+            const publishBtn = document.getElementById('publish-btn');
+            const publishMenu = document.getElementById('publish-menu');
+            const publishDropdown = document.getElementById('publish-dropdown');
+            
+            if (publishBtn && publishMenu) {
+                publishBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    publishMenu.classList.toggle('hidden');
+                    publishDropdown.classList.toggle('dropdown-active');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!publishDropdown.contains(e.target)) {
+                        publishMenu.classList.add('hidden');
+                        publishDropdown.classList.remove('dropdown-active');
+                    }
+                });
+            }
+            
+            // ========== MOBILE MENU ==========
+            
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            
+            // Open mobile menu
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.remove('closed');
+                    mobileMenu.classList.add('open');
+                    mobileOverlay.classList.remove('hidden');
+                    document.body.classList.add('no-scroll');
+                });
+            }
+            
+            // Close mobile menu
+            function closeMobileMenuFn() {
+                mobileMenu.classList.add('closed');
+                mobileMenu.classList.remove('open');
+                mobileOverlay.classList.add('hidden');
+                document.body.classList.remove('no-scroll');
+            }
+            
+            if (closeMobileMenu) {
+                closeMobileMenu.addEventListener('click', closeMobileMenuFn);
+            }
+            
+            if (mobileOverlay) {
+                mobileOverlay.addEventListener('click', closeMobileMenuFn);
+            }
+            
+            // Mobile Accordions
+            const mobileAccordionBtns = document.querySelectorAll('.mobile-accordion-btn');
+            
+            mobileAccordionBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const targetEl = document.getElementById(targetId);
+                    const icon = this.querySelector('i');
+                    
+                    if (targetEl) {
+                        targetEl.classList.toggle('hidden');
+                    }
+                    if (icon) {
+                        icon.classList.toggle('rotate-180');
+                    }
+                });
+            });
+            
+            // Mobile Search Toggle
+            const mobileSearchBtn = document.getElementById('mobile-search-btn');
+            const mobileSearchBox = document.getElementById('mobile-search-box');
+            
+            if (mobileSearchBtn && mobileSearchBox) {
+                mobileSearchBtn.addEventListener('click', function() {
+                    mobileSearchBox.classList.toggle('hidden');
+                });
+            }
+        });
+</script>
+
+</body>
+</html>

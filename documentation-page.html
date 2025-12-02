@@ -1,0 +1,2255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Article: Can pilot policies for innovative cities reduce carbon emissions?</title>
+    
+    <!-- Tailwind CSS CDN - Only once -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Add this in <head> for fa-x-twitter to work -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Single Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-blue': '#0A0C4C',
+                        'brand-blue': '#10147E',
+                        'light-blue': '#B3E5FF',
+                        'link-blue': '#8FDBFF',
+                        'border-dark': '#23255E',
+                    },
+                    fontFamily: {
+                        'serif': ['PT Serif', 'Georgia', 'Times New Roman', 'serif'],
+                        'sans': ['Open Sans', 'Arial', 'sans-serif'],
+                        'open-sans': ['Open Sans', 'sans-serif'],
+                        'pt-serif': ['PT Serif', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Hide default scrollbar on body */
+        html, body {
+            overflow-x: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: #ccc #f1f1f1;
+        }
+  /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .dropdown-animate {
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .chevron-rotate {
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown-active .chevron-rotate {
+            transform: rotate(180deg);
+        }
+        
+        /* Vertical divider for dropdown columns */
+        .dropdown-columns::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 30%;
+            width: 2px;
+            background-color: #ddd;
+        }
+        
+        @media (max-width: 1024px) {
+            .dropdown-columns::before {
+                display: none;
+            }
+        }
+        
+        body.no-scroll {
+            overflow: hidden;
+        }
+        
+        .search-dropdown-menu {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        /* Mobile menu transition */
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.closed {
+            transform: translateX(-100%);
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        /* Blue Bar and Background for Active Link */
+        .left-sidebar .active-link {
+            background-color: #f3f4f6;
+            color: #1D4ED8;
+            font-weight: 600;
+            border-left: 4px solid #2563EB;
+            padding-left: 1rem; 
+        }
+        .left-sidebar a {
+            border-left: 4px solid transparent;
+        }
+
+        /* Custom Scrollbar Styling (for Webkit browsers) */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #d1d5db; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background-color: #f3f4f6; 
+        } 
+        
+        /* Main Content Actions Tabs Active State */
+        .article-actions button.active {
+            border-bottom: 2px solid #2563EB; 
+            color: #1D4ED8; 
+            font-weight: 600;
+        }
+      
+        /* Academic Serif Font for Title */
+        .font-serif-custom {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar - Minimal */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+        
+        /* Custom scroll for sidebar */
+        .custom-scroll::-webkit-scrollbar {
+            width: 5px; 
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #E5E7EB; 
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #10147E; 
+            border-radius: 0px; 
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Mobile Sidebar */
+        .mobile-sidebar {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: white;
+            z-index: 999;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+        }
+        .mobile-sidebar.active {
+            left: 0;
+        }
+
+        /* Hide scrollbar on mobile for cleaner look */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Image responsive */
+        .prose img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Mobile sticky header - hidden on desktop */
+        .mobile-sticky-header {
+            display: none;
+        }
+        
+        @media (max-width: 1023px) {
+            .mobile-sticky-header {
+                display: flex;
+            }
+        }
+
+        /* Hide extra scrollbars */
+        .page-base-bg {
+            overflow-x: hidden;
+        }
+        /* Fix footer jump issue */
+#subject-browser,
+.subject-browser-section {
+    scroll-margin-top: 0;
+}
+
+/* Prevent any anchor jump */
+section[id] {
+    scroll-margin-top: 80px;
+}
+
+/* Remove any conflicting scroll behavior on footer sections */
+footer,
+.footer-section,
+section.bg-dark-blue {
+    scroll-margin-top: 0 !important;
+    scroll-snap-align: none !important;
+}
+    </style>
+</head>
+<body class="text-gray-800">
+      <!-- HEADER -->
+    <header class="bg-white border-b-0 py-5">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <div class="flex flex-col items-start ml-2 lg:ml-5">
+                <img 
+                    src="https://www.tandfonline.com/pb-assets/Global/TFO-logo-new-1716484961953.svg" 
+                    alt="Taylor & Francis Online Logo" 
+                    class="h-8 lg:h-10 w-auto mb-px"
+                >
+            </div>
+            
+            <!-- Mobile Hamburger Button -->
+            <button 
+                id="mobile-menu-btn" 
+                class="lg:hidden text-brand-blue text-2xl p-2 focus:outline-none"
+                aria-label="Open Menu"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:block flex-grow-0 ml-7 text-left relative z-[1000]">
+                <ul class="flex gap-10 list-none m-0 p-0">
+                    
+                    <!-- Journals Dropdown -->
+                    <li class="dropdown relative" id="journals-dropdown">
+                        <a 
+                            href="#" 
+                            id="journal-btn"
+                            class="text-brand-blue text-base py-2.5 block font-normal no-underline"
+                        >
+                            Journals <i class="fas fa-chevron-down ml-1 text-[15px] align-middle chevron-rotate"></i>
+                        </a>
+                        
+                        <!-- Fullscreen Dropdown Menu -->
+                        <div 
+                            id="journal-menu"
+                            class="hidden fixed top-[81px] left-0 w-full h-[calc(100vh-60px)] bg-white border-t border-gray-200 overflow-y-auto p-8 lg:p-[60px] z-[999] dropdown-animate"
+                        >
+                            <!-- Close Button -->
+                            <button 
+                                class="close-dropdown-btn absolute top-4 right-6 bg-transparent border-none text-[32px] font-bold text-brand-blue cursor-pointer hover:scale-110 hover:text-black transition-transform"
+                            >
+                                &times;
+                            </button>
+                            
+                            <!-- Columns -->
+                            <div class="dropdown-columns flex flex-col lg:flex-row justify-between gap-6 lg:gap-10 flex-wrap mt-1 relative">
+                                
+                                <!-- Column 1 -->
+                                <div class="flex-1 min-w-[250px]">
+                                    <h4 class="text-base text-gray-800 mb-2.5 font-bold">Browse all journals</h4>
+                                    <a href="https://www.tandfonline.com/action/showPublications?pubType=journal&ejf=on" class="block text-brand-blue text-sm no-underline my-1.5 font-normal hover:underline">Browse all journals A–Z</a>
+                                    <a href="https://www.tandfonline.com/openaccess/openjournals" class="block text-brand-blue text-sm no-underline my-1.5 font-normal hover:underline">Open access journals</a>
+                                    <a href="https://www.tandfonline.com/openaccess/openselect" class="ttt block text-brand-blue text-sm no-underline my-1.5 font-normal hover:underline mb-4 lg:mb-[15%]">Open Select (hybrid) journals</a>
+                                    <h4 class="text-base text-gray-800 mb-2.5 font-bold">Browse all books</h4>
+                                    <a href="https://www.taylorfrancis.com/?_gl=1*1ivaoqx*_gcl_au*Nzg3MDUyMDY0LjE3NjM4MDk4MjAuMTQwNDc1OTk3Mi4xNzYzOTkzNjExLjE3NjM5OTM2MTE.*_ga*MzAzMjUyMTU0LjE3NjM4MDk4NTc.*_ga_0HYE8YG0M6*czE3NjQ0OTE4ODYkbzgkZzEkdDE3NjQ0OTYzMDgkajMwJGwwJGgw" class="block text-brand-blue text-sm no-underline my-1.5 font-normal hover:underline">
+                                        Explore Taylor & Francis eBooks
+                                        <i class="fa fa-external-link text-xs ml-1.5 text-brand-blue" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                
+                                <!-- Column 2 -->
+                                <div class="flex-1 min-w-[250px]">
+                                    <h4 class="text-base text-gray-800 mb-2.5 font-bold">Browse by subject</h4>
+                                    <a href="https://www.tandfonline.com/subjects/area-studies" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Area Studies</a>
+                                    <a href="https://www.tandfonline.com/subjects/arts" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Arts</a>
+                                    <a href="https://www.tandfonline.com/subjects/behavioral-sciences" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Behavioral Sciences</a>
+                                    <a href="https://www.tandfonline.com/subjects/bioscience" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Bioscience</a>
+                                    <a href="https://www.tandfonline.com/subjects/built-environment" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Built Environment</a>
+                                    <a href="https://www.tandfonline.com/subjects/communication-studies" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Communication Studies</a>
+                                    <a href="https://www.tandfonline.com/subjects/computer-science" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Computer Science</a>
+                                    <a href="https://www.tandfonline.com/subjects/earth-sciences" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Earth Sciences</a>
+                                    <a href="https://www.tandfonline.com/subjects/economics-finance-business-industry" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Economics,Finance,Business & Industry</a>
+                                    <a href="https://www.tandfonline.com/subjects/education" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Education</a>
+                                    <a href="https://www.tandfonline.com/subjects/engineering-and-technology" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Engineering & Technology</a>
+                                    <a href="https://www.tandfonline.com/subjects/environment-and-agriculture" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Environment & Agriculture</a>
+                                    <a href="https://www.tandfonline.com/subjects/environment-and-sustainability" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Environment and Sustainability</a>
+                                    <a href="https://www.tandfonline.com/subjects/food-science-and-technology" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Food Science & Technology</a>
+                                    <a href="https://www.tandfonline.com/subjects/geography" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Geography</a>
+                                </div>
+                                
+                                <!-- Column 3 -->
+                                <div class="flex-1 min-w-[250px] mt-0 lg:mt-[26px]">
+                                    <a href="https://www.tandfonline.com/subjects/global-development" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Global Development</a>
+                                    <a href="https://www.tandfonline.com/subjects/health-and-social-care" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Health and Social Care</a>
+                                    <a href="https://www.tandfonline.com/subjects/humanities" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Humanities</a>
+                                    <a href="https://www.tandfonline.com/subjects/information-science" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Information Science</a>
+                                    <a href="https://www.tandfonline.com/subjects/language-and-literature" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Language & Literature</a>
+                                    <a href="https://www.tandfonline.com/subjects/law" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Law</a>
+                                    <a href="https://www.tandfonline.com/subjects/mathematics-and-statistics" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Mathematics & Statistics</a>
+                                    <a href="https://www.tandfonline.com/subjects/medicine-dentistry-nursing-and-allied-health" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Medicine, Dentistry, Nursing & Allied Health</a>
+                                    <a href="https://www.tandfonline.com/subjects/museum-and-heritage-studies" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Museum and Heritage Studies</a>
+                                    <a href="https://www.tandfonline.com/subjects/physical-sciences" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Physical Sciences</a>
+                                    <a href="https://www.tandfonline.com/subjects/politics-and-international-relations" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Politics & International Relations</a>
+                                    <a href="https://www.tandfonline.com/subjects/social-sciences" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Social Sciences</a>
+                                    <a href="https://www.tandfonline.com/subjects/sports-and-leisure" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Sports and Leisure</a>
+                                    <a href="https://www.tandfonline.com/subjects/tourism-hospitality-and-events" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Tourism, Hospitality and Events</a>
+                                    <a href="https://www.tandfonline.com/subjects/urban-studies" class="block text-brand-blue text-sm no-underline my-1.5 pb-1.5 border-b border-gray-200 font-normal hover:underline">Urban Studies</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Search Dropdown -->
+                    <li class="nav-item has-dropdown relative" id="search-dropdown">
+                        <a 
+                            href="#" 
+                            id="search-btn"
+                            class="nav-link text-brand-blue text-base py-2.5 block font-normal no-underline"
+                        >
+                            Search <i class="fas fa-chevron-down ml-1 text-[15px] align-middle chevron-rotate"></i>
+                        </a>
+                        
+                        <!-- Search Overlay -->
+                        <div id="search-overlay" class="search-overlay hidden fixed top-0 left-0 w-screen h-screen bg-black/60 z-[900]"></div>
+                        
+                        <!-- Search Dropdown Menu -->
+                        <div 
+                            id="search-menu"
+                            class="search-dropdown-menu hidden fixed top-[80px] left-1/2 -translate-x-1/2 w-screen bg-white border-t border-gray-300 shadow-lg rounded p-6 z-[1000] opacity-0 -translate-y-2.5"
+                        >
+                            <!-- Search Box -->
+                            <div class="search-box-container flex items-center rounded overflow-hidden">
+                                <input 
+                                    type="text" 
+                                    placeholder="Search Taylor & Francis for journals, articles, and special issues, by keywords, authors,DOI, etc."
+                                    class="search-input flex-[0.7] border border-gray-300 py-3.5 px-3.5 outline-none text-sm font-normal rounded ml-[15%] focus:border-brand-blue focus:shadow-[0_0_4px_rgba(16,20,126,0.4)] transition-colors"
+                                >
+                                <button type="submit" class="search-button bg-brand-blue text-white border-none py-[15px] px-[15px] cursor-pointer text-xl rounded-[8%] ml-1">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Close Button -->
+                            <div class="search-dropdown-foote absolute top-[27px] right-[5%] z-[1001] flex items-center justify-center w-[45px] h-[45px]">
+                                <a 
+                                    href="#" 
+                                    id="close-search-btn"
+                                    class="close-butto no-underline text-brand-blue text-[29px] font-bold leading-none opacity-85 cursor-pointer"
+                                >
+                                    x
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Publish Dropdown -->
+                    <li class="dropdown relative" id="publish-dropdown">
+                        <a 
+                            href="#" 
+                            id="publish-btn"
+                            class="text-brand-blue text-base py-2.5 block font-normal no-underline"
+                        >
+                            Publish <i class="fas fa-chevron-down ml-1 text-[15px] align-middle chevron-rotate"></i>
+                        </a>
+                        
+                        <!-- Publish Dropdown Menu -->
+                        <div 
+                            id="publish-menu"
+                            class="publish-dropdown hidden absolute top-[60px] left-0 ml-0 lg:ml-[220px] bg-white border-t border-gray-200 shadow-md w-[300px] py-4 px-5 z-[1000]"
+                        >
+                            <a href="#" class="block text-brand-blue no-underline py-1.5 text-sm font-normal hover:underline">Why publish with us?</a>
+                            <a href="#" class="block text-brand-blue no-underline py-1.5 text-sm font-normal hover:underline">Find a journal</a>
+                            <a href="#" class="block text-brand-blue no-underline py-1.5 text-sm font-normal hover:underline">Search calls for papers</a>
+                            <a href="#" class="block text-brand-blue no-underline py-1.5 text-sm font-normal hover:underline">Journal Suggester</a>
+                            <a href="#" class="block text-brand-blue no-underline py-1.5 text-sm font-normal hover:underline">Step-by-step guide</a>
+                            <a href="#" class="block text-brand-blue no-underline py-1.5 text-sm font-normal hover:underline">Open access publishing</a>
+                            
+                            <!-- Help Box -->
+                            <div class="help-box bg-[#fdeeee] p-3 mt-3 rounded">
+                                <h4 class="text-gray-800 text-sm mb-1.5 font-normal">We're here to help</h4>
+                                <a href="#" class="text-gray-800 text-sm no-underline font-normal">
+                                    Find guidance on <span class="highlight-text text-brand-blue font-normal">Author Services</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- User Actions (Desktop) -->
+            <div class="user-actions hidden lg:flex text-base font-normal items-center flex-grow justify-end gap-0 text-brand-blue">
+                <a href="#" class="text-brand-blue text-base font-normal px-1.5">
+                    <i class="far fa-user text-[22px] mr-2.5"></i> Login
+                </a>
+                <span class="text-brand-blue">|</span>
+                <a href="#" class="text-brand-blue text-base font-normal pl-1.5 mr-4">Register</a>
+                <a href="#" class="cart-icon text-brand-blue text-2xl">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div 
+        id="mobile-overlay" 
+        class="lg:hidden fixed inset-0 bg-black/50 z-[998] hidden"
+    ></div>
+
+    <!-- MOBILE SIDEBAR MENU -->
+    <div 
+        id="mobile-menu" 
+        class="mobile-menu closed lg:hidden fixed top-0 left-0 w-[85%] max-w-[320px] h-full bg-white z-[999] overflow-y-auto shadow-xl"
+    >
+        <!-- Mobile Menu Header -->
+        <div class="flex justify-between items-center p-4 border-b border-gray-200 bg-brand-blue">
+            <span class="text-white font-semibold text-lg">Menu</span>
+            <button id="close-mobile-menu" class="text-white text-3xl font-bold">&times;</button>
+        </div>
+        
+        <!-- Mobile Menu Content -->
+        <div class="p-4">
+            
+            <!-- User Actions Mobile -->
+            <div class="flex items-center gap-4 pb-4 border-b border-gray-200 mb-4">
+                <a href="#" class="text-brand-blue text-sm font-semibold flex items-center">
+                    <i class="far fa-user mr-2"></i> Login
+                </a>
+                <span class="text-gray-400">|</span>
+                <a href="#" class="text-brand-blue text-sm font-semibold">Register</a>
+                <a href="#" class="text-brand-blue text-xl ml-auto">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+            
+            <!-- Journals Accordion -->
+            <div class="border-b border-gray-200">
+                <button 
+                    class="mobile-accordion-btn w-full flex justify-between items-center py-3 text-brand-blue font-semibold text-base"
+                    data-target="mobile-journals"
+                >
+                    Journals
+                    <i class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+                </button>
+               <div id="mobile-journals" class="hidden pb-4">
+    <h5 class="text-gray-700 font-bold text-sm mt-2 mb-2">Browse all journals</h5>
+    <a href="https://www.tandfonline.com/action/showPublications?pubType=journal&ejf=on" class="block text-brand-blue text-sm py-1.5 hover:underline">Browse all journals A–Z</a>
+    <a href="https://www.tandfonline.com/openaccess/openjournals" class="block text-brand-blue text-sm py-1.5 hover:underline">Open access journals</a>
+    <a href="https://www.tandfonline.com/openaccess/openselect" class="block text-brand-blue text-sm py-1.5 hover:underline">Open Select (hybrid) journals</a>
+    
+    <h5 class="text-gray-700 font-bold text-sm mt-4 mb-2">Browse all books</h5>
+    <a href="https://www.taylorfrancis.com/?_gl=1*1ivaoqx*_gcl_au*Nzg3MDUyMDY0LjE3NjM4MDk4MjAuMTQwNDc1OTk3Mi4xNzYzOTkzNjExLjE3NjM5OTM2MTE.*_ga*MzAzMjUyMTU0LjE3NjM4MDk4NTc.*_ga_0HYE8YG0M6*czE3NjQ0OTE4ODYkbzgkZzEkdDE3NjQ0OTYzMDgkajMwJGwwJGgw" class="block text-brand-blue text-sm py-1.5 hover:underline">
+        Explore Taylor & Francis eBooks <i class="fa fa-external-link text-xs ml-1"></i>
+    </a>
+    
+    <h5 class="text-gray-700 font-bold text-sm mt-4 mb-2">Browse by subject</h5>
+    <a href="https://www.tandfonline.com/subjects/area-studies" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Area Studies</a>
+    <a href="https://www.tandfonline.com/subjects/arts" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Arts</a>
+    <a href="https://www.tandfonline.com/subjects/behavioral-sciences" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Behavioral Sciences</a>
+    <a href="https://www.tandfonline.com/subjects/bioscience" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Bioscience</a>
+    <a href="https://www.tandfonline.com/subjects/built-environment" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Built Environment</a>
+    <a href="https://www.tandfonline.com/subjects/communication-studies" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Communication Studies</a>
+    <a href="https://www.tandfonline.com/subjects/computer-science" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Computer Science</a>
+    <a href="https://www.tandfonline.com/subjects/earth-sciences" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Earth Sciences</a>
+    <a href="https://www.tandfonline.com/subjects/economics-finance-business-industry" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Economics,Finance,Business & Industry</a>
+    <a href="https://www.tandfonline.com/subjects/education" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Education</a>
+    <a href="https://www.tandfonline.com/subjects/engineering-and-technology" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Engineering & Technology</a>
+    <a href="https://www.tandfonline.com/subjects/environment-and-agriculture" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Environment & Agriculture</a>
+    <a href="https://www.tandfonline.com/subjects/environment-and-sustainability" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Environment and Sustainability</a>
+    <a href="https://www.tandfonline.com/subjects/food-science-and-technology" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Food Science & Technology</a>
+    <a href="https://www.tandfonline.com/subjects/geography" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Geography</a>
+    <a href="https://www.tandfonline.com/subjects/global-development" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Global Development</a>
+    <a href="https://www.tandfonline.com/subjects/health-and-social-care" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Health and Social Care</a>
+    <a href="https://www.tandfonline.com/subjects/humanities" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Humanities</a>
+    <a href="https://www.tandfonline.com/subjects/information-science" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Information Science</a>
+    <a href="https://www.tandfonline.com/subjects/language-and-literature" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Language & Literature</a>
+    <a href="https://www.tandfonline.com/subjects/law" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Law</a>
+    <a href="https://www.tandfonline.com/subjects/mathematics-and-statistics" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Mathematics & Statistics</a>
+    <a href="https://www.tandfonline.com/subjects/medicine-dentistry-nursing-and-allied-health" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Medicine, Dentistry, Nursing & Allied Health</a>
+    <a href="https://www.tandfonline.com/subjects/museum-and-heritage-studies" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Museum and Heritage Studies</a>
+    <a href="https://www.tandfonline.com/subjects/physical-sciences" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Physical Sciences</a>
+    <a href="https://www.tandfonline.com/subjects/politics-and-international-relations" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Politics & International Relations</a>
+    <a href="https://www.tandfonline.com/subjects/social-sciences" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Social Sciences</a>
+    <a href="https://www.tandfonline.com/subjects/sports-and-leisure" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Sports and Leisure</a>
+    <a href="https://www.tandfonline.com/subjects/tourism-hospitality-and-events" class="block text-brand-blue text-sm py-1.5 hover:underline border-b border-gray-100">Tourism, Hospitality and Events</a>
+    <a href="https://www.tandfonline.com/subjects/urban-studies" class="block text-brand-blue text-sm py-1.5 hover:underline">Urban Studies</a>
+</div> 
+            </div>
+            
+            <!-- Search Section -->
+            <div class="border-b border-gray-200 py-3">
+                <button 
+                    id="mobile-search-btn"
+                    class="w-full flex justify-between items-center text-brand-blue font-semibold text-base"
+                >
+                    Search
+                    <i class="fas fa-search text-sm"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Search Box (Hidden by default) -->
+            <div id="mobile-search-box" class="hidden border-b border-gray-200 py-3">
+                <div class="flex items-center">
+                    <input 
+                        type="text" 
+                        placeholder="Search..."
+                        class="flex-1 border border-gray-300 py-2 px-3 text-sm rounded-l focus:outline-none focus:border-brand-blue"
+                    >
+                    <button class="bg-brand-blue text-white py-2 px-3 rounded-r">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Publish Accordion -->
+            <div class="border-b border-gray-200">
+                <button 
+                    class="mobile-accordion-btn w-full flex justify-between items-center py-3 text-brand-blue font-semibold text-base"
+                    data-target="mobile-publish"
+                >
+                    Publish
+                    <i class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+                </button>
+                <div id="mobile-publish" class="hidden pb-4">
+                    <a href="#" class="block text-brand-blue text-sm py-1.5 hover:underline">Why publish with us?</a>
+                    <a href="#" class="block text-brand-blue text-sm py-1.5 hover:underline">Find a journal</a>
+                    <a href="#" class="block text-brand-blue text-sm py-1.5 hover:underline">Search calls for papers</a>
+                    <a href="#" class="block text-brand-blue text-sm py-1.5 hover:underline">Journal Suggester</a>
+                    <a href="#" class="block text-brand-blue text-sm py-1.5 hover:underline">Step-by-step guide</a>
+                    <a href="#" class="block text-brand-blue text-sm py-1.5 hover:underline">Open access publishing</a>
+                    
+                    <!-- Help Box -->
+                    <div class="bg-[#fdeeee] p-3 mt-3 rounded">
+                        <h5 class="text-gray-800 text-sm mb-1 font-normal">We're here to help</h5>
+                        <a href="#" class="text-gray-800 text-sm">
+                            Find guidance on <span class="text-brand-blue font-semibold">Author Services</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="sub-nav-bar bg-[#10147E] py-1">
+        <div class="container mx-auto px-4 lg:px-8 breadcrumb-container text-xs text-[#B3E5FF] font-bold flex whitespace-nowrap overflow-hidden">
+            <a href="#" class="hover:text-white">Home</a> 
+            <i class="fas fa-caret-right text-[10px] mx-1"></i> 
+            <a href="#" class="hover:text-white">All Journals</a> 
+            <i class="fas fa-caret-right text-[10px] mx-1"></i> 
+            <a href="#" class="hover:text-white">Global Development</a> 
+            <i class="fas fa-caret-right text-[10px] mx-1"></i>
+            <a href="#" class="hover:text-white">International Journal of Urban Sustainable Development</a>
+            <i class="fas fa-caret-right text-[10px] mx-1"></i>
+            <a href="#" class="hover:text-white">List of Issues</a>
+            <i class="fas fa-caret-right text-[10px] mx-1"></i>
+            <a href="#" class="hover:text-white">Volume 17 Issue 1</a>
+            <i class="fas fa-caret-right text-[10px] mx-1"></i>
+            <span class="text-white">Can pilot policies for innovative cities....</span>
+        </div>
+    </nav>
+
+    <div class="page-base-bg bg-[#EEEEEE] min-h-screen">
+        <div class="w-full">
+            <div class="top-header-wrapper bg-gray-100 py-6 shadow-sm">
+                <div class="flex flex-wrap lg:flex-nowrap justify-between items-center px-4">
+                    <div class="flex space-x-4 items-center w-full lg:w-auto ml-6">
+                        <div class="flex-shrink-0">
+                            <img src="img/tjue20.v017.i01.cover.jpg" alt="Journal Cover" class="w-24 h-32 object-cover border border-gray-300 shadow-md">
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-base font-bold text-[#10147E] hover:text-blue-900 cursor-pointer">International Journal of Urban Sustainable Development <i class="fas fa-caret-right ml-1 text-sm"></i></p>
+                            <p class="text-sm text-gray-600 mt-1">
+                                Volume 17, 2025 - 
+                                <span class="text-blue-700 underline hover:no-underline cursor-pointer">Issue 1</span>
+                            </p>
+                            <div class="flex space-x-3 mt-4">
+                                <button class="bg-[#6CD775] text-gray-800 px-4 py-2 text-[13.6px] rounded-md hover:bg-[#006DB4] hover:text-white transition-colors duration-200 font-normal">
+                                    Submit an article
+                                </button>
+                                <button class="bg-[#10147E] text-white px-4 py-2 text-[13.6px] rounded-md hover:bg-[#006DB4] transition-colors duration-200 font-normal">
+                                    Journal homepage
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-2/5 flex flex-col items-end lg:ml-auto mt-4 lg:mt-0">
+                        <div class="flex items-center space-x-1 text-sm">
+                            <input type="text" placeholder="Enter keywords, authors, DOI, etc" class="border border-gray-300 px-3 py-2 rounded-md w-64 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-r-none">
+                            <select class="border border-y border-gray-300 px-3 py-2 focus:outline-none rounded-none">
+                                <option>This Journal</option>
+                            </select>
+                            <button class="bg-[#10147E] text-white px-3 py-2 rounded-md hover:bg-blue-800 transition-colors rounded-l-none"><i class="fas fa-search"></i></button>
+                        </div>
+                        <a href="#" class="text-blue-700 text-xs mt-2 hover:underline">Advanced search</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="h-6 w-full relative bg-white"></div>
+
+            <!-- MOBILE NAVIGATION OVERLAY -->
+            <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+            <!-- MOBILE SIDEBAR -->
+            <div class="mobile-sidebar" id="mobileSidebar">
+                <div class="p-4 border-b border-gray-200 flex justify-between items-center bg-[#10147E]">
+                    <h3 class="text-white font-semibold">In this article</h3>
+                    <button id="closeMobileNav" class="text-white text-2xl">&times;</button>
+                </div>
+                <nav class="font-open-sans text-[14px]" id="mobile-sidebar-nav">
+                    <a href="#abstract" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] bg-[#F2F2F2] font-bold">ABSTRACT</a>
+                    <a href="#introduction" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] font-semibold">1. Introduction</a>
+                    <a href="#Literature" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] font-semibold">2. Literature Review</a>
+                    <a href="#challenges" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] font-semibold">3. Challenges in Refugee Camp Housing</a>
+                    <a href="#Contribution" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] font-semibold">4. Contribution / Methodology</a>
+                    <a href="#Technical" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] font-semibold">5. Technical Observations</a>
+                    <a href="#Data" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] font-semibold">6. Data Analysis</a>
+                    <a href="#Historical" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] font-semibold">Historical Background</a>
+                    <a href="#additional" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] font-semibold">Urban Problems</a>
+                    <a href="#footnotes" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] font-semibold">Foundations / Cement Pattern</a>
+                    <a href="#references" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] font-semibold">Building Materials</a>
+                    <a href="#Conclusion" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] font-semibold">Discussion / Conclusion</a>
+                    <a href="#reference" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] font-semibold">References</a>
+                    <a href="#Figures" class="mobile-nav-link block py-3 px-4 border-b border-gray-200 text-[#10147E] font-semibold">Legend of Figures</a>
+                </nav>
+            </div>
+
+            <!-- MOBILE STICKY HEADER - Only visible on mobile/tablet -->
+            <div class="mobile-sticky-header fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-4 py-3 items-center justify-between lg:hidden">
+                <button id="openMobileNav" class="text-[#10147E] text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <span class="text-sm font-semibold text-gray-700 truncate mx-2">Innovative Cities Article</span>
+                <button class="text-[#10147E] text-xl">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+
+            <!-- Spacer for mobile fixed header -->
+            <div class="lg:hidden h-14"></div>
+
+            <!-- MAIN WRAPPER -->
+            <div class="max-w-[1350px] mx-auto">
+                <div class="bg-gradient-to-b from-white via-[#fcfcfc] to-[#EEEEEE] shadow-sm flex flex-col lg:flex-row w-full mb-4 lg:mb-6 relative z-10">
+                    
+                    <!-- Left: Metrics Column - Hidden on mobile, shown on large screens -->
+                    <div class="hidden lg:flex w-[220px] flex-shrink-0 pl-12 pt-8 flex-col items-start">
+                        <div class="w-24 border-b border-gray-200 pb-3 mb-3">
+                            <p class="font-open-sans text-[24px] font-normal text-gray-700 leading-none mb-1">231</p>
+                            <p class="text-[11px] text-gray-500">Views</p>
+                        </div>
+                        <div class="w-24 border-b border-gray-200 pb-3 mb-3">
+                            <p class="font-open-sans text-[24px] font-normal text-gray-700 leading-none mb-1">0</p>
+                            <p class="text-[11px] text-gray-500 leading-tight">CrossRef <br> citations to date</p>
+                        </div>
+                        <div class="w-24 border-b border-gray-200 pb-3">
+                            <p class="font-open-sans text-[24px] font-normal text-gray-700 leading-none mb-1">0</p>
+                            <p class="text-[11px] text-gray-500">Altmetric</p>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Metrics Row -->
+                    <div class="lg:hidden flex justify-around py-4 px-4 border-b border-gray-200">
+                        <div class="text-center">
+                            <p class="font-open-sans text-[20px] font-normal text-gray-700">231</p>
+                            <p class="text-[10px] text-gray-500">Views</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-open-sans text-[20px] font-normal text-gray-700">0</p>
+                            <p class="text-[10px] text-gray-500">CrossRef</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-open-sans text-[20px] font-normal text-gray-700">0</p>
+                            <p class="text-[10px] text-gray-500">Altmetric</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Header Content -->
+                    <div class="flex-1 pt-4 lg:pt-8 px-4 lg:px-10 relative pb-4 lg:pb-0">
+                        
+                        <!-- Utility Bar: Listen & Open Access -->
+                        <div class="flex flex-wrap justify-between items-start mb-3 gap-2">
+                            <div class="flex items-center border border-slate-400 rounded-l-[3px] rounded-r-full overflow-hidden h-[30px] bg-[#f3f6f8] w-fit">
+                                <button class="h-full px-2 border-r border-slate-400 flex items-center justify-center hover:bg-white transition group">
+                                    <i class="fas fa-bars text-gray-700 text-xs group-hover:text-black"></i>
+                                </button>
+                                <button class="h-full px-2 flex items-center border-r border-slate-400 hover:bg-white transition">
+                                    <svg class="w-[14px] h-[14px] mr-1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10 4L5 9H2V15H5L10 20V4Z" fill="#374151" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M15 8C15.9 9.1 16.3 10.5 16.3 12C16.3 13.5 15.9 14.9 15 16" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18.5 5C20.2 6.9 21.1 9.4 21.1 12C21.1 14.6 20.2 17.1 18.5 19" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span class="text-[13px] font-bold text-gray-800 font-sans hidden sm:inline">Listen</span>
+                                </button>
+                                <button class="h-full pl-2 pr-3 flex items-center justify-center hover:bg-white transition">
+                                    <i class="fas fa-play text-[#15803d] text-[10px]"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-[22px] h-[22px] rounded-full bg-[#F48F00] flex items-center justify-center mr-2 flex-shrink-0">
+                                    <svg class="w-[13px] h-[13px] text-[#222]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="5" y="11" width="14" height="10" rx="2" ry="2"></rect>
+                                        <path d="M8 11V7a4 4 0 0 1 8 0"></path>
+                                        <path d="M12 15v2"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-[12px] sm:text-[13px] text-[#374151] font-sans leading-none">Open access</span>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-gray-500 mb-2 font-medium">Research Article</p>
+                        
+                        <!-- MAIN TITLE -->
+                        <h1 class="w-full sm:max-w-[600px] lg:max-w-[800px] text-[22px] sm:text-[26px] lg:text-[33.6px] font-pt-serif font-bold leading-[1.2] mb-2 text-[#222] tracking-normal">
+                            Can pilot policies for innovative cities reduce carbon emissions? Evidence from quasi-natural experiments in 269 cities in China
+                        </h1>
+                        
+                        <!-- Authors -->
+                        <p class="text-[0.85rem] sm:text-[0.95rem] text-gray-900 mb-0">
+                            <a href="#" class="text-[#1e2b58] hover:underline">Shengbao Di</a>, 
+                            <a href="#" class="text-[#1e2b58] hover:underline">Xin Han</a> & 
+                            <a href="#" class="text-[#1e2b58] hover:underline font-bold">Dongsheng Zhang</a> 
+                            <a href="#"><i class="fas fa-envelope text-[#1e2b58] ml-1 text-sm hover:text-blue-700"></i></a>
+                        </p>
+                        
+                        <!-- Metadata -->
+                        <p class="font-open-sans text-[10px] sm:text-xs text-gray-500 mb-4 lg:mb-5 mt-1">
+                            Pages 216-229 | Received 15 Oct 2024, Accepted 10 Sep 2025, Published online: 23 Sep 2025
+                        </p>
+                        
+                        <!-- Links Bar -->
+                        <div class="flex flex-wrap items-center gap-3 lg:gap-5 mb-6 lg:mb-20">
+                            <a href="#" class="group flex items-center text-[#1e2b58] hover:underline">
+                                <i class="fas fa-quote-left text-[12px] mr-2"></i>
+                                <span class="font-open-sans text-[12px] lg:text-[13.6px] font-normal">Cite this article</span>
+                            </a>
+                            <a href="#" class="group flex items-center text-[#1e2b58] hover:underline">
+                                <i class="fas fa-external-link-square-alt text-[14px] mr-2"></i>
+                                <span class="font-open-sans text-[11px] lg:text-[13.6px] font-normal break-all">https://doi.org/10.1080/19463138.2025.2561579</span>
+                            </a>
+                        </div>
+
+                        <!-- Tabs Navigation - Desktop Only -->
+                        <div class="hidden lg:flex items-center space-x-6 absolute -bottom-[4px] left-10 w-full z-30">
+                            <button class="relative flex items-center bg-[#10147E] text-white px-4 py-2 text-[11px] font-[600] font-open-sans rounded-[3px] shadow-sm group">
+                                <i class="fas fa-file-alt mr-2"></i> Full Article
+                                <div class="absolute -bottom-[5px] left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#10147E] rotate-45"></div>
+                            </button>
+                            <a href="#" class="text-[#10147E] text-[11px] font-[600] font-open-sans flex items-center hover:text-blue-800 hover:underline pb-1">
+                                <i class="far fa-image mr-2"></i> Figures & data
+                            </a>
+                            <a href="#" class="text-[#10147E] text-[11px] font-[600] font-open-sans flex items-center hover:text-blue-800 hover:underline pb-1">
+                                <i class="fas fa-book mr-2"></i> References
+                            </a>
+                            <a href="#" class="text-[#10147E] text-[11px] font-[600] font-open-sans flex items-center hover:text-blue-800 hover:underline pb-1">
+                                <i class="fas fa-quote-right mr-2"></i> Citations
+                            </a>
+                            <a href="#" class="text-[#10147E] text-[11px] font-[600] font-open-sans flex items-center hover:text-blue-800 hover:underline pb-1">
+                                <i class="fas fa-chart-bar mr-2"></i> Metrics
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Tabs Navigation -->
+                <div class="lg:hidden flex overflow-x-auto hide-scrollbar gap-2 px-4 pb-4 -mt-2">
+                    <button class="flex-shrink-0 flex items-center bg-[#10147E] text-white px-3 py-2 text-[11px] font-semibold rounded-[3px]">
+                        <i class="fas fa-file-alt mr-1"></i> Full Article
+                    </button>
+                    <a href="#" class="flex-shrink-0 text-[#10147E] text-[11px] font-semibold flex items-center px-3 py-2 bg-gray-100 rounded-[3px]">
+                        <i class="far fa-image mr-1"></i> Figures
+                    </a>
+                    <a href="#" class="flex-shrink-0 text-[#10147E] text-[11px] font-semibold flex items-center px-3 py-2 bg-gray-100 rounded-[3px]">
+                        <i class="fas fa-book mr-1"></i> References
+                    </a>
+                    <a href="#" class="flex-shrink-0 text-[#10147E] text-[11px] font-semibold flex items-center px-3 py-2 bg-gray-100 rounded-[3px]">
+                        <i class="fas fa-chart-bar mr-1"></i> Metrics
+                    </a>
+                </div>
+
+                <div class="bg-white shadow-sm flex flex-col lg:flex-row w-full items-start min-h-screen">
+    
+    <!-- LEFT SIDEBAR - Fixed/Sticky on desktop -->
+    <div class="hidden lg:flex w-[160px] bg-white flex-col custom-scroll overflow-y-auto h-[calc(100vh-100px)] sticky top-[20px] ml-10 border-r border-gray-200">
+        <div class="pt-6 px-6 mb-2 bg-white sticky top-0 z-10">
+            <h3 class="w-full h-full text-[#333] text-[16px] font-[600] font-open-sans">In this article</h3>
+        </div>
+        <nav class="w-full flex flex-col font-open-sans text-[13.6px]" id="sidebar-nav">
+            <a href="#abstract" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 text-[#10147E] transition-colors duration-200 bg-[#F2F2F2] font-[700] border-r-4 border-[#10147E]">ABSTRACT</a>
+            <a href="#introduction" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 bg-white text-[#10147E] font-[600] hover:text-[#539AC8] hover:bg-gray-50 transition-colors duration-200 border-r-4 border-transparent">1. Introduction</a>
+            <a href="#Literature" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 bg-white text-[#10147E] font-[600] hover:text-[#539AC8] hover:bg-gray-50 transition-colors duration-200 border-r-4 border-transparent">2. Literature Review</a>
+            <a href="#challenges" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 bg-white text-[#10147E] font-[600] hover:text-[#539AC8] hover:bg-gray-50 transition-colors duration-200 border-r-4 border-transparent">3. Challenges</a>
+            <a href="#Contribution" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 bg-white text-[#10147E] font-[600] hover:text-[#539AC8] hover:bg-gray-50 transition-colors duration-200 border-r-4 border-transparent">4. Contribution</a>
+            <a href="#Technical" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 bg-white text-[#10147E] font-[600] hover:text-[#539AC8] hover:bg-gray-50 transition-colors duration-200 border-r-4 border-transparent">5. Technical</a>
+            <a href="#Data" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 bg-white text-[#10147E] font-[600] hover:text-[#539AC8] hover:bg-gray-50 transition-colors duration-200 border-r-4 border-transparent">6. Data Analysis</a>
+            <a href="#Historical" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 bg-white text-[#10147E] font-[600] hover:text-[#539AC8] hover:bg-gray-50 transition-colors duration-200 border-r-4 border-transparent">Historical Background</a>
+            <a href="#additional" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 bg-white text-[#10147E] font-[600] hover:text-[#539AC8] hover:bg-gray-50 transition-colors duration-200 border-r-4 border-transparent">Urban Problems</a>
+            <a href="#footnotes" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 bg-white text-[#10147E] font-[600] hover:text-[#539AC8] hover:bg-gray-50 transition-colors duration-200 border-r-4 border-transparent">Foundations</a>
+            <a href="#references" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 bg-white text-[#10147E] font-[600] hover:text-[#539AC8] hover:bg-gray-50 transition-colors duration-200 border-r-4 border-transparent">Building Materials</a>
+            <a href="#Conclusion" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 bg-white text-[#10147E] font-[600] hover:text-[#539AC8] hover:bg-gray-50 transition-colors duration-200 border-r-4 border-transparent">Conclusion</a>
+            <a href="#reference" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 bg-white text-[#10147E] font-[600] hover:text-[#539AC8] hover:bg-gray-50 transition-colors duration-200 border-r-4 border-transparent">References</a>
+            <a href="#Figures" class="nav-link block py-3 pl-6 pr-3 leading-tight border-b border-gray-200 bg-white text-[#10147E] font-[600] hover:text-[#539AC8] hover:bg-gray-50 transition-colors duration-200 border-r-4 border-transparent">Legend of Figures</a>
+        </nav>
+    </div>
+
+    <!-- 2. CENTER TEXT AREA - Scrollable Content -->
+    <div class="flex-1 min-w-0 order-1 lg:order-none flex flex-col">
+        
+        <!-- Fixed Header with Buttons (stays at top) -->
+        <div class="sticky top-0 bg-white z-20 p-4 lg:p-6 lg:pl-10 border-b border-gray-100">
+            <!-- Top Action Buttons -->
+            <div class="flex flex-wrap gap-2 mb-4">
+                <button class="bg-[#6CD775] hover:bg-[#006DB4] hover:text-white text-gray-800 px-3 lg:px-4 py-[6px] text-[10px] lg:text-[11px] font-bold rounded-[3px] flex items-center shadow-sm transition">
+                    <i class="far fa-file-pdf mr-1 lg:mr-2 text-sm"></i> View PDF
+                </button>
+                <button class="bg-[#6CD775] hover:bg-[#006DB4] hover:text-white text-gray-800 px-3 lg:px-4 py-[6px] text-[10px] lg:text-[11px] font-bold rounded-[3px] flex items-center shadow-sm transition">
+                    <i class="fas fa-book-open mr-1 lg:mr-2 text-sm"></i> View EPUB
+                </button>
+                <button class="bg-[#006DB4] hover:bg-[#B4E1FF] text-white hover:text-black px-4 lg:px-6 py-[6px] text-[10px] lg:text-[11px] font-bold rounded-[3px] flex items-center shadow-sm transition">
+                    <i class="fas fa-share-alt mr-1 lg:mr-2 text-sm"></i> Share
+                </button>
+            </div>
+
+            <!-- MathJax Indicator -->
+            <div class="flex justify-end items-center">
+                <span class="text-[11px] lg:text-[13px] text-gray-500 mr-1">Formulae display:</span>
+                <div class="flex items-center px-2">
+                    <i class="fas fa-check text-[8px] mr-1 mt-[1px] text-green-600"></i>
+                    <img src="img/math-jax.webp" 
+                         alt="MathJax" 
+                         class="h-[14px] lg:h-[18px] w-auto object-contain" />
+                </div>
+                <i class="far fa-question-circle ml-1 text-[12px] text-gray-400 cursor-pointer"></i>
+            </div>
+        </div>
+
+         <!-- Article Sections -->
+                <div class="prose max-w-none">
+                    <section id="abstract" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28">
+    <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">ABSTRACT</h2>
+    <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+        This study investigates the housing conditions in the Sahrawi refugee camps, with a specific focus on the Al-Ayoun camp in the Tindouf region of Algeria. Since the 1970s, these camps have evolved into some of the largest urbanized settlements within the Saharan Desert, housing approximately 170,000 refugees across five camps. The central research question addresses how housing conditions can be improved to enhance sustainability and adaptability to local climatic conditions, given the fragile construction materials currently in use that are ill-suited to the extreme desert environment.
+    </p>
+    <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+        The methodology combines field observations, technical evaluations, and semi-structured interviews with 20 stakeholders including residents, engineers, and local authorities to analyze housing patterns and their resilience to environmental challenges. The study examines four prevalent housing typologies—mud, cement, mixed (mud-cement), and red brick—identifying their respective strengths and weaknesses. Findings reveal that the mixed mud-cement pattern is the most prevalent, while the community shows evolving preferences toward cement and red brick housing despite higher costs. Critical weaknesses identified include the widespread reliance on zinc roofing, which exacerbates heat accumulation and presents safety hazards during severe weather.
+    </p>
+    <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+        The research proposes innovative approaches including modernized mud construction techniques with enhanced material quality, alternative roofing solutions such as domes and green roofs, and comprehensive urban planning strategies. A resilience framework is introduced focusing on material optimization, architectural innovation, community engagement, urban planning, and scalability. These findings contribute to the broader discourse on sustainable construction practices in resource-constrained environments and provide actionable insights applicable to other marginalized communities facing similar environmental and socio-economic challenges.
+    </p>
+    
+    <!-- Keywords -->
+    <div class="mt-6 pt-4 border-t border-gray-200">
+        <p class="text-[14px] lg:text-[15px] text-gray-700">
+            <span class="font-bold text-[#222]">Keywords:</span> 
+            <span class="italic">Sahrawi refugee camps, sustainable housing, mud construction, climate-adaptive architecture, Al-Ayoun camp, resilient housing, resource-constrained environments, Tindouf, Western Sahara</span>
+        </p>
+    </div>
+</section>
+
+                    <section id="introduction" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28 pt-6 lg:pt-8 border-t border-dashed border-gray-200">
+                        <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">1. Introduction</h2>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                              The Western Sahara, a former Spanish colony, is a country on the western edge of the African continent.
+1975, on the eve of Franco’s rule and with the departure of the Spanish administration it was invaded by
+Moroccan and Mauritanian troops. Following a period of guerilla warfare between the local ‘Sahrawi’
+population and the invaders, and the subsequent withdrawal of the Mauritanian army, Morocco has
+installed itself as an occupying force over the largest extent of the territory. The beginning of the warfare
+also saw the flight of tens of thousands of refugees over the border into Algeria, a historical ally of the
+Sahrawis, and the establishment of four refugee camps on Algerian territory, near the border zone. Since
+the 1970s these refugee camps have developed into some of the largest urbanized settlements within the
+Saharan Desert, now housing approximately 170.000 refugees amongst five camps. (Basel, 2011).<br>
+The central research question driving this study is: how can the housing conditions in Sahrawi refugee
+camps be improved to enhance sustainability and adaptability to local climatic conditions? Addressing
+this question is critical, given the fragile construction materials currently in use, which are ill-suited to the
+extreme deserted environment. By focusing on the Al-Ayoun camp as a case study, this research
+examines patterns of urban development, housing materials, and community preferences to uncover
+practical, scalable solutions.<br>The methodology combines field observations, technical evaluations, and interviews with residents and
+experts to analyze housing patterns and their resilience to environmental challenges. The findings
+highlight the community’s evolving preferences for cement and red brick housing while identifying
+critical weaknesses, such as the reliance on zinc roofing. By proposing innovative approaches, including
+modern mud construction and enhanced material quality, this study aims to address both immediate and
+long-term housing challenges. This research provides insights that can be applied to other marginalized and resource-constrained communities facing similar environmental and socio-economic challenges,
+ensuring broader relevance and impact.<br>
+The paper is structured as follows: Section 1 Introduction, Section 2 provides a literature review sitting
+the research within the broader discourse on sustainable construction. Section 3 outlines the methodology
+of this study. Section 4 explores the historical and urban context of the camps, while Section 5 presents
+the findings on housing patterns and materials. Finally, Section 6 discusses the innovative contribution of
+this study to the broader literature on sustainable construction and offers recommendations for sustainable
+and resilient housing solutions. In contrast, Section 7 is the conclusion.</p>
+                    </section>
+
+                    <section id="Literature" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28 pt-6 lg:pt-8 border-t border-dashed border-gray-200">
+                        <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">2. Literature Review</h2>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Resilient Housing in Marginalized Resource-Constrained Settings</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           The design of resilient housing solutions in marginalized and resource-constrained environments has
+emerged as a critical area of study, particularly in the face of sustainability and adaptability challenges
+arising from adverse climatic and socio-economic conditions. Resilience, in the context of urban housing
+and development, refers to the ability of a community or housing infrastructure to withstand and recover
+from adverse events or shocks, such as natural disasters, extreme weather events, economic downturns, or
+social disruptions. It involves the capacity to adapt, bounce back, and even thrive in the face of challenges
+(Enwin, & Ikiriko, 2024). This need is acutely felt in refugee camps, such as those housing the Sahrawi
+people in Algeria, where inadequate infrastructure and severe resource limitations necessitate urgent and
+innovative housing solutions that are both durable and economically viable.
+                        </p>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Traditional and Modern Approaches to Housing</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                         Mud-building presents itself as one of the most important solutions for the housing problem and
+sustainable development in our contemporary world, and one of the most important application elements
+connecting the architectural heritage with contemporary life. It is also one of the best means (Al Suliman,
+& Suliman, 2016). It also Mud-brick construction, prevalent in arid climates due to its thermal efficiency
+and affordability, offers a traditional solution; however, its vulnerability to extreme weather conditions
+necessitates modernization through the incorporation of additives like lime or cement (Groat & Wang,
+2013). While transitioning to modern materials such as cement or fired brick enhances structural integrity,
+these options often incur higher costs and compromise thermal efficiency, ultimately marginalizing the
+most vulnerable populations (Braun & Clarke, 2006). Recent innovations have emerged from the
+synthesis of traditional methodologies with contemporary technologies. For instance, the utilization of repurposed plastic bottles as building materials in Sahrawi refugee camps exemplifies a sustainable and
+cost-effective response to the scarcity of resources (World Habitat, n.d.). Furthermore, the integration of
+green roofs and dome-shaped designs can significantly improve thermal performance and resilience
+against extreme climate events (Braun & Clarke, 2006). Also, clay has excellent insulating properties
+because of its high thermal mass It absorbs stores and releases heat very effectively, making the building
+interior cooler in summer and warmer in winter. This makes the internal environment more comfortable
+and reduces energy demand and associated carbon emissions (Kefas, Patrick, & Chiroma, 2007)
+                        </p>
+                    </section>
+                    
+                    <section id="challenges" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28 pt-6 lg:pt-8 border-t border-dashed border-gray-200">
+                        <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">3. Challenges in Refugee Camp Housing</h2>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           Housing conditions in refugee camps, particularly in the Sahrawi regions, are plagued by systemic
+challenges, including lack of urban planning, deficient infrastructure, and exposure to severe climate.
+Reports from UNHCR (2017) indicate the prevalent use of zinc roofing, which exacerbates heat
+accumulation and presents safety hazards during severe weather. The absence of sewage systems and
+inadequate drainage facilities further heighten health risks for the camp inhabitants (UN-Habitat, 2016).
+Refugees face harsh desert conditions and rely almost fully on humanitarian assistance to meet their basic
+needs (ACAPS, 2022).
+                        </p>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Global Perspectives on Resilient Housing Solutions</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           Empirical evidence supports the successful integration of local knowledge with innovative technologies to
+bolster housing resilience across various contexts. Community-driven solutions in South Asia and SubSaharan Africa illustrate the feasibility of scalable and adaptive housing models tailored to local
+conditions (UN-Habitat, 2016). The increasing focus on climate-smart housing emphasizes the imperative
+of balancing economic viability, durability, and cultural congruence in addressing contemporary global
+housing challenges (World Economic Forum, 2023). The introduction of the concept of resilience into the
+housing sector has become an urgent need in the development of the performance of the housing system,
+to continue to meet the housing needs in the housing market through a set of that increase their resilience
+to risk. (Mansoor et al., 2023).
+                        </p>
+                    </section>
+
+                    <section id="Contribution" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28 pt-6 lg:pt-8 border-t border-dashed border-gray-200">
+                        <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">4. Contribution of the Current Study</h2>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                             This study aims to address the specific housing challenges faced in the Sahrawi refugee camps, a context
+often overlooked in academic discourse. It conducts a detailed analysis of four prevalent housing
+typologies—mud, cement, mixed, and red brick—identifying their respective weaknesses while proposing forward-thinking solutions, such as the modernization of mud-brick construction techniques and
+alternative roofing options. These innovations are designed to tackle localized construction challenges
+while contributing to the broader discourse on sustainable housing practices in resource-constrained
+environments.<br>Building upon existing literature, this research prioritizes climate-adaptive and context-sensitive housing
+solutions. For example, Groat and Wang (2013) advocate for the melding of traditional construction
+techniques with modern materials to enhance both durability and thermal comfort. While strategies for
+resilient housing typically emphasize cost-efficiency and scalability in marginalized regions (Creswell,
+2014), their adaptation for long-term refugee camp settings is still insufficiently explored.<br>By filling these gaps, particularly regarding the inadequacies of zinc sheet roofing in extreme heat (Yin,
+2018), this research offers innovative, climate-responsive solutions. Integrating field observations,
+community preferences, and technical assessments, the study presents practical recommendations aimed
+at enhancing housing resilience and sustainability in the Al-Ayoun Camp. The findings significantly
+contribute to the growing body of literature focused on sustainable construction practices tailored to
+extreme climates and resource-limited settings.
+                        </p>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Methodology</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           This study explores the housing conditions in the Sahrawi refugee camps, with a focus on the Al-Ayoun
+camp. The methods employed include field inspections, technical observations, photographic
+documentation, and semi-structured interviews with key stakeholders. These methods aim to
+comprehensively understand the challenges and opportunities for sustainable construction in the camps.
+Below is a detailed description of each method.
+                        </p>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Field Inspections</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           Field inspections were conducted to assess the physical condition of the housing units in the camps. This
+involved systematic observation of structural integrity, material usage, and environmental adaptability.
+The inspections followed established protocols for on-site surveys in a resource-constrained environment.
+Specific attention was given to identifying vulnerabilities in existing structures and documenting
+variations in housing patterns
+                        </p>
+                    </section>
+                    
+                    <section id="Technical" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28 pt-6 lg:pt-8 border-t border-dashed border-gray-200">
+                        <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">5. Technical Observations</h2>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                            Technical observations focused on evaluating the performance of construction materials and their
+suitability for the extreme desert climate. Observations were supplemented by high-resolution
+photographs, which served as visual evidence to support the analysis. Photographic documentation
+adhered to best practices in architectural research, ensuring that images captured critical details of
+building materials, roofing systems, and spatial layouts (Yin, 2018).</p>
+
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Interviews</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                            The study conducted 20 semi-structured interviews with diverse stakeholders, including residents,
+engineers, and local authorities. Interviewees were selected through purposive sampling to ensure
+representation across different roles and perspectives. The selection criteria included experience with
+housing construction, familiarity with local challenges, and involvement in camp management. The
+interviews explored themes such as housing preferences, perceptions of material performance, and
+proposed improvements. To ensure reliability, all interviews were audio-recorded (with participant
+consent) and transcribed verbatim. Data were analyzed using thematic coding, following Braun and
+Clarke's (2006) framework. MAXQDA software was employed to facilitate systematic coding and
+thematic analysis, enabling the identification of recurring patterns and key insights.
+                        </p>
+                    </section>
+                    
+                    <section id="Data" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28 pt-6 lg:pt-8 border-t border-dashed border-gray-200">
+                        <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">6. Data Analysis</h2>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                          The collected data were analyzed using a mixed-methods approach. Qualitative data from interviews and
+observations were triangulated with quantitative data from field inspections to ensure validity. This
+approach aligns with Creswell’s (2014) guidelines for integrating qualitative and quantitative methods in
+social science research.
+                        </p>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Ethical Considerations</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           Ethical approval was obtained from the relevant institutional review board. Participants were briefed on
+the study's objectives, and informed consent was obtained before data collection. Confidentiality and
+anonymity were maintained throughout the research process. This comprehensive methodology provides
+a robust foundation for analyzing the challenges and prospects of sustainable construction in the Sahrawi
+refugee camps. By employing a combination of field-based and analytical techniques, the study ensures a
+holistic understanding of the subject matter.
+                        </p>
+                    </section>
+
+                    <section id="Historical" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28 pt-6 lg:pt-8 border-t border-dashed border-gray-200">
+                        <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">Historical Background</h2>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                            a brief overview of the history of the Sahrawimovement provides context for the argument that follows.
+As the Spanish government prepared to abandon its protectorate of Western Sahara in November 1975, it
+secretly signed an agreement with Morocco and Mauritania aimed at establishing a tripartite
+administration of the territory. Morocco and Mauritania had competing claims to the Western Sahara, a
+region bordered on the north by Morocco, the northeast by Algeria, the south and southeast by
+Mauritania, and the west by the Atlantic Ocean. Just as Spain was preparing to withdraw, Morocco and
+Mauritania invaded the territory. Morocco took control of the northern two-thirds of Western Sahara,
+which it renamed its southern (or “Saharan”) provinces, while Mauritania seized control of the southern
+third.4 Meanwhile, the Polisario, established in 1973, won Algeria’s backing for its independence
+struggle and set up its headquarters in Sahrawi refugee camps located in an isolated region of the
+southwestern Algerian desert near the town of Tindouf. The camps are also home to the Sahrawi Arab
+Democratic Republic (SADR), the state-in-exile established by the Polisario in 1976 (Farah, 2008).<br><img src="img/Screenshot 2025-11-26 181348.png" alt="Polisario 1976"><br>The Sahrawi refugee camps appeared in the Tindouf region in 1976, following the brutal Moroccan and
+Mauritanian invasion, after the tripartite agreement (Spain, Morocco, Mauritania) known as the Madrid
+Tripartite Agreement, which divided Western Sahara into a north under the control of Morocco and south
+under the control of Mauritania, in the condition of ensuring the interests of Spain in the region
+(phosphates, fisheries) (Bakr, 2004). Following the air strikes and the successive bombardment of the
+Moroccan air force on the one hand and the Mauritanian forces on the other hand, the Omdrayga area in
+Western Sahara for refugees fleeing from the northern regions, who would later flee to Algeria (Bakr,
+2004). Most residents still live in modest tents or huts, do not have access to drinking water, and rely
+heavily on International humanitarian aid (Human Rights Watch, 2008).<br><img src="img/Screenshot 2025-11-26 190828.png" alt=""><br>In March 1976, Sahraw refugee camps were established in the southwest of the Algerian desert, precisely
+in the Tindouf border region with Western Sahara. These camps were named according to the regions
+from which refugees migrated to six camps that differ in population density according to the original
+region they displaced from (Nafea, personal Interview, 2019).<br><img src="img/Screenshot 2025-11-26 191158.png" alt=""><br>The first camp was established in Al-Subaiti, and then it was moved to its current location to be called the
+Smara camp it includes the displaced from the occupied Smara region. The Sahrawi refugee camps in the
+Tindouf region of Algeria include six distinct camps, each named after a significant location in Western
+Sahara to reflect the regions from which the refugees originated. Among these, the Dakhla camp houses
+refugees displaced from the occupied Dakhla region. This camp is one of the largest and plays a vital role
+in preserving the cultural and social identity of its residents. The Al-Ayoun camp, named after the AlAyoun area, similarly serves as a haven for those displaced from that region and is characterized by its
+size and the variety of housing types it accommodates. The February 27 camp, in contrast, is the least
+densely populated. Despite its smaller size, it remains an integral part of the network of camps, providing
+a quieter and less crowded environment for its residents. The camp of the martyr Al-Hafiz, also known as
+Al-Rabuni, serves as the administrative headquarters for all the camps. It houses various government
+institutions and plays a central role in coordinating humanitarian and administrative activities across the
+region. Each of these camps reflects the broader struggles and resilience of the Sahrawi refugee
+community, serving not only as places of refuge but also as centers for maintaining cultural continuity
+and social cohesion (Nafea, personal Interview, 2019).<br><img src="img/Screenshot 2025-11-26 191713.png" alt=""><br>The population of the Sahrawi refugees living in the Tindouf camps is 173,600, according to an official
+report of the latest statistics conducted by the United Nations High Commissioner for Refugees
+(UNHCR) in January 2018. However, to better understand the population density, the total area of the
+camps must be considered. With the combined area of the camps being approximately 150 square
+kilometers, the average population density is around 1,157 people per square kilometer. This population is
+distributed among five camps as follows:<br><img src="img/Screenshot 2025-11-26 192042.png" alt=""><br>El-Ayoun camp, on which this paper focuses, is located east of the city of Tindouf and is about 10 km
+away from it, and it is the closest camp to Tindouf. El-Ayoun camp is considered the second largest camp
+after Smara camp with about 50,500 refugees, according to the statistics of the United Nations High
+Commissioner for Refugees (UNCHR) for the year 2018. The camp occupies an area of about 24.93 sq.
+km. 
+                        </p>
+                        
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">The Urban Condition of El-Ayoun Camp</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           El-Ayoun camp consists of six districts randomly located in the area allocated to it. Each district contains
+four municipalities that are clustered together in a chess shape. The headquarters of the district is located
+in the center of these four municipalities, separated by wide main streets that intersect at the headquarters
+of the district. The headquarters of the district usually takes a circular shape to resist strong winds and
+prevent sand from accumulating on it. The headquarters of the department includes the central
+administration with all its offices and the offices of the representatives of the central directorates of the
+Wilaya (Directorate of Handicrafts, Police), In addition to local dispensaries affiliated with the district, as
+well as the headquarters of kindergarten (pre-school), the market surrounds the district’s headquarters or
+what is known as Marsa on the edges of the wide main streets separating the municipalities, where the
+refugees get their daily needs, then rows of tents and mud buildings follow (Nafea, personal Interview,
+2019).<br>This camp has not been provided with infrastructure networks since its establishment until today, as it is
+not provided with drinking water networks or sewage channels, and the roads there are unpaved, not to
+mention that they are equipped with rainwater drainage channels, which sometimes causes the spread of
+diseases among the population, and it is not equipped with electricity networks, which have become an
+indispensable necessity for the human being.Housing in El-Ayoun camp has gone through different periods according to the political and economic
+conditions of its residents. They can be divided into four phases:<br>1976 to 1983: This period was the first breakthrough in assembling, organizing, and forming camps for
+refugees. This period was also characterized by assembling the blocks of the El-Ayoun camp and
+transferring the residents of the Adkhal area to Nabka, to complete the El-Ayoun camp with its six
+districts in November 1977. The reorganization and formation of the districts of the El-Ayoun camp, as
+well as the division of districts into municipalities. The chess shape was the dominant form in the
+planning of districts. As a Wilaya, El-Ayoun was not subject to an integrated planning that includes its
+districts and links them together, but rather the planning was at the level of the districts, not the Wilaya.
+Mud construction in El-Ayoun camp did not appear during this period except in hospitals, district
+headquarters, and the Wilaya headquarters, given the hope of returning home soon. As for the housing,
+the tent (Qaytun) was the only element and the multiple space for the refugees. The tent includes a
+kitchen, bedrooms, and a place to receive guests (Nafea, personal Interview, 2019).
+<br>1983 to 1994: Clay construction spread during this period. After the fifth anniversary of 1983, a
+government decree was issued to build kitchens for families in the February 27 camp (present-day
+Boujdour), with a rectangular shape of 2 x 3 meters, an area of 6 square meters, and a zinc plate roof. As a
+result, construction spread in the rest of the camps. The common pattern in that period in residential
+buildings was the construction of a large room 7x4 in addition to a kitchen 4x5 and a bathroom, in
+addition to the tent. These spaces are linked to each other by walls of mud brick (blocks) with a thickness
+of 20 cm that make doors in different directions. This space that links the areas is known as the yard
+(Haush), where the door openings of the room, kitchen, and tent main door go into the yard, while the
+bathroom is outside the collection. The predominant roof used for these mud buildings was cotton due to
+the lack of building materials and the spread of poverty among the population, except for public utilities,
+which were roofed with zinc sheets (Nafea, personal Interview, 2019).<br>1994 to 2006: One of the most important features of this period was the torrential rain that swept through
+the ElAyoun camp in 1994, which led to a major change in the urban planning features of the camp, as
+many mud houses were destroyed at the level of districts and municipalities, and some of the locations of
+the districts were changed, such as the Guelta district. The extinction of the features of the chess layout of
+the circles that was adopted before the 1994 torrent; to be replaced by islets of organic and irregular
+shapes, these islands are lined with twisting roads. Increasing population density, which led to the
+people’s encroachment on streets and empty spaces randomly (anarchy in land use), and the growth and
+spread of districts and their interconnection with each other (Nafea, personal Interview, 2019).
+<br>2006 to 2020: In previous times, construction was based on clay as the main material for building all the
+elements of the housing, including walls and external and internal cladding. However, this period was
+characterized by the emergence of cement block construction, especially after the heavy rainstorms swept
+into the camp in 2006 and demolished many mud houses and again the rains and storms in 2015 caused
+another catastrophe, resulting in the demolition of a huge number of houses. Thus, the idea is that
+buildings with mud is not suitable and have become outdated, and cement is being used instead of mud.
+(Nafeh, personal Interview, 2019).
+                        </p>
+                    </section>
+
+                    <section id="additional" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28 pt-6 lg:pt-8 border-t border-dashed border-gray-200">
+                        <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">Urban Problems in the Sahrawi Refugee Camps</h2>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           The urban problems in the Sahrawi refugee camps reflect a range of systemic and infrastructural
+challenges that hinder sustainable development and quality of life. One of the primary issues is the spread
+of diseases and epidemics, which can be attributed to the lack of sewage networks and inadequate street
+drainage systems. These deficiencies create unsanitary conditions, posing serious health risks to the
+camp's residents (Herz, 2013; UNHCR, 2018). Additionally, the absence of organized urban planning has
+led to frequent family disputes over land boundaries. This lack of planning is further exacerbated by the
+absence of comprehensive urban development strategies over the years, leaving the camps vulnerable to
+disorderly growth (UN-Habitat, 2016).<br>The camps also face a rising prevalence of crime and social issues, which are compounded by inadequate
+law enforcement and overall instability within these communities. Unregulated exploitation of land has
+led to chaotic land use, diminishing the availability of space for future development. Public spaces and
+recreational areas, essential for fostering community engagement and providing psychological relief, are
+noticeably absent. Similarly, the lack of afforestation and green spaces contributes to an inhospitable
+environment, exacerbating the harsh living conditions in the desert (Yin, 2018).<br>Finally, the disorganized and sprawling layout of the camps poses significant challenges for establishing
+essential infrastructure in the future. The chaotic spread of buildings across large and irregularly spaced
+areas makes it difficult to implement cohesive networks for water, electricity, and transportation.
+Addressing these issues requires a comprehensive approach to urban planning, infrastructure
+development, and community management to ensure a more sustainable and livable environment for the
+Sahrawi refugees (Creswell, 2014; UNHCR, 2018).
+                        </p>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Results: Patterns of fragile housing in El-Ayoun camp</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                            Housing in the camps can be divided into four main types depending on the main building material, and
+we have chosen samples from Al-Hagouniyah district in El-Ayoun camp: (i) muddy housing patterns, (ii)
+cement housing patterns, (iii) mud-cement housing pattern, and (iv) red brick housing patterns, We chose
+this division based on what was examined from the field of study and confirmed by the interview we had
+with the architect Moulay El Mahdi, where he says" Eng. Moulay El Mahdi: As you can see, this is now
+found in many houses, and this is the result of the fall of some parts in the previous rains of 2006 and
+2015, which were built with cement instead of mud. some families build one or two rooms with cement to
+take shelter during heavy rains or build the whole house with cement or red brick, and this is according to
+the family's financial ability, mud houses are no longer feasible in resisting climatic factors, but in my
+opinion, it is not considered a solution to the problem of construction in camps. The roof of the Shinko
+must be removed first and replaced with other materials that are suitable in price and resistant to heat, on
+all types of housing built of mud or cement or mixed mud-cement, as well as red brick houses, as well as
+studying the walls and external openings and guidance or what is known as the cover. The architect of the
+building and the choice of everything that further improves the internal conditions of the building".
+                        </p>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">The mud pattern</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           The muddy housing pattern in the Sahrawi camps consists of different-sized rooms, a large kitchen, and a
+tent, in addition to one or two storerooms, one for food supplies and the other for clothes and household
+belongings, a bathroom (toilet) and a bathroom. Between them, there are walls of mud brick (block) with
+a thickness of 20 cm. Doors are made for it in different directions. This space is known as the yard
+(Haush), where the openings of the doors of the rooms, the kitchen, the tent (its main door) and the stores
+go into the yard while the toilet and the bathroom are outside the structure. This style is the oldest among
+the others.
+                        </p>
+                    </section>
+
+                    <section id="footnotes" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28 pt-6 lg:pt-8 border-t border-dashed border-gray-200">
+                        <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">Building materials and techniques</h2>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                            The mud brick pattern in the camps relies on mud bricks (clay) as
+the main construction material for the building.<br><img src="img/Screenshot 2025-11-26 195400.png" alt=""><br><img src="img/Screenshot 2025-11-26 195857.png" alt=""><br><img src="img/Screenshot 2025-11-26 200032.png" alt=""><br><img src="img/Screenshot 2025-11-26 200146.png" alt=""><br><img src="img/Screenshot 2025-11-29 125720.png" alt=""><br><img src="img/Screenshot 2025-11-29 125905.png" alt=""><br><img src="img/Screenshot 2025-11-29 130012.png" alt=""><br><img src="img/Screenshot 2025-11-29 130117.png" alt=""><br><img src="img/Screenshot 2025-11-29 130231.png" alt=""><img src="img/Screenshot 2025-11-29 130329.png" alt=""><img src="img/Screenshot 2025-11-29 130420.png" alt=""><img src="img/Screenshot 2025-11-29 130507.png" alt=""><br><img src="img/Screenshot 2025-11-29 130604.png" alt=""></p>
+                        
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Foundations</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           This pattern has no foundations, as the mud is directly lined up on the ground, and
+sometimes it is excavated by 20 to 30 cm, and sometimes the thickness of the first row is doubled to reach
+40 cm to be the foundation of the building.<br>
+                        </p>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Walls</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           They are made of clay brick dried under the sun, with a thickness of 20 cm, and no other materials
+are added to it to increase its durability and resistance, and the process of selecting good clay.<br>
+                        </p>
+                         <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">The roof</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                          Shinco sheets are used as a roof for these buildings, which leads to a high temperature inside
+the room due to the rapid heat transfer of this material, and the roofs are supported by wooden or iron
+beams.<br>
+                        </p>
+
+                         <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">External openings</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                          For windows: Usually the windows of this style are small and at a low height from
+the ground's surface from 20 to 40 cm, and their main material is iron, which makes them bridges to
+transfer heat into the house. As for the doors, they are also made of iron without thermal insulation layers.
+These doors are no less harmful than windows on the building in transferring heat.<br>
+                        </p>
+
+                         <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">The cement pattern </h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                          This type of housing spread after the torrential rains that swept the ElAyoun camp in 2006, and again in
+2015 to demolish a huge number of mud houses and give a bad impression among the refugees about
+buildings with mud and its fragility in resisting climatic factors. This style is mostly a single block, unlike
+the previous one, where the house's spaces gather in one corridor. Usually, this style is devoid of the large
+yards found in the old mud style, but it takes small yards for ventilation and hanging the laundry.<br><img src="img/Screenshot 2025-11-29 130754.png" alt=""><br><img src="img/Screenshot 2025-11-29 130928.png" alt=""><br><img src="img/Screenshot 2025-11-29 131026.png" alt=""><br><img src="img/Screenshot 2025-11-29 131132.png" alt=""><br><img src="img/Screenshot 2025-11-29 131230.png" alt=""><br>
+                        </p>
+                    </section>
+
+                    <section id="references" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28 pt-6 lg:pt-8 border-t border-dashed border-gray-200">
+                        <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">Building materials and techniques</h2>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           This pattern depends on the cement material, whether on the level
+of walls or the level of external and internal cladding and floors.
+                        </p>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Foundations</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+This type of foundation is usually made of cement, stone, or reinforced concrete, and this
+depends on the financial ability of the owner.
+                        </p>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Walls</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           They are made of cement blocks with a thickness of 15 cm, supported by reinforced concrete
+columns in the corners of the building. The cement material formed for the walls causes an increase in the
+temperature of the house in the summer due to the speed of convection and vice versa in the winter, which
+makes the room an oven in the summer which causes some diseases (high pressure among the elderly,
+headache).
+                        </p>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">The roof</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                            The roof of this style does not differ from the style before it (mud style), where it is roofed with
+chinko sheets supported by joists of wood or iron. These metal sheets are fixed with cement bricks or
+stones.
+                        </p>
+
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">The roof</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                            For windows: The windows of this style are of considerable dimensions (0.80 m *
+1.00 m) and at a height of 1 m from the surface of the ground, and the main material for them is iron or
+aluminum, which makes them bridges to transfer heat into the house. As for the doors, they are also made
+of iron and mostly without thermal insulation layers. These doors are no less harmful than the windows in
+transferring heat. This pattern shares the same external openings as the cement pattern.</p><br><img src="img/Screenshot 2025-11-29 133158.png" alt="">
+                        </p>
+
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Comparison between patterns</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           The municipality of Adem Al-Shih (municipality 1) was taken from the Al-Haqooniyah district in AlAyoun camp as a sample to determine the prevalence rate of each of the previous patterns. The following
+table is a summary of the results of the study.</p><br><img src="img/Screenshot 2025-11-29 133645.png" alt="">
+                        </p>
+                    </section>
+
+                    <section id="Conclusion" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28 pt-6 lg:pt-8 border-t border-dashed border-gray-200">
+                        <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">Discussion and Recommendations</h2>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                             The findings from this study highlight the significant challenges faced by Sahrawi refugee camps in terms
+of sustainable construction, particularly in the Al-Ayoun camp. These results contribute to the broader
+discourse on sustainable construction in resource-constrained settings by addressing critical gaps in urban
+planning, material use, and architectural design. By integrating these findings with existing literature, this
+section demonstrates how the study provides actionable insights beyond the immediate case study.<br>The shift from mud-based housing to cement and red brick constructions reflects a global trend observed
+in the literature, where durability and modernity often take precedence over traditional practices (Groat &
+Wang, 2013). While these materials offer increased resilience, they also present new challenges, such as
+thermal inefficiency and higher costs. This aligns with studies emphasizing the importance of localized
+and context-sensitive construction practices (Yin, 2018). The reliance on zinc roofs further complicates
+housing conditions, as documented by previous research highlighting the thermal and safety issues
+associated with such materials in extreme climates (Braun & Clarke, 2006). Thus, this study reinforces
+the necessity of exploring alternative roofing solutions, such as domes or green roofs, to enhance thermal
+comfort and safety.<br>Moreover, the findings emphasize the importance of integrating sustainable construction techniques, such
+as modern mud-building methods, which are both cost-effective and environmentally friendly. This
+echoes existing literature advocating for the revitalization of traditional materials through contemporary
+techniques to balance sustainability with cultural relevance (Creswell, 2014). The community’s resistance
+to mud construction underscores the need for education and awareness campaigns to shift perceptions and
+promote the benefits of these methods.<br>In addition to material and design considerations, the study’s findings on urban challenges—including
+unplanned land use, absence of public spaces, and lack of infrastructure—highlight the need for
+comprehensive urban planning. This aligns with global frameworks emphasizing the role of urban design
+in improving the quality of life for displaced populations (UN-Habitat, 2016). The chaotic expansion
+observed in the Sahrawi camps mirrors challenges in other refugee settings, underscoring the universal
+relevance of the study’s recommendations.<br>As such, this research not only addresses the specific needs of the Sahrawi refugee camps but also
+contributes to the broader understanding of sustainable construction in humanitarian contexts.
+                        </p>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mb-3 tracking-tight">Conclusion</h3>
+                        <p class="text-[15px] lg:text-[17.6px] text-gray-700 leading-[1.8] lg:leading-[2] mb-4 font-normal">
+                           This study emphasizes the urgent need for sustainable and climate-adaptive construction practices in the
+Sahrawi refugee camps, especially in Al-Ayoun Camp. It identifies significant shortcomings in housing
+and urban planning and offers practical solutions like modernized mud construction, alternative roofing,
+and comprehensive urban strategies to tackle immediate issues such as thermal inefficiency and
+infrastructure deficits, <br>The study also introduces a resilience framework for sustainable living in resource-constrained settings,
+focusing on:<br>1. Material Optimization: Combining traditional materials, like mud bricks, with modern
+enhancements for better durability and thermal performance<br>2. Architectural Innovation: Using domes and green roofs to improve safety and thermal comfort in
+extreme climates.<br>3. Community Engagement: Involving residents in planning to encourage acceptance of sustainable
+practices.<br>4. Urban Planning: Prioritizing thoughtful layouts, public spaces, and essential infrastructure to
+enhance living conditions<br>5. Scalability and Adaptability: Creating solutions that can be adapted to various cultural and socioeconomic contexts.<br>By addressing these aspects, the study aims to improve living conditions for refugees and provide a model
+for sustainable housing in marginalized areas. Future efforts should integrate this framework into policy
+and practice, promote community-driven planning, and expand successful approaches.
+                        </p>
+                       
+                    </section>
+
+                    <section id="reference" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28 pt-6 lg:pt-8 border-t border-dashed border-gray-200">
+                        <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">References</h2>
+                        <div class="text-[14px] lg:text-[16px] text-gray-700 leading-[1.8] lg:leading-[2] space-y-3">
+                           Herzog, J., & Meuron, P., & Herz, M., & Rahbaran, S., & Moos, C. (2011). Refugee Camps of the
+Western Sahara. ETH Studio Basel.<br>Enwin, A., & Ikiriko, T. (2024). Resilient and regenerative sustainable urban housing solutions for
+Nigeria. World Journal of Advanced Research and Reviews,eISSN: 2581-9615 CODEN (USA):
+WJARAI. Quoting (Pickett, Cadenasso & McGrath, 2013)<br>Braun, V., & Clarke, V. (2006). Using thematic analysis in psychology. Qualitative Research in
+Psychology, 3(2), 77-101.<br>Creswell, J. W. (2014). Research Design: Qualitative, Quantitative, and Mixed Methods Approaches.
+SAGE Publications.<br>Al Suliman, A., & Suliman, L. (2016). Mud Architecture and the Prospects of Its Sustainability. Al
+Zaytoonah University, Faculty of Engineering and Technology Department of Architecture -11733
+Amman – Jordan.<br>Groat, L., & Wang, D. (2013). Architectural Research Methods. Wiley.<br>Herz, M. (2013). Refugee Camps of the Western Sahara. Humanity: An International Journal of Human
+Rights, Humanitarianism, and Development, 4(3), 365–391.<br>United Nations High Commissioner for Refugees (UNHCR). (2018). Official report: Sahrawi refugees in
+Tindouf, Algeria, total camp census March 2018. Geneva: UNHCR.<br>UN-Habitat. (2016). World Cities Report 2016: Urbanization and Development – Emerging Futures. UNHabitat.<br>ACAPS. (2022). Sahrawi refugees in Tindouf, Briefing note19 January 2022.<br>
+ Yin, R. K. (2018). Case Study Research and Applications: Design and Methods. SAGE Publications.<br>Bakr, M. (2004). The Saharawi People, A Story of a Struggle, Nineveh House for Studies, Publishing and
+Distribution, Syria, Damascus.<br>Farah, R. (2008). Refugee Camps in The Palestinian and Sahrawi National Liberation Movements: A
+Comparative Perspective. Journal of Palestine Studies Vol. XXXVIII, No. 2.<br>Human Rights Watch. (2008). Human Rights in Western Sahara and the Tindouf refugee camps. Printed
+in the United States of America<br>Groat, L., & Wang, D. (2013). Architectural Research Methods. Wiley<br>Braun, V., & Clarke, V. (2006). Using thematic analysis in psychology. Qualitative Research in
+Psychology.<br>Kefas, H., & Patrick, D., & Chiroma, T. (2007). Characterization of Mayo-Belwa Clay. Leonardo
+Electronic Journal of Practices and Technologies, ISSN 1583-1078.<br>UNHCR. (2017). Bottled sand builds better homes for Sahrawi refugees<br>World Habitat. (n.d.). Plastic bottle houses for Sahrawi refugees.
+<br>World Economic Forum. (2023). 3 ways to advance climate-resilient housing solutions in vulnerable
+communities.<br>Mansoor, N., Anuar, A. N., Mahdzir, A. M., & Adnan, N. H. M. (2023). Enhancing Disaster Resilience:
+Overview of Resilient Housing. International Journal of Academic Research in Business and Social
+Sciences, 13(9), 261 – 275. Quoting (Mesquita & Kós, 2017).<br>UN-Habitat. (2016). Global housing strategy: Framework and implementation plan.
+<br>Middle East Eye. (2017). Meet the Sahrawi refugee building homes from plastic bottles in the desert.<br>Time Magazine. (2023). Why housing is a frontline defense against climate change.<br>
+Nafea, M. (2019). Case study on El-Ayoun camp housing.<br>
+Republic of the Sahrawi Arab Democratic. (2018). An online publication on camp infrastructure.<br>
+Herz, M. (2013). Refugee camps of the Western Sahara.<br>
+Urban Institute. (2024). Preserving, protecting, and building climate-resilient affordable housing.<br>
+Georgetown Climate Center. (n.d.). Resilience, affordable housing, and equity for regional vision.<br>
+Triangle Generation Humanitaire. (n.d.). Improving the school environment in Sahrawi refugee camps.<br>
+Coastal Resilience Center. (2021). Support strategies for marginalized neighborhoods.<br>
+                        </div>
+                    </section>
+
+                    <section id="Figures" class="mb-10 lg:mb-14 scroll-mt-20 lg:scroll-mt-28 pt-6 lg:pt-8 border-t border-dashed border-gray-200">
+                        <h2 class="text-[1.4rem] lg:text-[1.75rem] font-serif-custom font-bold text-[#222] mb-4 lg:mb-5 tracking-tight">Legend of the Figures</h2>
+                        <div class="text-[14px] lg:text-[16px] text-gray-700 leading-[1.8] lg:leading-[2] space-y-3">
+                           Figure 1: The location of Western Sahara to Northwest Africa and neighboring countries Source: Manuel
+Herz (2015) From Camps to City, Refugee Camps of The Western Sahara. ETH Studio Basel, Lars
+Muller Publishers.<br>
+Figure 2: Western Sahara, its liberated and occupied parts, and the location of the refugee camps. Source:
+Randa Farah, (2008). Refugee Camps in The Palestinian and Sahrawi National Liberation Movements: A
+Comparative Perspective. Journal of Palestine Studies Vol. XXXVIII, No. 2.<br>
+Figure 3: Western Sahara, its liberated and occupied parts, and the location of the refugee camps. Source:
+ACAPS. (2022). Sahrawi refugees in Tindouf, Briefing note19 January 2022.<br>
+Figure 4: Refugee tents after their displacement to the Tindouf area during the period 1975-1976. Source:
+Media Archive Center of the Sahrawi Arab Democratic Republic, (2019).<br>
+Figure 5: Primary School and a literacy school in the refugee camps in Tindouf during the period 1976-
+1980. Source: Media Archive Center of the Sahrawi Arab Democratic Republic, (2019).<br>
+Figure 6: Laayoune camp in 1984. Source: Media Archive Center of the Sahrawi Arab Democratic
+Republic, (2019).<br>
+Figure 7: Laayoune camp in 2005. Source: Media Archive Center of the Sahrawi Arab Democratic
+Republic, (2019).<br>
+Figure 8: Laayoune camp in 2018. Source: The researcher, (2018).<br>
+Figure 9: Pictures of buildings from El-Ayoun camp after the 2006 rains. Source: Media Archive Center
+of the Sahrawi Arab Democratic Republic, (2019).<br>
+Figure 10: Pictures of some buildings of El-Ayoun camp after the 2015 rains. Source: the researcher
+(2015), & Media Archive Center of the Sahrawi Arab Democratic Republic, (2019).<br>
+Figure 11(a): A detailed plan of a family’s mud house in the Hagouniyah district, El-Ayoun camp.
+Source: The researcher, (2022).<br>
+Figure 11(b): Facades of a family’s mud house in the Hagouniyah district, El-Ayoun camp. Source: The
+researcher, (2022)<br>
+Figure 11(c): perspectives of housing from old Mud bricks covered with cement to protect it from Rain
+for a family in Al-Haguniyah District, Al-Ayoun camp. Source: The researcher, (2022).<br>
+Figure 12(a): Detailed plan of a cement block house for a family in the Haqouniyah district, El-Ayoun
+camp. Source: The researcher, (2022).<br>
+Figure 12(b): facades of a cement block house for a family in the Haqouniyah district, El-Ayoun camp.
+Source: The researcher, (2022).<br>
+Figure 13(a): A detailed plan of a mixed-type dwelling of mud and cement for a family in the
+Haqouniyah district, El-Ayoun camp. Source: the researcher, (2022).<br>
+Figure 13(b): facades of a mixed-type dwelling of mud and cement for a family in the Haqouniyah
+district, El-Ayoun camp. Source: the researcher, (2022).<br>
+Figure 14(a): Detailed plan of housing from red bricks for a family in Al-Haguniyah District, Al-Ayoun
+camp. Source: the researcher, (2022).<br>
+Figure 14(b): perspectives of housing from red bricks for a family in Al-Haguniyah District, Al-Ayoun
+camp. Source: the researcher, (2022).
+                        </div>
+                        <h3 class="text-[1.1rem] lg:text-[1.3rem] font-serif-custom font-bold text-[#222] mt-6 mb-3 tracking-tight">Legend of the Tables</h3>
+                        <div class="text-[14px] lg:text-[16px] text-gray-700 leading-[1.8] lg:leading-[2] space-y-3">
+                            Table 1: Distribution of Sahrawi refugees in the Tindouf camps. Source: United Nations High
+Commissioner for Refugees, (2018). Official Report: Sahrawi Refugees in Tindouf, Algeria.<br>
+Table 2: Shows the prevalence rate of each of the four types of residential buildings in the municipality
+of Azem Eshieh in Laayoune camp. Source: the researcher, (2022).<br>
+Table 3: The following table summarizes the strengths and weaknesses of each of the patterns explained
+above. Source: the researcher, (2022).<br>Appendix-01<br>Interview With Mohamed Nafea (former Minister of the Ministry of Construction and Reconstruction of
+liberated territories) on August 31, 2019. This interview was conducted in person.<br>Q: Mr. Minister, would you mind a brief overview of your history in the field of construction and camp
+planning.1<br>
+A: I have had a long and extensive career in construction. Since 1960, I have worked as a builder and later
+as a team leader with Spanish workers during the Spanish colonial period in the Sahrawi territories. In
+1966, I moved to Laayoune, the capital, to work there. After Spain withdrew from the region and the war
+began between the Polisario Front on one side and Morocco and Mauritania on the other, I fled the
+Sahrawi territories as a refugee and joined the ranks of the Sahrawi People's Liberation Army to liberate
+Saguia el-Hamra and Wadi el-Dahab in November 1975. I remained with the army units for two to three
+months. Due to my acquaintance with some leaders in the Front, I was selected as a construction
+supervisor and later appointed as the central director of construction in the refugee camps. After the
+establishment of the Ministry of Construction in 2004, I was appointed as the first Minister of Construction in the camps, a position I held until 2010. This is a summary.1
+<br>Q: When was your first project or construction in the camps?.2<br>
+A: My first project was to build a furnace in the liberated “Al-Mahbas” area, as there was an urgent need
+to build it. I built it from the remains of a clay building of the Spanish guards that was there. After
+completing it, I was transferred to the martyr Al-Hafiz (Al-Rabouni), and my first building was a garage
+(welding workshop).2<br>
+Q: In what year?.3<br>
+A: In approximately 1975, after its completion, it was roofed with very simple materials.3<br>
+Q: What are the building materials used? We are interested in the building materials used, for example
+brick, palm leaves, meaning anything that was used in construction?.4<br>
+A: The walls of the garage were built of brick (ordinary clay bricks), and as for the roof, empty barrels
+were used and cut into shinko pieces and the garage was roofed with them. Then a nursery was built in
+Rabouni (the martyr Al-Hafiz) as well.4<br>
+Q: When you were displaced to the region as a refugee, were there housing for refugees and were they
+organized for the residents, without talking about public institutions?.5<br>
+A: There was only a tent, some people placed a partition in the middle of the tent to use part of it as a
+kitchen.5
+Q: Regarding the urban planning of the camps, was there a specific layout in the distribution of tents?
+Linear, circular, checkerboard distribution. How was it?.6<br>
+A: we interviewed some people who told us that the tents were randomly piled up on top of each other.6
+Mr. Mohamed Nafea Q: You mean Umm Edreika camp?.7<br>
+Researcher: No, I mean the Tindouf camps after people fled the bombing of the “Umm Adrika” camp.
+There were three camps, the Subaiti camp and... We are waiting for your answer to confirm or deny the
+information.7<br>
+A: For us, we started construction in the year 1975. When we wanted to transform a district or create a
+new district, we would make a plan for it in this form (he drew it roughly to convey the idea to us). The
+administration would be in the middle of the district with(nursery), and the administration would be in it.
+The hospital had police...etc. The administration was based in a tent with a large shed, which was in the
+1970s and 1970s. (1976) Nothing else with a large square of stones around it.7<br>
+Q: Do you have pictures of him?.8<br>
+A: No.8<br>
+Q: Can we find pictures of those camps?.9<br>
+A: No, no, I don’t think so, and God knows best.9<br>
+Q: At the beginning of forming the camp circles, what was the distance between the tent and the second
+tent?.10<Br>
+A: I think there was 12 meters between one tent and the other on all sides: north, east, west, and south.10
+Q: Was the (tent) uniform for all families or not?.11<br>
+A: Yes, it was just a tent, There were also large tents distributed to departments such as the Crescent,
+schools, and hospitals as well.<br>
+As for the citizens, they are the same size and type, which is known to this day.11<br>
+Q: When did clay brick construction appear and in what year specifically? almost?.12<br>
+A: From the year 83 (1983) and above.12<br>
+Q: And for public institutions, when was it?.13<br>
+A: Since the beginning, approximately in 1975, there was the garage (welding workshop), then the
+(nursery), and then the transportation center. The construction was made of bricks and the roofs were
+made of barrels and wooden boards, and there was a special team to bring and prepare the roof
+materials.13<br>
+Q: Do you remember any of them?.14<br>
+A: Yes, the person responsible for them at that time was “Abbah Balali,” and the transportation center
+was built by “Aslouh Al-Saghir.”14<br>
+Q: How was the formation of your brick dough? I mean, how was the dough (the mixture from which the
+bricks are made)? Was it cohesive and strong? What was your view of it?.15<br>
+A: In Rabouni (the martyr Al-Hafiz), there are areas with good clay and others are sandy. I used to ask
+them to bring hay or something that would help improve and strengthen the bricks or wood carpentry, but
+it was not available, so we took some wild plants such as “Asbat” and “Arkaba” and crushed them. When
+mixing them with the dough (brick mix), there was nothing available, which was very urgent.15
+Researcher: A primitive stage.<br>
+Mr. Mohamed Nafea: Yes, primitive because it is a war phase. After several buildings in Rabouni, I was
+transferred to Dakhla (Laouina) in order to build a headquarters or facility for the Sahrawi Arab
+Democratic Republic congress.<br>
+Q: As for the Laayoune camp, when was it established and how was it formed?.16<br>
+A: It was over phases, as there were only three districts, and it was called “Al-Nabka,” and every time a
+new district was opened until the camp reached six in total, as is the case now. It is considered to have
+been established in stages, some districts in 1976, and some in 1977, and the refugees were transferred
+from the “Adkhal” camp, which was close to the Rabouni camp (the martyr al-Hafiz), to the “Al-Nabka”
+camp to complete the camp’s dairas.16<br>
+Q: Regarding the “Adkhal” camp (an area where there were refugees), is it the same as the Al-Ayoun
+camp or not?.17<br>
+A: Yes, they are the same residents. They were transferred from the “Adkhal” area to the place where AlAyoun camp is located today, and three new districts were formed. Where there were only three districts,
+it became six districts, and its name was changed from Al-Nabka Camp to Al-Ayoun Camp.17<br>
+Q: Who are the most important figures who contributed to planning the camp?.18<br>
+A: Yes, I mention among them “Abdelkader Talib Omar” (the current ambassador of the Sahrawi
+Republic to Algeria), but he participated greatly with me in planning the “Awsard” camp, as it was
+planned entirely by determining the locations of the district headquarters and the distance between each
+district and another.18<br>
+Q: What was the distance between the districts?.19<br>
+A: Yes, the distance between “Agwinit” and “Techla” (the names of the circles in the Awsard camp) was
+400 meters, and between “Techla” and “Lakwira” was 500 meters, half a kilometer.19<br>
+Q: Regarding your formation of these districts and your design of the neighborhoods (each district
+contains 4 neighborhoods), what background did you have, the background that you had in planning?.20<br>
+A: Organizing the tents in order to organize the population, so that the neighborhood (municipality)
+included 100 tents and was surrounded by a square of stones to define its borders. A new neighborhood
+was opened in the event of new refugee delegations and the number reached 100 families. But if The
+families are fewer, so the square (neighborhood boundaries) is opened and they are added to one of the
+neighborhoods, The neighborhoods are separated by wide streets that intersect at the district headquarters,
+which in turn includes the headquarters of the Sahrawi Red Crescent, where humanitarian aid, the police,
+the hospital, the club, and the education headquarters (nursery) are distributed.20<br>
+That was part of the interview I had with Mr. Mohamed Nafea (former Minister of the Ministry of
+Construction and Reconstruction of liberated territories).<br>Appendix-02<br>
+Interview With Molay El Mehdi (an architect working in the construction sector in the camps) on
+December 05 ,2021. This interview was conducted in person.<br>
+Q: Do you mind a glimpse of your working life briefly in the construction sector in the camps.1<br>
+A: I obtained a bachelor's degree in 2014 and then a master's degree in housing in 2016 from Bechar
+University, Faculty of Engineering, and then I entered into work life as a consultant in architectural
+design and supervision as well. All the projects that we design in our office we follow up their
+implementation. We worked a lot with humanitarian organizations in the camps, which build and restore
+schools and hospitals and build houses for vulnerable groups of refugees.1<br>
+Q: I have some questions about construction in the camps. Could you help me answer them?.2<br>
+A: Go ahead.2<br>
+Q: From your point of view and according to your experience here, what are the reasons that made the
+camp residents tend to building with cement instead of clay?.3<br>
+A: it seems that the inability of mud houses to resist climatic factors, especially strong rains and floods,
+this is almost the biggest factor, for example, the rains of 2006 destroyed many mud houses, as well as the
+rains of 2015, especially in the Laayoune camp, and there are other factors such as the frequent need for
+restoration, so every two or three years you must do some restoration. Besides, in the view of the
+residents, mud houses have become old and traditional.3<br>
+Q: Is the cost of building with cement appropriate to the income level of camp residents?.4<br>
+Q: Building with cement is expensive for refugees, as here the income is very limited or does not exist
+sometimes, as most families depend on food supplies provided by organizations or expatriate family
+members in some countries.4<br>
+Q: Is the mud construction in the camps structured and planned or is it primitive and random
+architecture?.6<br>
+A: No, it was random in terms of the selection of the clay material from which the brick is made, as well
+as the one used in construction. Thick walls of 40 or 50 cm are not made, as is known in the world, and
+without foundations. In short, there are no features of mud buildings known in the world, construction in
+the camps is an exceptional case.6<br>
+Q: How luxurious is clay construction in terms of thermal factors (heat, cold)?.7<br>
+A: Excellent, The mud houses here are much better thermally than the cement-built houses, but both
+suffer from the Shinko roof, which raises the temperature in summer and cold in the winter and is
+dangerous during the wind.7<br>
+Q: In your opinion, what are the weaknesses of the mud construction in the Sahrawi camps?.8<br>
+A: The most important of which are fragility and inability to resist climatic factors, the lack of selection
+of clay material from the soil from which the brake is made, due to lack of knowledge, the large number
+of cracks due to salinity of the ground, the roof of the chinko that raises the internal temperature of the
+building as well as dangerous during the wind.8<br>
+Q: What are the positive aspects of mud houses?9<br>
+A: It has several advantages, including thermally excellent, low-cost, easy to build, and any refugee can
+build his own home.9<br>
+Q: Is combining clay and cement construction in the same building (mixed building) an ideal solution for
+the reality of refugees?.10<br>
+A: As you can see, this is now found in many houses, and this is the result of the fall of some parts in the
+previous rains of 2006 and 2015, which were built with cement instead of mud. some families build one
+or two rooms with cement to take shelter during heavy rains or build the whole house with cement or red
+brick, and this is according to the family's financial ability, mud houses are no longer feasible in resisting
+climatic factors, but in my opinion, it is not considered a solution to the problem of construction in camps.
+The roof of the Shinko must be removed first and replaced with other materials that are suitable in price
+and resistant to heat, on all types of housing built of mud or cement or mixed mud-cement, as well as red
+brick houses, as well as studying the walls and external openings and guidance or what is known as the
+cover. The architect of the building and the choice of everything that further improves the internal
+conditions of the building.10<br>
+Q: When did construction with cement in the camps start?.11<br>
+A: Almost after the 2006 rains, but in a small way, but after the 2015 rains, cement construction spread
+significantly, and on the other hand, the residents stopped building with clay almost completely.11<br>
+Q: Are cement materials available in the camps continuously and throughout the year?.12<br>
+A: Almost yes, except in some periods it decreases in the market and its price rises significantly.12<br>
+Q: How can camp residents be convinced of the need to preserve mud buildings and develop them to be
+more resistant to climatic factors and keep pace with the requirements of current life?.13<br>
+A: The issue is not easy, but it is not impossible. People rely on realistic examples that you see in their
+reality and we can embody them, if mud houses are built with correct standards and from treated clay
+with materials that increase its resistance to climatic factors and meet the needs of the population, then the
+residents will certainly imitate you because it is better thermally and less expensive, and it is
+architecturally beautiful if the facades are treated correctly.13<br>
+That was part of the interview I had with Molay El Mehdi (an architect working in the construction sector
+in the camps).<br>Appendix-03<br>
+Interviews with residents of Layoune camp on June ,2018. This interview was conducted in person.<br>
+Q: I have some questions about construction, I would like you to answer them.1<br>
+A: I don't mind, go ahead.1<br>
+Q: Why is there a reluctance of the population to build with mud, is it its inability to resist climatic factors
+(wind, rain, heat ...)?.2<br>
+A: Frankly, mud construction is weak. Every time we build our houses, they are destroyed by the heavy
+rains that come unexpectedly, we are tired of the mud.2<br>
+Q: But is the cost of building with cement appropriate to the income level of camp residents?.3<br>
+A: It is very expensive, but there is no solution, the mud is weak and the cost of renovation with almost
+every rain costs you a building with cement.3<br>
+Q: Are cement materials available in the camps continuously and throughout the year? Is it produced
+locally?.4<br>
+A: In some periods there is a shortage. It is not produced locally, of course, even the city of Tindouf does
+not have cement factories rather comes from 800 km far away wilayas.4<br>
+Q: What is your view of the mud buildings in the camps built by prisoners of war, which lasted for
+decades?.5<br>
+A: Good, but it also needs to be renovated every time.5<br>
+Q: Is the Sahrawi labor efficient in clay construction?.6<br>
+A: No, you don't need experience, I built my house myself with the help of some friends and neighbours
+and no one has experience in the first place, building with clay does not need experience, all people can
+build with it.6<br>
+Q: How comfortable do you feel thermal inside the clay structure, and in winter is it warm?.7<br>
+A: Cool in summer and good in winter, much better than cement.8<br>
+Q: If you want to build in the future, what will you build your house, and why?.9<br>
+A: If I have money I will build with cement, will not fall because of rain, the only problem is that the
+wind ruins the roof, or it is hot in the summer, but can handle it with some patience.9<br>
+Q: Why did you choose to build with cement over clay construction even though the raw materials for
+clay construction are available in nature and at the lowest cost?.10<br>
+A: Because it is stronger in the rain, You will suffer with the clay, during the rain you wait for the house
+when it falls on you or you run away from it to the tent, there is no solution.10<br>
+Q: But cost is lower?11<br>
+A: It doesn't matter. 11<br>
+Q: Is building with cement an ideal solution to the construction problems in the camps? And why?.12<br>
+A: I don't know, but it's better than mud.12<br>
+Q: In your opinion, what are the weaknesses of the mud construction in the Sahrawi camps?.13<br>
+A: weak, cracking, old.13<br>
+Q: What are the problems you suffer from in your mud house?.14<Br>
+A: Many cracks in the walls, the salinity of the ground affects the walls, dangerous during rain, Shinko
+causes increased heat and dangerous during wind.14<br>
+That was part of the interview I had with residents of Layoune camp.
+
+                        </div>
+                    </section>
+                </div>
+    </div>
+
+    <!-- 3. RIGHT SIDEBAR (Related) - Fixed/Sticky -->
+    <div class="w-full lg:w-[370px] flex-shrink-0 pt-6 px-4 lg:pr-16 pb-6 lg:pl-0 bg-white lg:sticky lg:top-[20px] lg:h-[calc(100vh-40px)] overflow-y-auto lg:self-start custom-scroll order-2 border-t lg:border-t-0 border-gray-200">
+        
+        <div class="flex items-center mb-4 px-2">
+            <h3 class="font-serif-custom font-bold text-[1.2rem] lg:text-[1.35rem] text-[#222]">Related research</h3>
+            <i class="fas fa-info-circle text-[#F58220] ml-2 text-sm"></i>
+        </div>
+        
+        <div class="flex mb-4 px-2 space-x-[1px] font-open-sans text-[10px] lg:text-[11px] font-[600]">
+            <div class="relative flex-1">
+                <button class="w-full bg-[#6CD775] text-[#10147E] px-2 lg:px-3 py-[6px] rounded-t-[12px] rounded-b-none leading-tight text-center">
+                    People also<br>read
+                </button>
+                <div class="absolute left-1/2 -bottom-[6px] -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent border-t-[#6CD775]"></div>
+            </div>
+            <button class="bg-[#10147E] text-white px-2 lg:px-3 py-[6px] rounded-t-[12px] rounded-b-none leading-tight text-center flex-1 border-l border-white">
+                Recommended<br>articles
+            </button>
+            <button class="bg-[#10147E] text-white px-2 lg:px-3 py-[6px] rounded-t-[12px] rounded-b-none leading-tight text-center w-[70px] lg:w-[90px] border-l border-white">
+                Cited by
+            </button>
+        </div>
+
+        <div class="flex lg:block overflow-x-auto lg:overflow-x-visible gap-3 lg:gap-0 pb-2 lg:pb-0 hide-scrollbar">
+            
+            <!-- CARD 1 -->
+            <div class="mb-3 px-2 flex-shrink-0 w-[280px] lg:w-auto">
+                <div class="border bg-[#F9F9F9] rounded-[2px] relative overflow-hidden font-open-sans">
+                    <div class="h-[6px] w-full bg-[#10147E] rounded-t-[4px]"></div>
+                    <div class="px-3 pt-2 pb-3">
+                        <div class="flex items-start justify-between cursor-pointer group">
+                            <p class="text-[#10147E] font-[400] text-[13px] lg:text-[14px] leading-snug group-hover:underline pr-4">
+                                Co-agency in urban densification: understanding hybrid agents
+                            </p>
+                            <i class="fas fa-chevron-right text-[#10147E] text-[11px] mt-[2px]"></i>
+                        </div>
+                        <div class="border-t border-gray-200 mt-2 mb-2"></div>
+                        <p class="text-[11px] lg:text-[12px] text-gray-800 font-[600] mb-[2px]">Sebastian Bornschlegl et al.</p>
+                        <p class="text-[10px] lg:text-[11px] text-gray-500 italic mb-[4px]">International Journal of Urban Sustainable Development</p>
+                        <p class="text-[10px] lg:text-[11px] text-gray-600">Published online: 13 Oct 2025</p>
+                    </div>
+                    <div class="absolute right-0 bottom-0 w-8 h-8 overflow-hidden">
+                        <div class="absolute right-0 bottom-0 w-8 h-8 bg-[#F59A23]" style="clip-path: polygon(100% 0, 100% 100%, 0 100%);"></div>
+                        <div class="absolute right-[3px] bottom-[5px] flex items-center justify-center">
+                            <i class="fas fa-lock-open text-black text-[11px]"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="mb-3 px-2 flex-shrink-0 w-[280px] lg:w-auto">
+                <div class="border bg-[#F9F9F9] rounded-[2px] relative overflow-hidden font-open-sans">
+                    <div class="h-[6px] w-full bg-[#10147E] rounded-t-[4px]"></div>
+                    <div class="px-3 pt-2 pb-3">
+                        <div class="flex items-start justify-between cursor-pointer group">
+                            <p class="text-[#10147E] font-[400] text-[13px] lg:text-[14px] leading-snug group-hover:underline pr-4">
+                                Indigenous knowledge in territorial planning framework
+                            </p>
+                            <i class="fas fa-chevron-right text-[#10147E] text-[11px] mt-[2px]"></i>
+                        </div>
+                        <div class="border-t border-gray-200 mt-2 mb-2"></div>
+                        <p class="text-[11px] lg:text-[12px] text-gray-800 font-[600] mb-[2px]">Ana Luíza Milanese et al.</p>
+                        <p class="text-[10px] lg:text-[11px] text-gray-500 italic mb-[4px]">International Journal of Urban Sustainable Development</p>
+                        <p class="text-[10px] lg:text-[11px] text-gray-600">Published online: 13 Oct 2025</p>
+                    </div>
+                    <div class="absolute right-0 bottom-0 w-8 h-8 overflow-hidden">
+                        <div class="absolute right-0 bottom-0 w-8 h-8 bg-[#F59A23]" style="clip-path: polygon(100% 0, 100% 100%, 0 100%);"></div>
+                        <div class="absolute right-[3px] bottom-[5px] flex items-center justify-center">
+                            <i class="fas fa-lock-open text-black text-[11px]"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="mb-3 px-2 flex-shrink-0 w-[280px] lg:w-auto">
+                <div class="border bg-[#F9F9F9] rounded-[2px] relative overflow-hidden font-open-sans">
+                    <div class="h-[6px] w-full bg-[#10147E] rounded-t-[4px]"></div>
+                    <div class="px-3 pt-2 pb-3">
+                        <div class="flex items-start justify-between cursor-pointer group">
+                            <p class="text-[#10147E] font-[400] text-[13px] lg:text-[14px] leading-snug group-hover:underline pr-4">
+                                Exploring stakeholders' perceptions in Malaysia
+                            </p>
+                            <i class="fas fa-chevron-right text-[#10147E] text-[11px] mt-[2px]"></i>
+                        </div>
+                        <div class="border-t border-gray-200 mt-2 mb-2"></div>
+                        <p class="text-[11px] lg:text-[12px] text-gray-800 font-[600] mb-[2px]">Ng Kean Jhun et al.</p>
+                        <p class="text-[10px] lg:text-[11px] text-gray-500 italic mb-[4px]">International Journal of Urban Sustainable Development</p>
+                        <p class="text-[10px] lg:text-[11px] text-gray-600">Published online: 13 Oct 2025</p>
+                    </div>
+                    <div class="absolute right-0 bottom-0 w-8 h-8 overflow-hidden">
+                        <div class="absolute right-0 bottom-0 w-8 h-8 bg-[#F59A23]" style="clip-path: polygon(100% 0, 100% 100%, 0 100%);"></div>
+                        <div class="absolute right-[3px] bottom-[5px] flex items-center justify-center">
+                            <i class="fas fa-lock-open text-black text-[11px]"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+
+   
+
+<!-- Subject Browser Section -->
+<section class="bg-dark-blue text-white py-8 pb-12 font-sans">
+    <div class="max-w-[1200px] mx-auto px-4">
+        <!-- Header -->
+        <div class="flex justify-between items-center flex-wrap mb-8 pt-4">
+            <h2 class="text-xl font-serif font-normal m-0">Browse journals by subject</h2>
+            <a href="#" class="text-sm text-white no-underline flex items-center hover:text-light-blue transition-colors" onclick="event.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'});">
+                Back to top <i class="fas fa-angle-up ml-2"></i>
+            </a> 
+        </div>
+        
+        <!-- Subject Columns -->
+       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Column 1 -->
+            <ul class="list-none p-0 m-0">
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/area-studies" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Area Studies</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/arts" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Arts</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/behavioral-sciences" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Behavioral Sciences</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/bioscience" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Bioscience</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/built-environment" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Built Environment</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/communication-studies" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Communication Studies</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/computer-science" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Computer Science</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/earth-sciences" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Earth Sciences</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/economics-finance-business-industry" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Economics, Finance, Business &amp; Industry</a>
+                </li>
+            </ul>
+
+            <!-- Column 2 -->
+            <ul class="list-none p-0 m-0">
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/education" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Education</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/engineering-and-technology" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Engineering &amp; Technology</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/environment-and-agriculture" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Environment &amp; Agriculture</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/environment-and-sustainability" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Environment and Sustainability</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/food-science-and-technology" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Food Science &amp; Technology</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/geography" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Geography</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/global-development" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Global Development</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/health-and-social-care" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Health and Social Care</a>
+                </li>
+            </ul>
+            
+            <!-- Column 3 -->
+            <ul class="list-none p-0 m-0">
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/humanities" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Humanities</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/information-science" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Information Science</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/language-and-literature" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Language &amp; Literature</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/law" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Law</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/mathematics-and-statistics" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Mathematics, Statistics &amp; Data Science</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/medicine-dentistry-nursing-and-allied-health" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Medicine, Dentistry, Nursing &amp; Allied Health</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/museum-and-heritage-studies" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Museum and Heritage Studies</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/physical-sciences" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Physical Sciences</a>
+                </li>
+            </ul>
+            
+            <!-- Column 4 -->
+            <ul class="list-none p-0 m-0">
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/politics-and-international-relations" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Politics &amp; International Relations</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/social-sciences" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Social Sciences</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/sports-and-leisure" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Sports and Leisure</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/tourism-hospitality-and-events" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Tourism, Hospitality and Events</a>
+                </li>
+                <li class="border-t border-border-dark py-2">
+                    <a href="https://www.tandfonline.com/subjects/urban-studies" class="text-light-blue text-sm no-underline font-semibold hover:text-white transition-colors">Urban Studies</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Main Footer -->
+<footer class="bg-brand-blue text-white font-sans pt-10 pb-5 px-4 lg:px-10">
+    <!-- Footer Links Grid -->
+    <div class="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        <!-- Column 1 -->
+        <div>
+            <h4 class="text-base font-normal mb-3">Information for</h4>
+            <ul class="list-none p-0 m-0">
+                <li class="mb-2">
+                    <a href="https://authorservices.taylorandfrancis.com/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Authors</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://taylorandfrancis.com/who-we-serve/industry-government/business/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">R&amp;D professionals</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://editorresources.taylorandfrancis.com/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Editors</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/page/librarians" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Librarians</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/societies" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Societies</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Column 2 -->
+        <div>
+            <h4 class="text-base font-normal mb-3">Open access</h4>
+            <ul class="list-none p-0 m-0">
+                <li class="mb-2">
+                    <a href="/openaccess" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Overview</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/openaccess/openjournals" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Open journals</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/openaccess/openselect" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Open Select</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/openaccess/dove" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Dove Medical Press</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/openaccess/f1000" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">F1000Research</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div>
+            <h4 class="text-base font-normal mb-3">Opportunities</h4>
+            <ul class="list-none p-0 m-0">
+                <li class="mb-2">
+                    <a href="https://taylorandfrancis.com/who-we-serve/industry-government/marketing/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Reprints and e-prints</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://taylorandfrancis.com/partnership/commercial/advertising-solutions/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Advertising solutions</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://taylorandfrancis.com/partnership/commercial/accelerated-publication/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Accelerated publication</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://taylorandfrancis.com/who-we-serve/industry-government/business/purchasing-options/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Corporate access solutions</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div>
+            <h4 class="text-base font-normal mb-3">Help and information</h4>
+            <ul class="list-none p-0 m-0">
+                <li class="mb-2">
+                    <a href="https://help.tandfonline.com" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Help and contact</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://newsroom.taylorandfrancisgroup.com/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Newsroom</a>
+                </li>
+                <li class="mb-2">
+                    <a href="/journals?&amp;pageSize=3000" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">All journals</a>
+                </li>
+                <li class="mb-2">
+                    <a href="https://www.routledge.com/" class="text-link-blue text-sm no-underline hover:underline hover:text-white transition-colors">Books</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer Bottom Section -->
+    <div class="max-w-[1200px] mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-end pt-10 border-t border-border-dark">
+        <!-- Left Side -->
+        <div class="w-full lg:w-auto mb-8 lg:mb-0 text-center lg:text-left">
+            <h4 class="text-base font-normal mb-2">Keep up to date</h4>
+            <p class="text-xs text-gray-300 mb-4 max-w-[270px] mx-auto lg:mx-0">
+                Register to receive personalised research and resources by email
+            </p>
+
+            <!-- Sign Up Button -->
+            <a href="https://taylorandfrancis.formstack.com/forms/tfoguest_signup" class="inline-flex items-center text-dark-blue text-sm font-semibold no-underline mb-6 hover:opacity-80 transition-opacity">
+                <span class="bg-light-blue p-2 rounded mr-2">
+                    <i class="fas fa-envelope text-dark-blue text-lg"></i>
+                </span>
+                <span class="text-light-blue">Sign me up</span>
+            </a>
+
+            <!-- Social Icons -->
+            <div class="grid grid-cols-3 gap-2 justify-center lg:justify-start mb-10 max-w-[120px] mx-auto lg:mx-0">
+                <a href="http://facebook.com/TaylorandFrancisGroup" target="_blank" class="flex items-center justify-center bg-light-blue w-8 h-8 rounded text-dark-blue text-lg hover:bg-white transition-colors">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+          <a href="https://twitter.com/tandfonline" target="_blank" class="flex items-center justify-center bg-light-blue w-8 h-8 rounded text-dark-blue text-lg hover:bg-white transition-colors">
+    <i class="fa-brands fa-x-twitter"></i>
+</a>
+                <a href="http://linkedin.com/company/taylor-&-francis-group" target="_blank" class="flex items-center justify-center bg-light-blue w-8 h-8 rounded text-dark-blue text-lg hover:bg-white transition-colors">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.youtube.com/user/TaylorandFrancis" target="_blank" class="flex items-center justify-center bg-light-blue w-8 h-8 rounded text-dark-blue text-lg hover:bg-white transition-colors">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="http://www.weibo.com/tandfchina" target="_blank" class="flex items-center justify-center bg-light-blue w-8 h-8 rounded text-dark-blue text-lg hover:bg-white transition-colors">
+                    <i class="fab fa-weibo"></i>
+                </a>
+                <a href="https://bsky.app/profile/tandfresearch.bsky.social" target="_blank" class="flex items-center justify-center bg-light-blue w-8 h-8 rounded text-dark-blue text-lg hover:bg-white transition-colors">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Bluesky_Logo.svg" alt="Bluesky" class="w-5 h-5">
+                </a>
+            </div>
+
+            <!-- Copyright -->
+            <p class="text-gray-400 text-xs mb-2">
+                Copyright © 2025
+                <a href="https://www.informa.com/" class="text-light-blue no-underline hover:underline ml-2">Informa UK Limited</a>
+                <a href="https://informa.com/privacy-policy/" class="text-light-blue no-underline hover:underline ml-2">Privacy policy</a>
+                <a href="https://privacy.informa.com/trackers/en/" class="text-light-blue no-underline hover:underline ml-2">Cookies</a>
+                <a href="/terms-and-conditions" class="text-light-blue no-underline hover:underline ml-2">Terms &amp; conditions</a>
+                <a href="/accessibility" class="text-light-blue no-underline hover:underline ml-2">Accessibility</a>
+            </p>
+
+            <p class="text-gray-400 text-xs mt-6">
+                Registered in England & Wales No. 01072954<br>
+                5 Howick Place | London | SW1P 1WG
+            </p>
+        </div>
+
+        <!-- Right Side - Logo -->
+        <div class="w-full lg:w-auto flex justify-center lg:justify-end">
+            <a href="http://taylorandfrancis.com/" title="Taylor and Francis Group">
+                <img src="img/Group-logo-white-on-transparent.webp" alt="Taylor & Francis Group Logo" class="w-[200px] lg:w-[280px] h-auto">
+            </a>
+        </div>
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+     <!-- JavaScript -->
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // ========== DESKTOP DROPDOWNS ==========
+        
+        const journalBtn = document.getElementById('journal-btn');
+        const journalMenu = document.getElementById('journal-menu');
+        const journalsDropdown = document.getElementById('journals-dropdown');
+        
+        if (journalBtn && journalMenu) {
+            journalBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                journalMenu.classList.toggle('hidden');
+                if (journalsDropdown) journalsDropdown.classList.toggle('dropdown-active');
+                document.body.classList.toggle('no-scroll');
+            });
+            
+            const closeDropdownBtns = journalMenu.querySelectorAll('.close-dropdown-btn');
+            closeDropdownBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    journalMenu.classList.add('hidden');
+                    if (journalsDropdown) journalsDropdown.classList.remove('dropdown-active');
+                    document.body.classList.remove('no-scroll');
+                });
+            });
+        }
+        
+        const searchBtn = document.getElementById('search-btn');
+        const searchMenu = document.getElementById('search-menu');
+        const searchOverlay = document.getElementById('search-overlay');
+        const closeSearchBtn = document.getElementById('close-search-btn');
+        
+        if (searchBtn && searchMenu) {
+            searchBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                searchMenu.classList.toggle('hidden');
+                if (searchOverlay) searchOverlay.classList.toggle('hidden');
+                if (!searchMenu.classList.contains('hidden')) {
+                    searchMenu.classList.remove('opacity-0', '-translate-y-2.5');
+                    searchMenu.classList.add('opacity-100', 'translate-y-0');
+                }
+                document.body.classList.toggle('no-scroll');
+            });
+            
+            if (closeSearchBtn) {
+                closeSearchBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    searchMenu.classList.add('hidden', 'opacity-0', '-translate-y-2.5');
+                    if (searchOverlay) searchOverlay.classList.add('hidden');
+                    document.body.classList.remove('no-scroll');
+                });
+            }
+            
+            if (searchOverlay) {
+                searchOverlay.addEventListener('click', function() {
+                    searchMenu.classList.add('hidden', 'opacity-0', '-translate-y-2.5');
+                    searchOverlay.classList.add('hidden');
+                    document.body.classList.remove('no-scroll');
+                });
+            }
+        }
+        
+        const publishBtn = document.getElementById('publish-btn');
+        const publishMenu = document.getElementById('publish-menu');
+        const publishDropdown = document.getElementById('publish-dropdown');
+        
+        if (publishBtn && publishMenu) {
+            publishBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                publishMenu.classList.toggle('hidden');
+                if (publishDropdown) publishDropdown.classList.toggle('dropdown-active');
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (publishDropdown && !publishDropdown.contains(e.target)) {
+                    publishMenu.classList.add('hidden');
+                    if (publishDropdown) publishDropdown.classList.remove('dropdown-active');
+                }
+            });
+        }
+        
+        // ========== MOBILE HEADER MENU ==========
+        
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+        
+        function openMobileMenu() {
+            if (mobileMenu) {
+                mobileMenu.classList.remove('closed');
+                mobileMenu.classList.add('open');
+            }
+            if (mobileOverlay) mobileOverlay.classList.remove('hidden');
+            document.body.classList.add('no-scroll');
+        }
+        
+        function closeMobileMenuFn() {
+            if (mobileMenu) {
+                mobileMenu.classList.add('closed');
+                mobileMenu.classList.remove('open');
+            }
+            if (mobileOverlay) mobileOverlay.classList.add('hidden');
+            document.body.classList.remove('no-scroll');
+        }
+        
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+        if (closeMobileMenu) closeMobileMenu.addEventListener('click', closeMobileMenuFn);
+        if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenuFn);
+        
+        // Mobile Accordions
+        document.querySelectorAll('.mobile-accordion-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const targetEl = document.getElementById(targetId);
+                const icon = this.querySelector('i');
+                if (targetEl) targetEl.classList.toggle('hidden');
+                if (icon) icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Mobile Search
+        const mobileSearchBtn = document.getElementById('mobile-search-btn');
+        const mobileSearchBox = document.getElementById('mobile-search-box');
+        if (mobileSearchBtn && mobileSearchBox) {
+            mobileSearchBtn.addEventListener('click', function() {
+                mobileSearchBox.classList.toggle('hidden');
+            });
+        }
+        
+        // ========== ARTICLE MOBILE SIDEBAR ==========
+        
+        const openMobileNav = document.getElementById('openMobileNav');
+        const closeMobileNav = document.getElementById('closeMobileNav');
+        const mobileSidebar = document.getElementById('mobileSidebar');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        
+        function openArticleSidebar() {
+            if (mobileSidebar) mobileSidebar.classList.add('active');
+            if (mobileNavOverlay) mobileNavOverlay.classList.add('active');
+            document.body.classList.add('no-scroll');
+        }
+        
+        function closeArticleSidebar() {
+            if (mobileSidebar) mobileSidebar.classList.remove('active');
+            if (mobileNavOverlay) mobileNavOverlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+        
+        if (openMobileNav) openMobileNav.addEventListener('click', openArticleSidebar);
+        if (closeMobileNav) closeMobileNav.addEventListener('click', closeArticleSidebar);
+        if (mobileNavOverlay) mobileNavOverlay.addEventListener('click', closeArticleSidebar);
+        
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', closeArticleSidebar);
+        });
+        
+        // ========== SIDEBAR NAVIGATION ACTIVE STATE ==========
+        
+        const sidebarNavLinks = document.querySelectorAll('#sidebar-nav .nav-link');
+        sidebarNavLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Remove active from all
+                sidebarNavLinks.forEach(l => {
+                    l.classList.remove('bg-[#F2F2F2]', 'font-[700]', 'border-[#10147E]');
+                    l.classList.add('bg-white', 'font-[600]', 'border-transparent');
+                });
+                // Add active to clicked
+                this.classList.remove('bg-white', 'font-[600]', 'border-transparent');
+                this.classList.add('bg-[#F2F2F2]', 'font-[700]', 'border-[#10147E]');
+            });
+        });
+        
+        // ========== FIX: Prevent unwanted scroll jumps ==========
+        
+        // Handle all internal links to prevent default jump behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                // Skip if it's just "#" or empty
+                if (href === '#' || href === '') {
+                    e.preventDefault();
+                    return;
+                }
+                
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Prevent any hash change from causing jump
+        window.addEventListener('hashchange', function(e) {
+            e.preventDefault();
+        }, false);
+        
+    });
+</script>
+
+
+</body>
+</html>
