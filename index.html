@@ -440,11 +440,11 @@
 <!-- Sub Navigation Bar (Breadcrumbs) -->
 <nav class="bg-[#00008b] text-white py-1 text-[13px] mt-12 lg:mt-0">
     <div class="max-w-[1200px] mx-auto px-2.5 lg:px-[15px] flex items-center overflow-x-auto whitespace-nowrap">
-        <a href="#" class="font-semibold text-[#7CC3F7] text-xs lg:text-sm hover:underline">Home</a> 
+        <a href="index.html" class="font-semibold text-[#7CC3F7] text-xs lg:text-sm hover:underline">Home</a> 
         <i class="fas fa-caret-right text-[#B3E5FF] text-lg mx-1 lg:mx-2"></i> 
-        <a href="#" class="font-semibold text-[#7CC3F7] text-xs lg:text-sm hover:underline">All Journals</a> 
+        <a href="https://www.tandfonline.com/action/showPublications?pubType=journal" class="font-semibold text-[#7CC3F7] text-xs lg:text-sm hover:underline">All Journals</a> 
         <i class="fas fa-caret-right text-[#B3E5FF] text-lg mx-1 lg:mx-2"></i> 
-        <a href="#" class="font-semibold text-[#7CC3F7] text-xs lg:text-sm hover:underline">Global Development</a> 
+        <a href="https://www.tandfonline.com/subjects/global-development" class="font-semibold text-[#7CC3F7] text-xs lg:text-sm hover:underline">Global Development</a> 
         <i class="fas fa-caret-right text-[#B3E5FF] text-lg mx-1 lg:mx-2"></i> 
         <span class="font-semibold text-[13px] text-white truncate max-w-[150px] lg:max-w-none">International Journal of Urban Sustainable Development</span>
     </div>
@@ -490,18 +490,118 @@
             </div>
         </div>
         
-        <!-- Share Button -->
-        <div class="flex-shrink-0 mt-[15px] lg:mt-[5px]">
-            <button class="bg-[#0099cc] text-white border-none py-2 px-[15px] rounded cursor-pointer text-sm font-medium flex items-center gap-2">
-                <i class="fas fa-share-alt"></i> Share
-            </button>
+       <div id="share-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-sm mx-4 p-4 relative">
+        <button onclick="closeShareModal()" class="absolute top-4 right-4 bg-blue-500 hover:bg-blue-600 text-white w-8 h-8 flex items-center justify-center rounded-md text-xl font-semibold leading-none border-none cursor-pointer p-0">
+            &times;
+        </button>
+
+        <div class="grid grid-cols-3 gap-y-4 gap-x-2 pt-2 pb-4">
+            
+            <a href="https://x.com/intent/tweet?text=International%20Journal%20of%20Urban%20Sustainable%20Development%20%7C%20Journal%20%7C%20Taylor%20%26%20Francis%20Online%20https%3A%2F%2Fwww.tandfonline.com%2Fjournals%2Ftjue20" class="flex flex-col items-center p-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out">
+                <div class="w-8 h-8 flex items-center justify-center text-xl text-black">
+                    <i class="fab fa-twitter"></i> </div>
+                <span class="text-sm mt-1 text-gray-700">X</span>
+            </a>
+
+           <a id="share-facebook" 
+   href="https://www.facebook.com/sharer/sharer.php?u=file:///D:/frontend/code/index.html#" 
+   target="_blank"
+   class="share-link flex flex-col items-center p-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out">
+    <div class="w-8 h-8 flex items-center justify-center text-xl text-blue-600">
+        <i class="fab fa-facebook"></i>
+    </div>
+    <span class="text-sm mt-1 text-gray-700">Facebook</span>
+</a>
+
+            <a href="https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%3Fmini%3Dtrue%26url%3Dhttps%253A%252F%252Fwww.tandfonline.com%252Fjournals%252Ftjue20%26title%3DInternational%2520Journal%2520of%2520Urban%2520Sustainable%2520Development%2520%257C%2520Journal%2520%257C%2520Taylor%2520%2526%2520Francis%2520Online%26summary%3D" class="flex flex-col items-center p-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out">
+                <div class="w-8 h-8 flex items-center justify-center text-xl text-blue-700">
+                    <i class="fab fa-linkedin"></i>
+                </div>
+                <span class="text-sm mt-1 text-gray-700">LinkedIn</span>
+            </a>
+            
+           <a href="mailto:?subject=CURRENT_PAGE_TITLE&body=Check out this page: CURRENT_PAGE_URL" 
+   class="flex flex-col items-center p-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out">
+    <div class="w-8 h-8 flex items-center justify-center text-xl text-red-500">
+        <i class="fas fa-envelope"></i>
+    </div>
+    <span class="text-sm mt-1 text-gray-700">Email</span>
+</a>
+            
+          <a href="javascript:void(0)" 
+   onclick="copyCurrentUrl(this)" 
+   class="flex flex-col items-center p-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out">
+    <div class="w-8 h-8 flex items-center justify-center text-xl text-gray-600">
+        <i class="fas fa-link"></i>
+    </div>
+    <span class="text-sm mt-1 text-gray-700" id="copy-link-text">Copy Link</span>
+</a>
+            
+           <a href="javascript:void(0)" 
+   onclick="window.print()" 
+   class="flex flex-col items-center p-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out">
+    <div class="w-8 h-8 flex items-center justify-center text-xl text-gray-600">
+        <i class="fas fa-print"></i>
+    </div>
+    <span class="text-sm mt-1 text-gray-700">Print</span>
+</a>
+
+            <a href="https://api.whatsapp.com/send?text=International%20Journal%20of%20Urban%20Sustainable%20Development%20%7C%20Journal%20%7C%20Taylor%20%26%20Francis%20Online%20https%3A%2F%2Fwww.tandfonline.com%2Fjournals%2Ftjue20" class="flex flex-col items-center p-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out">
+                <div class="w-8 h-8 flex items-center justify-center text-xl text-green-500">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <span class="text-sm mt-1 text-gray-700">WhatsApp</span>
+            </a>
+            
+            <a href="https://www.facebook.com/share_as_message/?link=https%3A%2F%2Fwww.tandfonline.com%2Fjournals%2Ftjue20&app_id=5303202981&display=popup" class="flex flex-col items-center p-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out">
+                <div class="w-8 h-8 flex items-center justify-center text-xl text-blue-500">
+                    <i class="fab fa-facebook-messenger"></i>
+                </div>
+                <span class="text-sm mt-1 text-gray-700">Messenger</span>
+            </a>
+            
+            <a href="https://www.addtoany.com/ext/wechat/share/#url=https%3A%2F%2Fwww.tandfonline.com%2Fjournals%2Ftjue20&title=International%20Journal%20of%20Urban%20Sustainable%20Development%20%7C%20Journal%20%7C%20Taylor%20%26%20Francis%20Online" class="flex flex-col items-center p-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out">
+                <div class="w-8 h-8 flex items-center justify-center text-xl text-green-600">
+                    <i class="fab fa-weixin"></i>
+                </div>
+                <span class="text-sm mt-1 text-gray-700">WeChat</span>
+            </a>
+
+            <a href="https://www.threads.com/login?next=https%3A%2F%2Fwww.threads.com%2Fintent%2Fpost%3Ftext%3DInternational%2BJournal%2Bof%2BUrban%2BSustainable%2BDevelopment%2B%257C%2BJournal%2B%257C%2BTaylor%2B%2526%2BFrancis%2BOnline%2Bhttps%253A%252F%252Fwww.tandfonline.com%252Fjournals%252Ftjue20%26__coig_login%3D1" class="flex flex-col items-center p-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out">
+                <div class="w-8 h-8 flex items-center justify-center text-xl text-black">
+                    <i class="fab fa-threads"></i>
+                </div>
+                <span class="text-sm mt-1 text-gray-700">Threads</span>
+            </a>
+            
+            <a href="https://bsky.app/intent/compose?text=International%20Journal%20of%20Urban%20Sustainable%20Development%20%7C%20Journal%20%7C%20Taylor%20%26%20Francis%20Online%20https%3A%2F%2Fwww.tandfonline.com%2Fjournals%2Ftjue20" class="flex flex-col items-center p-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out">
+                <div class="w-8 h-8 flex items-center justify-center text-xl text-blue-400">
+                    <i class="fas fa-feather-alt"></i> </div>
+                <span class="text-sm mt-1 text-gray-700">Bluesky</span>
+            </a>
+
         </div>
+
+        <div class="flex justify-center border-t border-gray-200 pt-3">
+            <a href="https://www.addtoany.com/" class="flex items-center text-sm font-medium text-blue-600 hover:text-blue-700">
+                <i class="fas fa-plus text-xs mr-2"></i> AddToAny
+            </a>
+        </div>
+    </div>
+</div>
+
+<button onclick="openShareModal()" class="bg-[#0099cc] text-white border-none py-2 px-[15px] rounded cursor-pointer text-sm font-medium flex items-center gap-2">
+    <i class="fas fa-share-alt"></i> Share
+</button>
+
     </div>
 </main>
 
 <!-- Action Bar -->
-<nav class="bg-[#10147E] text-white py-2.5 text-base cursor-pointer font-['Open_Sans',Arial,sans-serif]"> 
-    <div class="max-w-[1200px] mx-auto px-2.5 lg:px-[15px] flex flex-col lg:flex-row lg:justify-around">
+<nav class="bg-[#10147E] text-white py-0.5 text-base cursor-pointer font-['Open_Sans',Arial,sans-serif]"> 
+    <div class="max-w-[1200px] mx-auto px-2.5 lg:px-[15px] flex flex-col lg:flex-row lg:justify-around"> 
+       
         
         <!-- Submit an article -->
         <div class="action-item has-dropdown relative w-full lg:w-auto border-b border-[#eee] lg:border-none">
@@ -644,10 +744,10 @@
                         <!-- Article Item 1 -->
                         <div class="article-item py-[15px] lg:py-5 border-b border-dashed border-[#ccc] relative pr-[30px] lg:pr-10">
                             <a href="documentation-page.html" class="article-title block text-[#00008b] text-sm lg:text-base font-medium mb-[5px]">
-                                The Health Benefits of Daily Movement: A Comprehensive Review
+                                From situational to sustainable construction in the shrawi refugee camps in Algeria: Case study: Al-Ayoun Camp
                                 <i class="fas fa-chevron-right text-[10px] ml-[5px]"></i>
                             </a>
-                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Aisha Khan & David Lee</p>
+                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Mr.Embarek Ahmad Embarec (phD student L.M.D.Phase IV,Faculty of Architecture and urbanism,university of constantine 3)(ahmedembarec3@gmail.com)</p>
                             <p class="article-meta text-[#999] text-xs">Review Article | Published online: 05 Nov. 2025</p>
                             <span class="open-access-corner absolute bottom-0 right-0 w-0 h-0 border-t-[25px] lg:border-t-[35px] border-t-transparent border-r-[25px] lg:border-r-[35px] border-r-[#f7941d] z-[5]">
                                 <i class="fas fa-lock-open absolute bottom-[3px] lg:bottom-[5px] -right-[24px] lg:-right-[30px] text-[#333333] text-[10px] lg:text-[13px] z-10"></i>
@@ -670,11 +770,11 @@
                         <!-- Article Item 3 -->
                         <div class="article-item py-[15px] lg:py-5 border-b border-dashed border-[#ccc] relative pr-[30px] lg:pr-10">
                             <a href="#" class="article-title block text-[#00008b] text-sm lg:text-base font-medium mb-[5px]">
-                                Walking and cycling as recreational activities and their associated factors 
+                               Participation intention in cultural heritage conservation across generations: the influence of differential heritage value perception and place attachment
                                 <i class="fas fa-chevron-right text-[10px] ml-[5px]"></i>
                             </a>
-                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Mohammad Paydar et al.</p>
-                            <p class="article-meta text-[#999] text-xs">Article | Published online: 14 Oct. 2025</p>
+                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Le Wang et al.</p>
+                            <p class="article-meta text-[#999] text-xs">Article | Published online: 21 Nov 2025</p>
                             <span class="open-access-corner absolute bottom-0 right-0 w-0 h-0 border-t-[25px] lg:border-t-[35px] border-t-transparent border-r-[25px] lg:border-r-[35px] border-r-[#f7941d] z-[5]">
                                 <i class="fas fa-lock absolute bottom-[3px] lg:bottom-[5px] -right-[24px] lg:-right-[30px] text-[#333333] text-[10px] lg:text-[13px] z-10"></i>
                             </span>
@@ -683,11 +783,11 @@
                         <!-- Article Item 4 -->
                         <div class="article-item py-[15px] lg:py-5 border-b border-dashed border-[#ccc] relative pr-[30px] lg:pr-10">
                             <a href="#" class="article-title block text-[#00008b] text-sm lg:text-base font-medium mb-[5px]">
-                                Walking and cycling as recreational activities and their associated factors 
+                               Political economy barriers on the integration of water, sanitation, and solid waste management services in Ugandan towns
                                 <i class="fas fa-chevron-right text-[10px] ml-[5px]"></i>
                             </a>
-                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Mohammad Paydar et al.</p>
-                            <p class="article-meta text-[#999] text-xs">Article | Published online: 14 Oct. 2025</p>
+                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Ronald Sakaya et al.</p>
+                            <p class="article-meta text-[#999] text-xs">Article | Published online: 15 Nov 2025</p>
                             <span class="open-access-corner absolute bottom-0 right-0 w-0 h-0 border-t-[25px] lg:border-t-[35px] border-t-transparent border-r-[25px] lg:border-r-[35px] border-r-[#f7941d] z-[5]">
                                 <i class="fas fa-lock absolute bottom-[3px] lg:bottom-[5px] -right-[24px] lg:-right-[30px] text-[#333333] text-[10px] lg:text-[13px] z-10"></i>
                             </span>
@@ -696,11 +796,11 @@
                         <!-- Article Item 5 -->
                         <div class="article-item py-[15px] lg:py-5 border-b border-dashed border-[#ccc] relative pr-[30px] lg:pr-10">
                             <a href="#" class="article-title block text-[#00008b] text-sm lg:text-base font-medium mb-[5px]">
-                                Walking and cycling as recreational activities and their associated factors 
+                               Visions of life with less mobility. Can the doughnut model gain legitimacy?
                                 <i class="fas fa-chevron-right text-[10px] ml-[5px]"></i>
                             </a>
-                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Mohammad Paydar et al.</p>
-                            <p class="article-meta text-[#999] text-xs">Article | Published online: 14 Oct. 2025</p>
+                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Claus Hedegaard Sørensen et al.</p>
+                            <p class="article-meta text-[#999] text-xs">Article | Published online: 23 Oct 2025</p>
                             <span class="open-access-corner absolute bottom-0 right-0 w-0 h-0 border-t-[25px] lg:border-t-[35px] border-t-transparent border-r-[25px] lg:border-r-[35px] border-r-[#f7941d] z-[5]">
                                 <i class="fas fa-lock absolute bottom-[3px] lg:bottom-[5px] -right-[24px] lg:-right-[30px] text-[#333333] text-[10px] lg:text-[13px] z-10"></i>
                             </span>
@@ -709,11 +809,11 @@
                         <!-- Article Item 6 -->
                         <div class="article-item py-[15px] lg:py-5 relative pr-[30px] lg:pr-10">
                             <a href="#" class="article-title block text-[#00008b] text-sm lg:text-base font-medium mb-[5px]">
-                                Co-agency in urban densification: understanding hybrid agents and their consequences for sustainability 
+                               Unmasking the realities: issues and experiences of government large-scale land acquisition in Ghana 
                                 <i class="fas fa-chevron-right text-[10px] ml-[5px]"></i>
                             </a>
-                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Sebastian Bornschlegl et al.</p>
-                            <p class="article-meta text-[#999] text-xs">Article | Published online: 13 Oct 2025</p>
+                            <p class="article-authors text-[#666] text-xs lg:text-[13px] mb-[5px]">Alfred Toku et al.</p>
+                            <p class="article-meta text-[#999] text-xs">Article | Published online: 22 Oct 2025</p>
                             <span class="open-access-corner absolute bottom-0 right-0 w-0 h-0 border-t-[25px] lg:border-t-[35px] border-t-transparent border-r-[25px] lg:border-r-[35px] border-r-[#f7941d] z-[5]">
                                 <i class="fas fa-lock absolute bottom-[3px] lg:bottom-[5px] -right-[24px] lg:-right-[30px] text-[#333333] text-[10px] lg:text-[13px] z-10"></i>
                             </span>
@@ -1283,6 +1383,75 @@
                 });
             }
         });
+        
+         // JavaScript functions to control the modal visibility
+    function openShareModal() {
+        document.getElementById('share-modal').classList.remove('hidden');
+    }
+
+    function closeShareModal() {
+        document.getElementById('share-modal').classList.add('hidden');
+    }
+
+
+
+function copyCurrentUrl(element) {
+    const url = window.location.href;
+    const copyTextElement = document.getElementById('copy-link-text');
+
+    
+    navigator.clipboard.writeText(url)
+        .then(() => {
+           
+            copyTextElement.textContent = 'Copied!';
+            
+            
+            setTimeout(() => {
+                copyTextElement.textContent = 'Copy Link';
+            }, 2000); 
+        })
+        .catch(err => {
+            console.error('URL copy failed:', err);
+            copyTextElement.textContent = 'Error!';
+             setTimeout(() => {
+                copyTextElement.textContent = 'Copy Link';
+            }, 2000);
+        });
+}
+
+
+function openShareModal() {
+    document.getElementById('share-modal').classList.remove('hidden');
+}
+
+function closeShareModal() {
+    document.getElementById('share-modal').classList.add('hidden');
+}
+
+
+const pageTitle = encodeURIComponent(document.title);
+const pageUrl = encodeURIComponent(window.location.href);
+const mailtoHref = `mailto:?subject=${pageTitle}&body=Check out this page: ${pageUrl}`;
+
+
+const currentPageUrl = encodeURIComponent(window.location.href);
+
+    // 2. Facebook 
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${currentPageUrl}`;
+
+
+    function updateFacebookLink() {
+        const fbLink = document.getElementById('share-facebook');
+        if (fbLink) {
+            fbLink.href = facebookShareUrl;
+        }
+    }
+
+    // Example of calling it when the modal opens:
+    function openShareModal() {
+        updateFacebookLink(); // Call this function
+        document.getElementById('share-modal').classList.remove('hidden');
+    }
 </script>
 
 </body>
