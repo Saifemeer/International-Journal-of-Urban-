@@ -696,46 +696,53 @@ section.bg-dark-blue {
 
     <div class="page-base-bg bg-[#EEEEEE] min-h-screen">
         <div class="w-full">
-            <div class="top-header-wrapper bg-gray-100 py-6 shadow-sm">
-                <div class="flex flex-wrap lg:flex-nowrap justify-between items-center px-4">
-                    <div class="flex space-x-4 items-center w-full lg:w-auto ml-6">
-                        <div class="flex-shrink-0">
-                            <img src="img/tjue20.v017.i01.cover.jpg" alt="Journal Cover" class="w-24 h-32 object-cover border border-gray-300 shadow-md">
-                        </div>
-                        <div class="flex flex-col">
-                            <p class="text-base font-bold text-[#10147E] hover:text-blue-900 cursor-pointer">International Journal of Urban Sustainable Development <i class="fas fa-caret-right ml-1 text-sm"></i></p>
-                            <p class="text-sm text-gray-600 mt-1">
-                                Volume 17, 2025 - 
-                                <span class="text-blue-700 underline hover:no-underline cursor-pointer">Issue 1</span>
-                            </p>
-                            <div class="flex space-x-3 mt-4">
-    
-    <a href="https://accounts.taylorfrancis.com/identity/#/login?authorize=true&client_id=59f21242bb410562f60413514f5108d80ede3086581e834d9027687f7a875502&response_type=code&scope=mail&redirect_uri=http:%2F%2Fnew-api.taylorfrancis.com%2Fuser-auth%2Fcallback%2F100.65.64.139&state=&flow=new&brand=rptnf" 
-       role="button"
-       class="bg-[#6CD775] text-gray-800 px-4 py-2 text-[13.6px] rounded-md hover:bg-[#006DB4] hover:text-white transition-colors duration-200 font-normal">
-        Submit an article
-    </a>
-    
-    <a href="index.html" 
-       role="button"
-       class="bg-[#10147E] text-white px-4 py-2 text-[13.6px] rounded-md hover:bg-[#006DB4] transition-colors duration-200 font-normal">
-        Journal homepage
-    </a>
-</div>
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-2/5 flex flex-col items-end lg:ml-auto mt-4 lg:mt-0">
-                        <div class="flex items-center space-x-1 text-sm">
-                            <input type="text" placeholder="Enter keywords, authors, DOI, etc" class="border border-gray-300 px-3 py-2 rounded-md w-64 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-r-none">
-                            <select class="border border-y border-gray-300 px-3 py-2 focus:outline-none rounded-none">
-                                <option>This Journal</option>
-                            </select>
-                            <button class="bg-[#10147E] text-white px-3 py-2 rounded-md hover:bg-blue-800 transition-colors rounded-l-none"><i class="fas fa-search"></i></button>
-                        </div>
-                        <a href="#" class="text-blue-700 text-xs mt-2 hover:underline">Advanced search</a>
-                    </div>
+           <div class="top-header-wrapper bg-gray-100 py-6 shadow-sm">
+    <div class="flex flex-wrap lg:flex-nowrap justify-between items-center px-4">
+        
+        <div class="flex space-x-4 items-center w-full lg:w-auto mb-4 lg:mb-0"> 
+            
+            <div class="flex-shrink-0">
+                <img src="img/tjue20.v017.i01.cover.jpg" alt="Journal Cover" class="w-24 h-32 object-cover border border-gray-300 shadow-md">
+            </div>
+            
+            <div class="flex flex-col flex-grow min-w-0"> <p class="text-base font-bold text-[#10147E] hover:text-blue-900 cursor-pointer truncate">
+                    International Journal of Urban Sustainable Development <i class="fas fa-caret-right ml-1 text-sm"></i>
+                </p>
+                <p class="text-sm text-gray-600 mt-1">
+                    Volume 17, 2025 - 
+                    <span class="text-blue-700 underline hover:no-underline cursor-pointer">Issue 1</span>
+                </p>
+                
+                <div class="flex flex-wrap gap-2 mt-4"> <a href="https://accounts.taylorfrancis.com/identity/#/login?authorize=true&client_id=59f21242bb410562f60413514f5108d80ede3086581e834d9027687f7a875502&response_type=code&scope=mail&redirect_uri=http:%2F%2Fnew-api.taylorfrancis.com%2Fuser-auth%2Fcallback%2F100.65.64.139&state=&flow=new&brand=rptnf" 
+                        role="button"
+                        class="bg-[#6CD775] text-gray-800 px-4 py-2 text-[13.6px] rounded-md hover:bg-[#006DB4] hover:text-white transition-colors duration-200 font-normal whitespace-nowrap">
+                        Submit an article
+                    </a>
+                    
+                    <a href="index.html" 
+                        role="button"
+                        class="bg-[#10147E] text-white px-4 py-2 text-[13.6px] rounded-md hover:bg-[#006DB4] transition-colors duration-200 font-normal whitespace-nowrap">
+                        Journal homepage
+                    </a>
                 </div>
             </div>
+        </div>
+        
+        <div class="w-full lg:w-2/5 flex flex-col items-start lg:items-end lg:ml-auto mt-4 lg:mt-0">
+            <div class="flex items-center space-x-1 text-sm w-full"> 
+                <input type="text" placeholder="Enter keywords, authors, DOI, etc" class="border border-gray-300 px-3 py-2 rounded-md flex-grow focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-r-none w-full sm:w-64">
+                
+                <select class="border border-y border-gray-300 px-3 py-2 focus:outline-none rounded-none hidden sm:block"> <option>This Journal</option>
+                </select>
+                
+                <button class="bg-[#10147E] text-white px-3 py-2 rounded-md hover:bg-blue-800 transition-colors rounded-l-none"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <a href="#" class="text-blue-700 text-xs mt-2 hover:underline">Advanced search</a>
+        </div>
+        
+    </div>
+</div>
             
             <div class="h-6 w-full relative bg-white"></div>
 
